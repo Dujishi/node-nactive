@@ -1,0 +1,248 @@
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: .24rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.gifts-details {
+  width: 7.5rem;
+  background: #2A8FFF;
+  padding-top: .3rem;
+}
+
+.gifts-box {
+  width: 6.9rem;
+  height: 6.01rem;
+  position: relative;
+  margin: 0 auto;
+  a {
+    font-size: 0;
+  }
+  .fp, .bp {
+    width: 6.9rem;
+    margin-bottom: 0.01rem;
+  }
+  .bp{
+    margin-top: .01rem;
+  }
+  .sp, .tp {
+    width: 50%;
+    display: inline-block;
+  }
+}
+
+.msg-box {
+  width: 5rem;
+  height: .6rem;
+  opacity: 0.5;
+  background: #000000;
+  border-radius: 44px;
+  font-size: .26rem;
+  color: #FFF;
+  line-height: .6rem;
+  position: absolute;
+  top: .1rem;
+  left: .1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  ul {
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: .1rem;
+  }
+  li {
+    width: 4.5rem;
+    padding: 0 .15rem;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .3rem;
+  margin-top: .3rem;
+  margin-bottom: .16rem;
+  color: #C3DFFF;
+  span {
+    width: 2rem;
+    height: .02rem;
+    background: #C3DFFF;
+  }
+  i {
+    width: 0.1rem;
+    height: 0.1rem;
+    border: 1px solid #A8D1FF;
+    border-radius: 50%;
+    margin-left: .2rem;
+    margin-right: .2rem;
+  }
+}
+
+.gifts-instructions {
+  width: 6.46rem;
+  margin: auto;
+  font-size: .26rem;
+  line-height: .4rem;
+  padding-bottom: .3rem;
+  color: #D7EAFF;
+  table{
+    width: 6.46rem;
+    border-collapse: collapse;
+    th,td{
+      &:nth-of-type(1){
+        width: 20%;
+      }
+      &:nth-of-type(2){
+        width: 60%;
+      }
+      &:nth-of-type(3){
+        width: 20%;
+      }
+      text-align: center;
+      border: 1px solid #D7EAFF;
+    }
+  }
+
+}
+
+.rank {
+  width: 6.86rem;
+  padding: .32rem;
+  background-color: #1b6ed6;
+  .rank-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .24rem;
+    line-height: .3rem;
+    margin-bottom: .17rem;
+    color: #F8FBFF;
+  }
+  .rank-card {
+    width: 5.88rem;
+    height: 2.2rem;
+    background: #F8FBFF;
+    padding: .3rem .51rem;
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .item-trophy, .item-money {
+        .rank-card-title {
+          font-size: .28rem;
+          color: #222222;
+          line-height: .32rem;
+          padding-left: .5rem;
+          position: relative;
+          &::before {
+            width: .35rem;
+            height: .35rem;
+            content: '';
+            background: url("../images/trophy.png");
+            background-size: .35rem .35rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+        .rank-value {
+          font-size: .36rem;
+          color: #FF4625;
+          line-height: .41rem;
+          margin: .2rem 0 .33rem 0;
+          text-align: center;
+        }
+      }
+      .item-money {
+        .rank-card-title {
+          &::before {
+            background: url("../images/money.png");
+            background-size: .35rem .35rem;
+          }
+        }
+      }
+    }
+
+    .rank-btn {
+      width: 5.9rem;
+      height: .8rem;
+      border: .02rem solid #FD6F56;
+      border-radius: .5rem;
+      line-height: .8rem;
+      text-align: center;
+      font-size: .34rem;
+      color: #FF4625;
+    }
+  }
+  .rank-text {
+    font-size: .26rem;
+    color: #c0dcfd;
+    line-height: .48rem;
+    div {
+      position: relative;
+      padding-left: .5rem;
+      &::before {
+        width: .28rem;
+        height: .28rem;
+        content: '1';
+        background: url("../images/number.png");
+        background-size: .28rem .28rem;
+        position: absolute;
+        top: 0.07rem;
+        left: 0;
+        line-height: .28rem;
+        text-align: center;
+        font-size: .2rem;
+      }
+      &:nth-of-type(2) {
+        &:before {
+          content: '2';
+        }
+      ;
+      }
+      &:nth-of-type(3) {
+        &:before {
+          content: '3';
+        }
+      ;
+      }
+      &:nth-of-type(4) {
+        &:before {
+          content: '4';
+        };
+      }
+    }
+  }
+}

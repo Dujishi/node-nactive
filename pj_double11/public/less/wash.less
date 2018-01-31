@@ -1,0 +1,206 @@
+@import '@ui/base-less/index.less';
+@wash-path: '/pj_double11/public/images/wash';
+
+.container {
+    header {
+        position: relative;
+        height: 4rem;
+        background: url('@{wash-path}/top.png') no-repeat;
+        background-size: 100% 100%;
+
+        .tip-box {
+            position: absolute;
+            right: 0;
+            top: 0.3rem;
+            font-size: 0.24rem;
+
+            .tip {
+                display: block;
+                margin-bottom: 0.3rem;
+                width: 1.3rem;
+                height: 0.4rem;
+                line-height: 0.4rem;
+                text-align: center;
+                border-radius: 23px 0 0 23px;
+                background-color: #717171;
+                color: #fff;
+
+                &:nth-of-type(1) {
+                    background-color: rgb(218,207,151);
+                    color: #5f5f5f;
+                }
+            }
+        }
+    }
+}
+
+section {
+    padding: 0 0.3rem;
+    margin-bottom: 0.3rem;
+
+    ul {
+        li {
+            padding: 0.4rem 0.3rem;
+            height: 2.22rem;
+            font-size: 0.24rem;
+            border-bottom: 1px solid #f5f5f5;
+
+            .item-left {
+                float: left;
+
+                & > img {
+                    display: inline-block;
+                    width: 1.4rem;
+                    height: 1.4rem;
+                    //background-color: red;
+                    vertical-align: text-bottom;
+                }
+
+                .score {
+                    font-size: 0.26rem;
+                }
+
+                .shop-info {
+                    display: inline-block;
+                    margin-left: 0.1rem;
+
+                    .shop-name {
+                        width: 2.8rem;
+                        font-size: 0.28rem;
+                        color: #666;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .shop-evaluate {
+                        margin: -3px 0 3px;
+                        color: #ff0000;
+                        font-size: 0.22rem;
+
+                        .star-rating {
+                            unicode-bidi: bidi-override;
+                            color: #ff0000;
+                            font-size: 0;
+                            position: relative;
+                            display: inline-block;
+                            padding: 0;
+                            //text-shadow: 0 1px 0 #a2a2a2;
+                        }
+
+                        .star-rating span {
+                            padding: 1px;
+                            font-size: 0.26rem;
+                        }
+
+                        .star-rating-top {
+                            color: #FF0000;
+                            padding: 0;
+                            position: absolute;
+                            z-index: 1;
+                            display: block;
+                            top: 0;
+                            left: 0;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+
+                        .star-rating-bottom {
+                            padding: 0;
+                            display: block;
+                            z-index: 0;
+                        }
+                    }
+
+                    .shop-address {
+                        width: 2.8rem;
+                        color: #b2b2b2;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .shop-distance {
+                        display: inline-block;
+                        padding: 0 0.1rem;
+                        background-color: #999;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .item-right {
+                float: right;
+
+                .now-price {
+                    color: #ff0000;
+                    font-size: 0.4rem;
+
+                    &::before {
+                        content: '￥';
+                        font-size: 0.16rem;
+                    }
+                }
+
+                .origin-price {
+                    margin: -7px 0 5px;
+                    color: #999;
+
+                    span {
+                        position: relative;
+
+                        &::before {
+                            content: '￥';
+                            font-size: 0.18rem;
+                        }
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 0.1rem;
+                            width: 0.35rem;
+                            height: 1px;
+                            background-color: #999;
+                        }
+                    }
+                }
+
+                button {
+                    width: 1.28rem;
+                    height: 0.6rem;
+                    text-align: center;
+                    font-size: 0.32rem;
+                    border-radius: 0.3rem;
+                    color: #fff;
+                    outline: none;
+                }
+
+                .solding-btn {
+                    background-color: #ff0000;
+                    border: 1px solid #ff0000;
+                }
+
+                .soldout-btn {
+                    background-color: #999;
+                    border: 1px solid #999;
+                    font-size: 0.24rem;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    a {
+        display: block;
+        margin-bottom: 0.4rem;
+        text-align: center;
+        color: #999;
+        font-size: 0.28rem;
+    }
+}
+
+#confirm_box {
+    width: 85%;
+}

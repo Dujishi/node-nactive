@@ -1,0 +1,226 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ */
+* {
+  box-sizing: border-box;
+}
+html {
+  cursor: default;
+  /* Add normal cursor  Improves visual focus of page during mouse use in all browsers */
+  -webkit-tap-highlight-color: transparent;
+  /* Add vertical scrollbar  Keeps page centered in all browsers regardless of content height */
+  -webkit-text-size-adjust: 100%;
+  /* Define maximum text display as 100% to document Corrects text displayed oddly after orientation change in handheld browsers */
+}
+html,
+body {
+  border: 0;
+  background-color: #fff;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
+}
+img {
+  border: 0 none;
+}
+/*
+ * Remove outline
+ * Improves appearance when active or hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+a,
+a:active,
+a:hover {
+  outline: none;
+  text-decoration: none;
+}
+/*
+ * Define outline as thin dotted
+ * Improves appearance displayed oddly in C10
+*/
+a:focus {
+  outline: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hide {
+  display: none !important;
+}
+.tl {
+  text-align: left;
+}
+.tr {
+  text-align: right;
+}
+.tc {
+  text-align: center;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+section {
+  margin: 10px 0;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 5px 2px;
+  line-height: 40px;
+  font-size: 16px;
+}
+li > label {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding: 0 5px 0 0;
+  text-align: right;
+}
+li .content {
+  -webkit-box-flex: 3;
+  -webkit-flex: 3;
+          flex: 3;
+}
+li .content label {
+  display: block;
+}
+.btn {
+  background: #1d90e6;
+  color: #fff;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+  font-size: 16px;
+}

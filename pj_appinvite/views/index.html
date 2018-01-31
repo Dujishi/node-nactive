@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+  <title>典典替你送福利</title>
+  <!-- css section -->
+  <link rel="stylesheet" href="https://test-store.ddyc.com/res/nactive/appinvite/css/index-d471699c2c.css">
+  <!-- css section end-->
+  <script>
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt =  'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document,window);
+
+        // 检查是否支持 webp，并将结果存在 localStorage 里
+        ;(function () {
+          if (!window.localStorage || typeof localStorage !== 'object') return
+          const name = 'webpsupport'
+          if (!localStorage.getItem(name) ||
+            (localStorage.getItem(name) !== 'true' &&
+              localStorage.getItem(name) !== 'false')) {
+            var img = new Image()
+            img.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=='
+            img.onload = function () {
+              localStorage.setItem(name, 'true')
+            }
+            img.onerror = function () {
+              localStorage.setItem(name, 'false')
+            }
+          }
+        }())
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp     : {{ isapp }},
+            iswechat  : {{ iswechat }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+            openid    : '{{ openid }}',
+            // for share
+            shareUrl      : 'https://m.ddyc.com/nactive/hongbao20161031/index?trackId=app' ,
+            shareContent  : '我也在用典典养车，推荐你一起来用，礼包内含免费券。',
+            shareTitle    : 'hi 朋友，送你160元无门槛养车礼包。',
+            shareSubTitle : '我也在用典典养车，推荐你一起来用，礼包内含免费券。',
+            shareImgUrl   : 'http://store.ddyc.com/res/xkcdn/icons/share/icon_appinvite20161124.png'
+        }
+	</script>
+  <script type='text/javascript'>
+		//获取浏览器参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return unescape(r[2]); return null;
+		}
+		var _vds = _vds || [];
+			window._vds = _vds;
+		(function() {
+			_vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+			if(getQueryString('trackId')){ //判断是否需要统计页面来源
+					_vds.push(['setPageGroup', 'activvityHongbaoPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+					_vds.push(['setPS1', '典典替你送福利']);
+					_vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+			}
+
+			(function() {
+				var vds = document.createElement('script');
+				vds.type = 'text/javascript';
+				vds.async = true;
+				vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(vds, s);
+			})();
+		})();
+	</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="img-placeholder"></div>
+    <ul id="scene">
+      <li class="layer" data-depth="0.20"></li>
+    </ul>
+    <img class="img img-small J-webp" src="/pj_appinvite/public/images/perch.jpg" data-header="/pj_appinvite/public/images/header.png" data-headerwebp="/pj_appinvite/public/images/header.png.webp" data-large="/pj_appinvite/public/images/body.jpg" data-largewebp="/pj_appinvite/public/images/body.jpg.webp" alt="">
+    <!--<img class="header-img" src="https://store.ddyc.com/res/nactive/appinvite/images/header-152873cfa5.png" alt="有福同享">-->
+    <span class="rules">活动规则</span>
+    <button type="button" class="btn share-btn">立即分享</button>
+  </div>
+  <div class="dialog dialog-rule hide">
+    <div class="dialog-content-wrap">
+      <div class="dialog-body dialog-content">
+        <img src="/pj_appinvite/public/images/dialog1.png" class="J-webp" alt="">
+        <div class="rule-content">
+          <h4>活动规则</h4>
+          <p>1.该活动同一用户仅限参与一次，红包限领一次。</p>
+          <p>2.养护通用支持更换防冻液、空调清洗、进气系统清洗、燃烧室除积碳、润滑系统清洗、三元催化清洗等服务美容通用支持打蜡、 内室清洗 、镀晶镀膜等服务。</p>
+          <p>3.红包内容可进入典典 App【我的】-【券/包】查看具体使用规则以app红包列表信息为准。</p>
+          <p>4.如有疑问，请进入典典养车 APP【我的】点击右上角【在线客服】咨询。</p>
+        </div>
+        <span class="close"></span>
+      </div>
+    </div>
+  </div>
+  <div class="dialog dialog-success hide">
+    <div class="dialog-content-wrap">
+      <div class="dialog-content">
+        <img src="/pj_appinvite/public/images/dialog2.png" class="J-webp" alt="">
+        <div class="dialog-body rule-content">
+          <h4>分享成功</br>您已获得135元红包</h4>
+          <ul>
+            <li><span>.</span>50元养护通用红包</li>
+            <li><span>.</span>20元美容通用红包</li>
+            <li><span>.</span>5元违章处理红包</li>
+            <li><span>.</span>50元年检代办红包</li>
+            <li><span>.</span>10元油卡代办红包</li>
+          </ul>
+          <button type="button" class="btn use-btn">立即使用</button>
+        </div>
+        <span class="close"></span>
+      </div>
+    </div>
+  </div>
+  <div class="dialog dialog-used hide">
+    <div class="dialog-content-wrap">
+      <div class="dialog-content">
+        <img src="/pj_appinvite/public/images/dialog2.png" class="J-webp" alt="">
+        <div class="dialog-body rule-content">
+          <h4>您已参加过活动</h4>
+          <button class="btn check-btn">查看红包</button>
+        </div>
+        <span class="close"></span>
+      </div>
+    </div>
+  </div>
+  {% if iswechat %}
+  <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> {% endif %}
+  <script src="//store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+	
+  <script src="/pj_appinvite/public/js/index.js"></script>
+</body>
+
+</html>

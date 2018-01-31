@@ -1,0 +1,472 @@
+@import "./mixin";
+
+//开场动画
+.full-bg(@width,@height){
+  height: @height;
+  width: @width;
+  background-size:cover;
+}
+.auto(){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.intro-animation{
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+}
+//loading效果内容
+.loading-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #447498;
+  @import "../../images/merge/loading-sprite";
+  .loading-bg(){
+    background-image: url(/pj_luckydraw/public/images/merge/loading.png);
+    background-repeat:no-repeat;
+    .bgSizeToRem(@spritesheet-width,@spritesheet-height);
+  }
+  .loading-icon{
+    display: block;
+    margin: 0 auto;
+    width: 1.78rem;
+    height: 1.09rem;
+    .loading-bg();
+    background-position-y:0;
+    will-change: opacity;
+    //.spriteRemPosition(@loading-car-1);
+    background-position-x:-1.83rem;
+    animation: loadingCarShake 320ms infinite step-end;
+  }
+  .loading-txt-box{
+    display: flex;
+     padding: .2rem 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .loading-text{
+    display: block;
+    width: 1.22rem;
+    height: .26rem;
+    .loading-bg();
+    .spriteRemPosition(@loading-txt);
+  }
+  .loading-dot{
+    display: block;
+    width: .06rem;
+    height: .06rem;
+    margin-left: .05rem;
+    background-color: #9fc2f4;
+    transform: skew(-18deg,0deg);
+    animation: 640ms infinite step-end ;
+    &:nth-child(2){
+    animation-name: loadingDot1;
+    }
+    &:nth-child(3){
+      animation-name: loadingDot2;
+    }
+    &:nth-child(4){
+      animation-name: loadingDot3;
+    }
+    &:nth-child(5){
+      animation-name: loadingDot4;
+    }
+    &:nth-child(6){
+      animation-name: loadingDot5;
+    }
+    &:nth-child(7){
+      animation-name: loadingDot6;
+    }
+  }
+
+  .keyframes(loadingCarShake,{
+    0%,100%{
+      background-position-x:0;
+    }
+    50%{
+      background-position-x:-1.83rem;
+    }
+  });
+  .keyframes(loadingDot1,{
+    0%{
+      opacity: 0;
+    }
+    10%, 100%{
+      opacity: 1;
+    }
+  });
+  .keyframes(loadingDot2,{
+    0%{
+      opacity: 0;
+    }
+    25%, 100%{
+      opacity: 1;
+    }
+  });
+  .keyframes(loadingDot3,{
+    0%{
+      opacity: 0;
+    }
+    40%, 100%{
+      opacity: 1;
+    }
+  });
+  .keyframes(loadingDot4,{
+    0%{
+      opacity: 0;
+    }
+    55%,  100%{
+      opacity: 1;
+    }
+  });
+  .keyframes(loadingDot5,{
+    0%{
+      opacity: 0;
+    }
+    70%,
+    100%{
+      opacity: 1;
+    }
+  });
+  .keyframes(loadingDot6,{
+    0%{
+      opacity: 0;
+    }
+     90%,
+    100%{
+      opacity: 1;
+    }
+  });
+}
+.enter-bg{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-position: center;
+  background-color: #edcab6;
+}
+.enter-first{
+  z-index: 8;
+  background-image: url(/pj_luckydraw/public/images/intro-bg-1.jpg);
+  @import "../../images/merge/intro-car-sprite";
+  .intro-car-bg(){
+      background-image: url(/pj_luckydraw/public/images/merge/intro-car.png);
+      background-repeat:no-repeat;
+      .bgSizeToRem(@spritesheet-width,@spritesheet-height);
+  }
+  .intro-car{
+    .auto();
+    opacity: 0;
+    margin: 0.11rem 0 0 -2.25rem;
+    width: 4.51rem;
+    height: 2.78rem;
+    transition: opacity linear 300ms;
+    .intro-car-bg();
+    .spriteRemPosition(@intro-car-1);
+
+  }
+  &.animation {
+    .intro-car{
+      opacity: 1;
+      transition: none;
+      will-change: background-position;
+
+       animation: carShake 300ms infinite step-end forwards;
+    }
+    .intro-finger{
+      opacity: 1;
+      will-change: background-position;
+      animation: fingerMove 500ms infinite linear;
+    }
+  }
+  .intro-finger{
+    .auto();
+    margin: 1.2rem 0 0 -2.55rem;
+    display: block;
+    width: 1.83rem;
+    height: 1.67rem;
+    background-size:cover;
+    background-image: url(/pj_luckydraw/public/images/intro-finger.png);
+    opacity: 0;
+  }
+  .keyframes(carShake,{
+    0%,100%{
+      .spriteRemPosition(@intro-car-1);
+    }
+    50%{
+      .spriteRemPosition(@intro-car-2);
+    }
+  });
+  .keyframes(fingerMove,{
+    0%{
+      transform: translate(0px,0px);
+    }
+    100%{
+      transform: translate(-10px,10px);
+    }
+  });
+}
+
+.enter-second {
+  z-index: 9;
+  @import "../../images/merge/intro-fight-sprite";
+  .intro-fight-bg(){
+    background-image: url(/pj_luckydraw/public/images/merge/intro-fight.png);
+    background-repeat:no-repeat;
+    .bgSizeToRem(@spritesheet-width,@spritesheet-height);
+  }
+  background-image: url(/pj_luckydraw/public/images/intro-bg-2.jpg);
+  .intro-fight{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 76%;
+    margin-left:-3.75rem;
+    .intro-fight-bg();
+    .spriteRemPosition(@intro-fight-1);
+  }
+  &.animation {
+    .intro-fight{
+      will-change: background-position;
+      animation: peopleFight 700ms infinite step-end;
+    }
+  }
+  .keyframes(peopleFight,{
+    0%,100%{
+      .spriteRemPosition(@intro-fight-1);
+    }
+    50%{
+      .spriteRemPosition(@intro-fight-2);
+    }
+  });
+}
+.enter-first.get-bigger{
+  will-change: transform;
+  transform-origin: 50% 50%;
+  animation: getBigger 500ms linear forwards;
+}
+.enter-second.get-in{
+  will-change: opacity;
+  animation: getShow 300ms linear;
+}
+.enter-first.get-bigger{
+  .intro-car{
+     //animation: getHide 1000ms linear 500ms forwards;
+  }
+  .intro-finger{
+    animation: getHide 300ms linear  forwards;
+  }
+}
+.keyframes(getHide,{
+  0%{
+    opacity: 1;
+  }
+  100%{
+   opacity: .5;
+  }
+});
+.keyframes(getBigger,{
+  0%{
+    transform: scale(1,1);
+  }
+  100%{
+    transform: scale(2,2);
+  }
+});
+.keyframes(getShow,{
+  0%{
+   opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+});
+
+
+.kouqi-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  //margin: 0.11rem 0 0 -2.25rem;
+  @import "../../images/merge/icon-kouqi-sprite";
+  .kouqi-bg(){
+    background-image: url(/pj_luckydraw/public/images/merge/icon-kouqi.png);
+    background-repeat:no-repeat;
+    .bgSizeToRem(@spritesheet-width,@spritesheet-height);
+  }
+  .kouqi-ya{
+    position: absolute;
+    top: 0.2rem;
+    left: 0rem;
+    .kouqi-bg();
+    .imgPosToBg(@kouqi-ya);
+    transform-origin: 50% 100%;
+    opacity: 0;
+  }
+  //.kouqi-o{
+  //  position: absolute;
+  //  top: -1rem;
+  //  left: -1.4rem;
+  //  .kouqi-bg();
+  //  .imgPosToBg(@kouqi-o);
+  //  transform-origin: 50% 100%;
+  //}
+  //.kouqi-wa{
+  //  position: absolute;
+  //  top: 0rem;
+  //  left: -.5rem;
+  //  .kouqi-bg();
+  //  .imgPosToBg(@kouqi-wa);
+  //  transform-origin: 50% 100%;
+  //}
+  .kouqi-a{
+    position: absolute;
+    top: .4rem;
+    left: -2.4rem;
+    .kouqi-bg();
+    .imgPosToBg(@kouqi-a);
+    opacity: 0;
+    transform-origin: 50% 100%;
+  }
+  //.kouqi-en{
+  //  position: absolute;
+  //  top: -.1rem;
+  //  left: 1.1rem;
+  //  .kouqi-bg();
+  //  .imgPosToBg(@kouqi-en);
+  //  transform-origin: 50% 100%;
+  //}
+}
+.animation {
+  .kouqi-ya{
+    animation: kouqimove-ya 1800ms linear infinite forwards 900ms;
+
+  }
+  .kouqi-a{
+    animation: kouqimove-a 1800ms linear infinite forwards ;
+  }
+  //.kouqi-o{
+  //  animation: kouqimove-o 1200ms linear infinite forwards;
+  //  transform-origin: 50% 100%;
+  //}
+  //.kouqi-wa{
+  //  animation: kouqimove-wa 800ms linear infinite forwards 100ms;
+  //}
+  //
+  //.kouqi-en{
+  //  animation: kouqimove-en 850ms linear infinite forwards 300ms;
+  //}
+}
+
+.keyframes(kouqimove-ya,{
+  0%{
+    transform: translate(0px,0px)  ;
+    opacity: 1;
+    //opacity: 0;
+  }
+  20%{
+    transform:  translate(-10px,-16px) ;
+  }
+  40%{
+    transform: translate(10px,-32px)  ;
+  }
+  60%{
+    transform: scale(1.2,1.2)  translate(-10px,-48px)  ;
+    opacity: 1;
+  }
+  80%{
+    transform: scale(1.2,1.2) translate(10px,-64px)  ;
+  }
+  100%{
+    transform: scale(1.2,1.2) translate(0px,-80px) ;
+    opacity: 0;
+    //opacity: 1;
+  }
+});
+.keyframes(kouqimove-a,{
+  0%{
+    transform:scale(.6,.6) translate(0px,0px)  ;
+    opacity: 1;
+    //opacity: 0;
+  }
+  20%{
+    transform:scale(.6,.6)  translate(-10px,-24px) ;
+  }
+  40%{
+    transform:scale(1,1)  translate(10px,-48px)  ;
+  }
+  60%{
+    transform: scale(1,1)  translate(-10px,-72px)  ;
+    opacity: 1;
+  }
+  80%{
+    transform: scale(1,1)  translate(10px,-96px)  ;
+  }
+  100%{
+    transform:scale(1,1)   translate(0px,-120px) ;
+    opacity: 0;
+    //opacity: 1;
+  }
+});
+//.keyframes(kouqimove-o,{
+//  0%{
+//    transform: scale(0,0) translate(0px,180px) rotate(-15deg);
+//    //opacity: 0;
+//  }
+//  33%{
+//    transform: scale(.3,.3) translate(-4px,80px)  rotate(-15deg);
+//  }
+//  66%{
+//    transform: scale(.6,.6) translate(-18px,-20px) rotate(-15deg) ;
+//    opacity: 1;
+//  }
+//  100%{
+//    transform: scale(1,1) translate(-20px,-120px) rotate(-15deg);
+//    opacity: .3;
+//  }
+//});
+
+//.keyframes(kouqimove-wa,{
+//  0%{
+//    transform: scale(0,0) translate(2px,10px) ;
+//    //opacity: 0;
+//  }
+//  70%{
+//    opacity: 1;
+//  }
+//  100%{
+//    transform: scale(1,1) translate(0,-30px);
+//    opacity: .3;
+//    //opacity: 1;
+//  }
+//});
+//.keyframes(kouqimove-en,{
+//  0%{
+//    transform: scale(0,0) translate(0px,60px) rotate(30deg);
+//    //opacity: 0;
+//  }
+//  33%{
+//    transform: scale(.3,.3) translate(10px,20px)  rotate(30deg);
+//  }
+//  66%{
+//    transform: scale(.6,.6) translate(50px,-20px)  rotate(30deg);
+//    opacity: 1;
+//  }
+//  100%{
+//    transform: scale(1,1) translate(60px,-60px) rotate(30deg);
+//    opacity: .3;
+//    //opacity: 1;
+//  }
+//});

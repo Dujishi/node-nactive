@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>超级保养</title>
+    <!-- css section -->
+    <link rel="stylesheet" href="/pj_superupkeep/public/css/index.css">
+    <!-- css section end-->
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        // 检查是否支持 webp，并将结果存在 localStorage 里
+        ;(function() {
+            if (!window.localStorage || typeof localStorage !== 'object') return
+            const name = 'webpsupport'
+            if (!localStorage.getItem(name) ||
+                (localStorage.getItem(name) !== 'true' &&
+                    localStorage.getItem(name) !== 'false')) {
+                var img = new Image()
+                img.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=='
+                img.onload = function() {
+                    localStorage.setItem(name, 'true')
+                }
+                img.onerror = function() {
+                    localStorage.setItem(name, 'false')
+                }
+            }
+        }())
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            openid    : '{{ openid }}',
+            userId    : '{{userId}}',
+            viewCounts: '{{totalViewCounts}}',
+            status: '{{status}}',
+            remainSecs: '{{remainSecs}}',
+            isDebug: {{isDebug}},
+            // for share
+            shareUrl: '{{shareUrl}}',
+            shareContent: '德国原装进口，恢复原厂动力，免费售后检测',
+            shareTitle: '品超级保养，送跨年红包，最高600元',
+            shareSubTitle: '德国原装进口，恢复原厂动力，免费售后检测',
+            shareImgUrl: 'https://store.ddyc.com/res/xkcdn/icons/share/icon_superupkeep.png'
+        }
+        //获取浏览器参数
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var _vds = _vds || [];
+        window._vds = _vds;
+        ;(function() {
+            _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+            if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                _vds.push(['setPageGroup', 'activvityHongbaoPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+                _vds.push(['setPS1', '12月全国联动超级保养']);
+                _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+            }
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="pre-header">
+            <div class="img-placeholder"></div>
+            <img class="img-small" src="/pj_superupkeep/public/images/back_sm.jpg" data-large="/pj_superupkeep/public/images/back.jpg" data-largewebp="/pj_superupkeep/public/images/back.jpg.webp" width="100%" />
+            <div class="arrow"></div>
+            <a class="block" href="#rule"></a>
+        </header>
+        <div class="fix-top hide">
+            <div class="fix-top-img"><img src="/pj_superupkeep/public/images/default_logo.png" alt="" /></div>
+            <div class="fix-top-xian"><img src="/pj_superupkeep/public/images/line.jpg" alt=""></div>
+            <div class="fix-top-text"><span>宝马 5系</span><br />2017款 528Li 领先型 </div>
+            <div class="fix-top-button">更改<br />车辆</div>
+        </div>
+        <!--<div class="fix-top-other">
+            <div class="fix-top-img"><img src="" alt="" /></div>
+            <div class="fix-top-xian"></div>
+            <div class="fix-top-text"><span>宝马 5系</span><br />2017款 528Li 领先型 </div>
+            <div class="fix-top-button">更改车辆</div>
+        </div>-->
+        <div class="ui-cell">
+            <!--<div class="recommend">推荐</div>-->
+            <div class="ui-box">
+                <!--<div class="recommend-top"></div>-->
+                <div class="ui-title">10000公里不换油</div>
+                <div class="ui-content">
+                    <div class="ui-img"><img width="100%" class="lazyload" data-original="/pj_superupkeep/public/images/xiaodelong.png"/></div>
+                    <div class="ui-font">
+                        <div class="text-title">小德龙套餐</div>
+                        <div class="text-content">合成机油<br />4L机油+机滤+工时费<br />建议30w以下车型</div>
+                        <div class="text-money">送价值<br /><span>200</span>元跨年礼包</div>
+                    </div>
+                </div>
+            </div>
+            <div class="buy">
+                <div class="buy-money">
+                    <p>定金:￥<span>20</span></p>
+                    <div>尾款:￥248</div>
+                </div>
+                <div class="buy-status">未开抢</div>
+            </div>
+        </div>
+        <div class="ui-cell">
+            <div class="ui-box">
+                <div class="ui-title">提升动力 延长寿命</div>
+                <div class="ui-content">
+                    <div class="ui-img"><img width="100%" class="lazyload" data-original="/pj_superupkeep/public/images/yadelong.png"/></div>
+                    <div class="ui-font">
+                        <div class="text-title">亚德龙套餐</div>
+                        <div class="text-content">全合成机油<br />4L机油+机滤+工时费<br />建议30w以上车型</div>
+                        <div class="text-money">送价值<br /><span>400</span>元跨年礼包</div>
+                    </div>
+                </div>
+            </div>
+            <div class="buy">
+                <div class="buy-money">
+                    <p>定金:￥<span>30</span></p>
+                    <div>尾款:￥496</div>
+                </div>
+                <div class="buy-status">未开抢</div>
+            </div>
+        </div>
+        <div class="ui-cell">
+            <div class="ui-box">
+                <div class="ui-title">修复磨损 改善烧机油</div>
+                <div class="ui-content">
+                    <div class="ui-img"><img width="100%" class="lazyload"  data-original="/pj_superupkeep/public/images/xiumo.png"/></div>
+                    <div class="ui-font">
+                        <div class="text-title">修磨套餐</div>
+                        <div class="text-content">超级合成机油<br />4L机油+机滤+工时费<br />建议机油消耗偏大车型</div>
+                        <div class="text-money">送价值<br /><span>600</span>元跨年礼包</div>
+                    </div>
+                </div>
+            </div>
+            <div class="buy">
+                <div class="buy-money">
+                    <p>定金:￥<span>50</span></p>
+                    <div>尾款:￥980</div>
+                </div>
+                <div class="buy-status">未开抢</div>
+            </div>
+        </div>
+        <div class="ui-shop hide">
+            <h4>距离您最近的门店</h4>
+            <div class="shop-item clearfix">
+                <img src="//store.ddyc.com/res/xkcdn/icons/share/icon_storelist.png" alt="">
+                <p class="shop-name">ffffff</p>
+                <p class="shop-address"> 典典杭州</p>
+                <span class="shop-distance">杭州市</span>
+            </div>
+            <button class="shop-btn" type="button">查看更多商家</button>
+        </div>
+        <div class="ui-text" id="rule">
+            <div class="ui-text-title"><span></span>活动说明</div>
+            <ul>
+                <li>1.活动时间</li>
+                <li>购买时间：2016年12月24日0点--2017年1月3日24点  支付定金获得套餐附赠大礼包</li>
+                <li>使用时间：2016年12月24日0点--2017年2月28日24点 到店支付尾款享受超级保养</li>
+                <li>2.参与方式</li>
+                <li>① 购买期间，选择合适的保养套餐（典典会为你智能推荐），支付定金即可获得套餐专属大礼包且定金还可等额抵扣后续保养服务。</li>
+                <li>② 专属大礼包所包含的安全行车检查和组合红包会在支付定金成功后即刻发放到您的【红包/券】账户，典典VIP卡会在您到店支付尾款并服务后以短信的方式发送到您的手机。</li>
+                <li>③ 您支付的定金会以等额保养券的方式发放到您的【红包/券】账户，到店支付时自动抵扣。</li>
+                <li>④ 您可以打开APP【我的-红包/券】页面查看相关优惠券</li>
+                <li>3.施工前请与门店再次确认保养适配方案，确保您的适配方案更加合适您的爱车；</li>
+                <li>4.定金支付成功后不支持退款；</li>
+                <li>5.全国典典连锁门店通用；</li>
+                <li>6.机油套餐含4L机油，机滤及工时费，超出4L部分按市场价计算，不足1L按照1L计算；</li>
+                <li>7.所有优惠每位车主仅限购买1次；</li>
+                <li>8.如有疑问，请进入典典养车APP【我的】 ，点击右上角【在线客服】咨询；</li>
+                <li>9.本公司有权在法律允许的范围内保留对本次活动的最终解释权。</li>
+            </ul>
+        </div>
+        <div class="fix-bottom">
+            <div class="fix-bottom-text">距离活动<br />开始还有</div>
+            <!--<div class="fix-bottom-xian"></div>-->
+            <div class="fix-bottom-time">
+                <span></span>天
+                <span></span>时
+                <span></span>分
+                <span></span>秒
+            </div>
+        </div>
+    </div>
+    <!--<div id="xk_select_button"></div>-->
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_superupkeep/public/js/pre.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>测试预售</title>
+    <link rel="stylesheet" href="/pj_demo/public/css/presale.css" type="text/css" >
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            phone: '{{ phone }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}'
+        }
+    </script>
+</head>
+<body>
+    {% for item in result%}
+    <section>
+        <ul>
+            <li>
+                <label>商品编码：</label>
+                <div class="content">{{ item.preSaleSku.commodityCode }}</div>
+            </li>
+            <li>
+                <label>选择商家：</label>
+                <div class="content">
+                    {% for shop in item.preSaleSku.carShopIds%}
+                    <label><input value="{{ shop }}" type="radio" name="shop_{{ item.preSaleSku.commodityCode }}"/>{{ shop }}</label>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+        <a href="javascript:;" class="btn sub-btn" data-goodsname="{{item.preSaleSku.commodityName}}" data-payprice="{{ item.preSaleSku.earnestMoney }}" data-shopprice="{{ item.preSaleSku.price }}" data-goodscode="{{ item.preSaleSku.commodityCode }}">立即下单</a>
+    </section> 
+    {% endfor %}
+    {% if result.length == 0 %}
+    没有商品信息
+    {% endif %}
+
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% endif %}
+    <script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_demo/public/js/presale.js"></script>
+</body>
+</html>

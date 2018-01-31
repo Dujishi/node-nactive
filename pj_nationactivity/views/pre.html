@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>1119典典连锁周年庆</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="https://store.ddyc.com" />
+
+    <link rel="stylesheet" href="/pj_nationactivity/public/css/pre.css" type="text/css" >
+    
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }}, 
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+            payUrl    : '{{ payUrl }}',
+
+            indexUrl  : '{{ shareUrl }}',
+            
+            activeName : document.title,
+            startTimeStr:'{{startTimeStr}}',
+            nowTimeStamp:'{{nowTimeStamp}}',
+            
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}'
+        }
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+            var _vds = _vds || [];
+            window._vds = _vds;
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', document.title]);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+
+
+<div class="container hide" id="container">
+    <ul class="scene" id="scene">
+        <li class="layer" data-depth="0.10">
+            <div class="background"></div>
+        </li>
+        <li class="layer" data-depth="0.20">
+            <span class="img1"></span>
+        </li>
+        <li class="layer" data-depth="0.20">
+            <span class="img2"></span>
+        </li>
+        <li class="layer" data-depth="0.25">
+            <span class="img3"></span>
+        </li>
+    </ul>
+    
+    <div class="content">
+        <div class="time-bar">
+            <div class="inner">
+                <div class="time">11/19-11/27</div>
+                <div class="text"><span>超低价抢购</span><br/>优惠券</div>
+                <div class="time-line"></div>
+                <div class="time">11/19-17/01/18</div>
+                <div class="text"><span>到店用券享受服务</span><br/>全城连锁店通用</div>
+            </div>
+            <div class="slogo"></div>
+        </div>
+
+        <!--爆款-->
+        <div class="b-box-container" id="b_box_container">
+            
+        </div>
+        
+
+        <!--列表-->
+        <div class="s-container">
+            <div class="sheader">
+                <span>组合优惠 ALL IN 50% OFF</span>
+            </div>
+            
+            <ul class="p-list-box" id="p_list_box">
+            </ul>
+
+            <div class="sheader mr0">
+                <span style="left: -0.03rem;">买一赠一 Two for one price</span>
+            </div>
+
+            <ul class="p-list-box s-list" id="s_p_list_box">
+                
+            </ul>
+
+            <div class="footer">
+                <a href="javascript:;" id="view_shops">查看活动门店</a>
+            </div>
+        </div>
+
+        <div class="time-down">
+            <div class="inner">
+                <div class="l-label">距离活动<br/>开始还有</div>
+                <div class="time-line"></div>
+                <div class="time-num clearfix" id="time_num">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+{% if isWechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_nationactivity/public/js/pre.js"></script>
+
+<script type="text/template" id="catgory1_tmp">
+    <div class="b-box">
+    </div>
+</script>
+
+<script type="text/template" id="catgory2_tmp">
+    [[each data]]
+    <li>
+        <span class="tag"></span>
+        <div class="img-box">
+            [[each $value.details]]
+            <div class="img-s">
+                <img class="lazyload" src="https://store.ddyc.com/res/xkcdn/icons/default/icon_pack1_default@2x.png" data-original="[[$value.imageUrl]]" />
+                <p class="name clearfix">
+                    [[each $value.title]]<span>[[$value]]</span>[[/each]]
+                </p>
+            </div>
+            [[if $index == 0]]
+            <div class="img-line"></div>
+            [[/if]]
+            [[/each]]
+        </div>
+        <div class="text-box">
+            <div class="price">
+                <span>5折<br/>组合价</span>
+                <span>: ¥</span>
+                <span>[[$value.appPrice]]</span>
+                <span>起</span>
+            </div>
+        </div>
+        <div class="btn-box">
+            <a href="javascript:;" title="[[commodityName]]-查看" class="btn btn-selected"><span>11.19<br/>揭晓</span></a>
+        </div>
+    </li>
+    [[/each]]
+</script>
+<script type="text/template" id="catgory3_tmp">
+    [[each data]]
+    <li>
+        <span class="tag"></span>
+        <div class="img-box">
+            [[each $value.details]]
+            <div class="img-s">
+                <img class="lazyload" src="https://store.ddyc.com/res/xkcdn/icons/default/icon_pack1_default@2x.png" data-original="[[$value.imageUrl]]" />
+                <p class="name clearfix sname">
+                    [[each $value.title]]<span>[[$value]]</span>[[/each]]
+                </p>
+            </div>
+            [[if $index == 0]]
+            <div class="img-line"></div>
+            [[/if]]
+            [[/each]]
+        </div>
+        <div class="text-box">
+            <div class="price">
+                <span>限时<br/>抢购价</span>
+                <span>: ¥</span>
+                <span>[[$value.appPrice]]</span>
+                <span>起</span>
+            </div>
+        </div>
+        <div class="btn-box">
+            <a href="javascript:;" title="[[commodityName]]-查看" class="btn btn-selected"><span>11.19<br/>揭晓</span></a>
+        </div>
+    </li>
+    [[/each]]
+</script>
+<script type="text/template" id="city_tmp">
+    [[each data]]
+    <li data-cityid="[[ $value.cityId ]]"><a href="javascript:;">[[ $value.cityName ]]</a></li>
+    [[/each]]
+</script>
+</html>

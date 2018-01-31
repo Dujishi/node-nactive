@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>新人大礼包</title>
+
+		<link rel="stylesheet" href="https://store.ddyc.com/res/xkcdn/animate/v3.5.2/animate.min.css" type="text/css">
+		<link rel="stylesheet" href="/pj_storePacket/public/css/index.css" type="text/css">
+
+		<script>
+			// 设置rem字号;
+			(function (doc, win) {
+				'use strict';
+				var docEl = doc.documentElement;
+				var resizeEvt = 'resize';
+
+				function recalc() {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth)
+						return;
+					docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+				}
+
+				recalc();
+				win.addEventListener(resizeEvt, recalc, false);
+			})(document, window);
+
+			/**CONFIG**/
+			window.CONF = {
+				isapp: {{ isapp }},
+				iswechat: {{ iswechat }},
+				appId: '{{ wechat.appId }}',
+				phone: '{{ phone }}',
+				timestamp: '{{ wechat.timestamp }}',
+				nonceStr: '{{ wechat.nonceStr }}',
+				signature: '{{ wechat.signature }}',
+				activeName: '新人礼包',
+				// for share
+				shareUrl: '{{ shareUrl }}',
+				shareTitle: '新人礼包哦',
+				shareContent: '新人礼包哦',
+				shareSubTitle: '新人礼包哦',
+				shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_ticketpayment161220.png',
+				openid: '{{openid}}'
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="page-wrap">
+			<header></header>
+			<section>
+				<ul id="page-list"></ul>
+			</section>
+			<footer>
+				<a class="get-all-btn"></a>
+			</footer>
+		</div>
+
+	</body>
+
+	<script>
+		//获取浏览器参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r !== null)
+				return unescape(r[2]);
+			return null;
+		}
+	</script>
+	{% if iswechat %}
+		<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	{% endif %}
+	<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+	<script src="/pj_storePacket/public/js/index.js?v=1.0"></script>
+
+</html>

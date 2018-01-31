@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>躲交警</title>
+    <link rel="stylesheet" href="/pj_avoidpolice/public/css/style.css">
+    <link rel="stylesheet" href="/pj_avoidpolice/public/css/rank.css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+
+        /**CONFIG**/
+        window.CONF = {
+            isLogin   : '{{ isLogin }}' === 'true',
+            isapp     : '{{ isapp }}' === 'true',
+            iswechat     : '{{ iswechat }}' === 'true',
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareTitle    : '拼手速拼反应，谁最6谁的违章我包了',
+            shareContent  : '每周免单，游戏你玩单我买',
+            shareSubTitle : '每周免单，游戏你玩单我买',
+            shareImgUrl   : 'http://store.ddyc.com/res/xkcdn/icons/share/icon_avoidpolice160712.jpg'
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="rank" class="rank" style="display:none;">
+        <ul class="rank-nav ui-cell">
+            <li class="ui-cell-primary current"><span>本周排行</span></li>
+            <li class="ui-cell-primary"><span>获奖记录</span></li>
+        </ul>
+        <div class="rank-list">
+            <div class="hd ui-cell">
+                <span class="col1">排名</span>
+                <span class="col2">用户名</span>
+                <span class="col3">积分</span>
+            </div>
+            <div class="bd" id="city">
+                <div class="rank-content"></div>
+                <a class="more" href="javascript:;">查看更多</a>
+                <div class="rank-fixbar">
+                    <div id="my-rank"></div>
+                    <div class="rank-btns">
+                        <a class="rank-replay-btn" href="javascript:;">返回</a><a class="rank-share-btn" href="javascript:;">分享游戏</a>
+                    </div>
+                </div>
+            </div>
+            <div class="bd" id="country" style="display:none;">
+                <div class="rank-content"></div>
+            </div>
+        </div>
+
+        <!--<div class="rank-fixbar">
+            <div id="my-rank"></div>
+            <div class="rank-btns">
+                <a class="rank-replay-btn" href="javascript:;">再玩一次</a><a class="rank-share-btn" href="javascript:;">分享游戏</a>
+            </div>
+        </div>-->
+    </div>
+
+    <div id="mask" style="display:none;"></div>
+
+    <div id="desc" class="alert" style="display:none;">
+        <div class="hd">说 明</div>
+        <div class="bd">
+            <div class="alert-text">
+                <p>1.左右移动小车躲避迎面而来的交警，撞上交警则游戏结束</p>
+                <p>2.游戏可无限次玩，排行取成绩最好的一次，分数相同后玩用户排名在前</p>
+                <p>3.截止每周日24:00排行第1的用户免单(500元违章红包)，2~5名每人获得100元服务费红包一个</p>
+                <p>4.奖项以红包形式发放，每周一上午10:00发放</p>
+                <p>5.红包自发放之日起7天内有效，不找零不退换</p>
+                <p>6.红包仅会发放一次</p>
+            </div>
+            <a class="alert-btn" href="javascript:;">确 定</a>
+        </div>
+    </div>
+
+    <div id="login" class="alert" style="display:none;">
+        <div class="hd">提示</div>
+        <div class="bd">
+            <div class="alert-text">
+                亲，您还没登录哦~
+            </div>
+            <a class="alert-btn" href="javascript:;">去登录</a>
+        </div>
+    </div>
+
+    <div id="dialog-result" class="dialog" style="display:none;">
+        <div class="dialog-hd">
+            恭 喜 您
+        </div>
+        <div class="dialog-bd">
+            <div class="dialog-img"></div>
+            <div class="dialog-score">
+                躲过 <strong>0</strong> 个交警
+            </div>
+            <div class="dialog-btns">
+                <a class="dialog-check" href="javascript:;">查看排行</a>
+                <a class="dialog-replay" href="javascript:;">再玩一次</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="share"  style="display:none;"></div>
+
+    {% if iswechat %}
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% endif %}
+    <!--<script src="https://wechatfe.github.io/vconsole/lib/vconsole.min.js"></script>-->
+    <script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_avoidpolice/public/js/index.js"></script>
+</body>
+</html>

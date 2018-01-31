@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>典典车游汇</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+
+    <link rel="stylesheet" href="/pj_drive/public/css/index.css" type="text/css" >
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }}, 
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+
+            state         : {{ state }},
+            apply         : {{ apply }},
+            residue       : {{ residue }},
+            
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}',
+
+            uriIndex      : '{{ uriIndex }}',
+            uriSignup     : '{{ uriSignup }}',
+            uriDetail     : '{{ uriDetail }}',
+            uriProxy      : '{{ uriProxy  }}',
+            uriInsure     : '{{ uriInsure }}'
+        }
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+            
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '车友汇']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+            
+            {% if iswechat %}
+                _ax.push(['set', 'source', 'wechat']);
+                _ax.push(['set', 'openid', CONF.openid]);
+            {% endif %}
+            {% if isapp %}
+                _ax.push(['set', 'source', 'app']);
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+
+<div class="container hide">
+    <div class="banner">
+        <img src="https://store.ddyc.com/res/xkcdn/icons/default/icon_img_default_logo@2x.png" alt="" data-original="{{ baseInfo.banner }}">
+    </div>
+    <header>
+        <div class="win-box">
+            <div class="win-info-btn f16 cl-f tc hide">我的报名信息 <div class="icon-arrow1"></div></div> 
+            <div class="win-item">
+                <div class="win-icon fl">
+                    <div class="icon-time mg-0a"></div>
+                </div>
+                <div class="win-text1 fl cl-94 f14 bottom-line">活动时间</div>
+                <div class="win-text2 fl cl-555 f14 bottom-line">{{ baseInfo.time }}</div>
+            </div>
+            <div class="win-item" id="open-map" 
+                data-label="{{ baseInfo.address }}" 
+                data-lat="{{ baseInfo.lat }}"
+                data-lng="{{ baseInfo.lng }}">
+                <div class="win-icon fl">
+                    <div class="icon-address mg-0a"></div>
+                </div>
+                <div class="win-text1 fl cl-94 f14 bottom-line">活动地点</div>
+                <div class="win-text2 fl cl-555 f14 bottom-line">{{ baseInfo.address }} <div class="icon-arrow"></div></div>
+            </div>
+            <div class="win-item">
+                <div class="win-icon fl">
+                    <div class="icon-money mg-0a"></div>
+                </div>
+                <div class="win-text1 fl cl-94 f14 bottom-line">活动金额</div>
+                <div class="win-text2 fl cl-555 f14 bottom-line">￥{{ baseInfo.price.toFixed(1) }}/人</div>
+            </div>
+            <div class="win-item">
+                <div class="win-icon fl">
+                    <div class="icon-origin mg-0a"></div>
+                </div>
+                <div class="win-text1 fl cl-94 f14">出发城市</div>
+                <div class="win-text2 fl cl-555 f14">{{ baseInfo.origin }}</div>
+            </div>
+        </div>
+        <div class="header-text f14 cl-f tc">
+            · {{ supply }}
+            {% if offer %}
+            <div data-link="{{ offer.link }}" class="header-offer" style="color:{{ offer.color }}">{{ offer.text }}</div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="tabs-wrap">
+        <ul class="tabs-content">
+            <li data-tag="abstract" class="focus">目的地简介</li>
+            <li data-tag="process">活动流程</li>
+            <li data-tag="explain">费用说明</li>
+            <li data-tag="notice">活动须知</li>
+        </ul>
+    </div>
+    <div class="content cl-f f12">
+        <div data-id="abstract"> <!-- 目的地简介 -->
+            {% for item in detail.abstract %}
+                {% if item.pic %}
+                <div class="pic-wrap">
+                    <img src="https://store.ddyc.com/res/xkcdn/icons/default/icon_img_default_logo@2x.png" data-original="{{item.pic}}" alt="" width="100%">
+                </div>
+                {% endif %}
+                <div class="text-wrap">
+                    {{item.desc}}
+                </div>
+            {% endfor %}
+        </div>
+        <div data-id="process">
+            <div class="title-sub">活动流程</div>
+            <div class="process-content">
+                {% for item in detail.process %}
+                <div class="process-item process-title">
+                    <div class="process-time">{{item.time}}</div>
+                    <div class="process-point"></div>
+                    <div class="process-text">{{item.title}}</div>   
+                </div>
+                <div class="process-item process-desc">
+                    <div class="process-time">&nbsp;</div>
+                    <div class="process-text">{{item.desc}}&nbsp;</div>   
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div data-id="explain">
+            <div class="title-sub">费用说明</div>
+            <div class="content-text1 cl-99a">
+                {{detail.explain}}
+            </div>
+        </div>
+        <div data-id="notice" class="last-content" >
+            <div class="title-sub">活动须知</div>
+            <div class="content-text1 cl-99a">
+                {{detail.notice}}
+            </div>
+            {% for item in detail.history %}
+            <div class="history" data-url="{{item.url}}">
+                <img src="https://store.ddyc.com/res/xkcdn/icons/default/icon_img_default_logo@2x.png" data-original="{{item.pic}}" alt="" width="100%">
+            </div>
+            {% endfor %}
+        </div> 
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text cl-a f12 tc">
+                已报名<span class="f16 cl-f72">{{apply}}</span>人，剩余<span class="f16 cl-f72">{{residue}}</span>人
+            </div>
+            <div class="footer-btn-wrap">
+                <div class="footer-btn blue cl-f f18" id="btn-do">拉好友一起</div>       
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<div class="dialog-share hide">
+    <img src="/pj_drive/public/images/null.png" data-original="/pj_drive/public/images/share_pic.png" alt="">
+</div>
+<div class="dialog-map hide">
+    <span class="map-close"></span>
+    <iframe src="" id="map-iframe"></iframe>
+</div>
+
+</body>
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_drive/public/js/index.js"></script>
+</html>
+
+
+
+

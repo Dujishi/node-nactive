@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title> 前端活动类项目 </title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_template/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            openId:'{{ openId }}',
+            // for share
+            shareUrl: '{{ shareData.shareUrl }}',
+            shareTitle: '{{ shareData.shareTitle }}',
+            shareContent: '{{ shareData.shareContent }}',
+            shareSubTitle: '{{ shareData.shareSubTitle }}',
+            shareImgUrl: '{{ shareData.shareImgUrl }}'
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <h1>前端活动类项目模板演示</h1>
+    <h2>涉及功能点</h2>
+    <div class="explain">
+        <p>1. 微信 openid 获取 {{ openId }} 、jssdk 初始化；</p>
+        <p>2. 分享功能初始化，调用 app 分享功能；</p>
+        <p>3. 获取 userId；</p>
+        <p>4. app检测登录状态、去登录功能；</p>
+        <p>5. 浏览器和 node 环境获取 url 参数的方法；</p>
+        <p>6. app 和微信中的经纬度获取，以及经纬度转换成城市街道信息；</p>
+        <p>7. app 和 H5 的支付功能调用方法；</p>
+        <p>8. 桥接接口调用，以及常用页面跳转；</p>
+        <p>9. <a href="/nactive/template/over">活动结束页面；</a></p>
+    </div>
+    <ul class="api-wrap">
+        <li class="api-item">
+            <span class="desc">获取页面参数 <em id="getParam"></em></span>
+            <button class="primary" id="getParamBtn">@util/string-util/query-string</button>
+        </li>
+        <li class="api-item">
+            <span class="desc">检测在App中是否登录</span>
+            <button class="primary" id="isLogin">@util/native-bridge/lib/isLogin</button>
+        </li>
+        <li class="api-item">
+            <span class="desc">在App中去登录页面，可以获取相关登录信息userId等</span>
+            <button class="primary" id="goToLogin">@util/native-bridge/lib/login</button>
+        </li>
+        <li class="api-item">
+            <span class="desc">调用App分享功能</span>
+            <button class="primary" id="callAppShare">@util/native-bridge/lib/callShare</button>
+        </li>
+        <li class="api-item">
+            <span class="desc">获取经纬度：</br>latitude-><em id="latitude"></em>  </br> longitude-><em id="longitude"></em></span>
+            <button class="primary" id="getLatLong">@util/common-page/getLocation()</button>
+        </li>
+        <li class="api-item">
+            <span class="desc">根据经纬度获取城市和城市ID：<em id="cityId"></em></br>latitude:  <input type="text" id="getLat" value="30.288975"> </br>longitude: <input type="text" id="getLong" value="120.088889"></span>
+            <button class="primary" id="getCityId">@util/common-page/getLocation()</button>
+        </li>
+        <li class="api-item">
+            <span class="desc">根据订单号去支付</span>
+            <button class="primary" id="goToPay">@util/native-bridge/lib/payment</button>
+        </li>
+    </ul>
+</div>
+
+
+
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_template/public/js/index.js"></script>
+</body>
+</html>

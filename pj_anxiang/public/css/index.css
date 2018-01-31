@@ -1,0 +1,584 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ */
+* {
+  box-sizing: border-box;
+}
+html {
+  cursor: default;
+  /* Add normal cursor  Improves visual focus of page during mouse use in all browsers */
+  -webkit-tap-highlight-color: transparent;
+  /* Add vertical scrollbar  Keeps page centered in all browsers regardless of content height */
+  -webkit-text-size-adjust: 100%;
+  /* Define maximum text display as 100% to document Corrects text displayed oddly after orientation change in handheld browsers */
+}
+html,
+body {
+  border: 0;
+  background-color: #fff;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
+}
+img {
+  border: 0 none;
+}
+/*
+ * Remove outline
+ * Improves appearance when active or hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+a,
+a:active,
+a:hover {
+  outline: none;
+  text-decoration: none;
+}
+/*
+ * Define outline as thin dotted
+ * Improves appearance displayed oddly in C10
+*/
+a:focus {
+  outline: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hide {
+  display: none !important;
+}
+.tl {
+  text-align: left;
+}
+.tr {
+  text-align: right;
+}
+.tc {
+  text-align: center;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+.btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 2.80rem;
+  height: 0.60rem;
+  border: 1px solid #fcb838;
+  border-radius: 0.06rem;
+  color: #1d1d1d;
+  text-align: center;
+  font-size: 0.24rem;
+  background: -webkit-linear-gradient(top, #fcab1e 0%, #fedc34 54%, #ffe44c 100%);
+  background: linear-gradient(to bottom, #fcab1e 0%, #fedc34 54%, #ffe44c 100%);
+  line-height: 0.56rem;
+}
+.btn strong {
+  font-size: 0.40rem;
+}
+.btn-s {
+  width: 2.26rem;
+}
+html,
+body {
+  height: 100%;
+}
+.slide {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: none;
+}
+.slide .content {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.slide .content li {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.page1 {
+  background-image: url('/pj_anxiang/public/images/page1.jpg');
+}
+.page2 {
+  background-image: url('/pj_anxiang/public/images/page2.jpg');
+}
+.page3 {
+  background-image: url('/pj_anxiang/public/images/page3.jpg');
+}
+.page4 {
+  background-image: url('/pj_anxiang/public/images/page4.jpg');
+}
+.page5 {
+  background-image: url('/pj_anxiang/public/images/page5.jpg');
+}
+.slide .page-inner {
+  padding: 0.78rem 0 0 0.55rem;
+  color: #fff;
+}
+.slide .hd {
+  font-size: 0.42rem;
+  font-weight: bold;
+}
+.slide .bd {
+  font-size: 0.36rem;
+  margin-top: 0.35rem;
+}
+.page1 .hd {
+  font-size: 0.40rem;
+}
+.page1 .bd {
+  font-size: 0.60rem;
+}
+.page1 .bd span {
+  color: #f9c111;
+}
+.page4 .hd {
+  margin-top: 0.35rem;
+}
+.page4 .bd {
+  margin-top: 0;
+}
+.buy-btn {
+  display: block;
+  margin-top: 0.48rem;
+  color: #fbde22;
+  width: 1.64rem;
+  height: 0.56rem;
+  line-height: 0.52rem;
+  border: 1px solid #fbde22;
+  border-radius: 0.10rem;
+  text-align: center;
+  font-size: 0.32rem;
+}
+.arrow-down {
+  position: absolute;
+  bottom: 0.38rem;
+  width: 0.57rem;
+  height: 0.57rem;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAA5CAMAAAC7xnO3AAAAk1BMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ROyVeAAAAMHRSTlMAhRx/N3MTD/Hkd9wkFvd7LOwhCkKC0wNuBlxNL/pwaWNWPSjWyb9vGbOlmo5SR63/NsZ/AAABlklEQVRIx53UyXKCQABF0QZxIoIaBESNc5w1/P/Xhaup9EJEn3cjYJ0NdD1T0aDdWhg5YJjnuaUizL/Gb0EKB+/A5BvqvQGDRlL8tCYCXAI/dsYEH8VFv/cy9FpAl0sX2u6okDptqKtCWvW5DVRIEx4kDRHaR99NEdpvtIlUSOMvaKZCOudF+0yFNIIeUhXSDHqUIdWhp3L45LDUoI65q9d/ekBPUF+GdIQOZUgH6FyFlP5ARyqkbG9XTYAUbaADGUKvq7ashp9+t2S8mtdV8yphzXGckvEK1rdVW1dCJ16Zu66rtjZhBaTaZ8l/xaqFZhomD+FwBi05yp0knBp6BKNoCN2Zl7Kw3jQmqhcX3eBl6P5BvgHUb6iQGr69ESAFXW4jFdLu9rZEaB/NIhHaVz3PVEirGJqqkHpO0ShVIU2gi1SF5EHPMqQldPwQ+sAHDaAXc1fQfXpAL9ClDGkM9WRIC0sFSOkIOhGhpfFKhZTNoR0ZQmfXQVQh3VbNlSF0e1u1qQb/V21qYgnaVYuNF2+BIt3G3i91lTnxUrVlswAAAABJRU5ErkJggg==) no-repeat;
+  background-size: contain;
+  left: 50%;
+  margin-left: -0.18rem;
+  -webkit-animation: ani-arrow-down 1.5s ease-out infinite;
+  animation: ani-arrow-down 1.5s ease-out infinite;
+}
+@-webkit-keyframes ani-arrow-down {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0.33rem, 0);
+    transform: translate3d(0, 0.33rem, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ani-arrow-down {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0.33rem, 0);
+    transform: translate3d(0, 0.33rem, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+body {
+  color: #1d1d1d;
+  background-color: #070707;
+  line-height: 1;
+}
+.sale {
+  padding-top: 0.92rem;
+  padding-bottom: 2.26rem;
+  color: #fff;
+}
+.infomation {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 0.20rem 0.60rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  background: #343434;
+}
+.infomation .date {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.infomation .date strong {
+  display: block;
+  font-size: 0.28rem;
+}
+.infomation .date div {
+  font-size: 0.24rem;
+  margin-top: 0.06rem;
+}
+.infomation .date:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 0.60rem;
+  right: 0.40rem;
+  top: 50%;
+  margin-top: -0.3rem;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+.infomation .rules {
+  font-size: 0.24rem;
+  color: #fedc34;
+  line-height: 1.2;
+}
+.infomation:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #525252;
+  color: #525252;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+.anxiang {
+  text-align: center;
+}
+.anxiang h2 {
+  margin-top: 0.80rem;
+  font-size: 0.44rem;
+}
+.anxiang .subtitle {
+  margin-top: 0.16rem;
+  font-size: 0.26rem;
+}
+.anxiang .img {
+  margin: 0.60rem auto 0 auto;
+  width: 4.14rem;
+  height: 3.83rem;
+  background: url('/pj_anxiang/public/images/bg1.png') no-repeat;
+  background-size: contain;
+}
+.anxiang .price {
+  margin-top: 0.50rem;
+  font-size: 0.24rem;
+}
+.anxiang .price span {
+  font-size: 0.26rem;
+}
+.anxiang .btn {
+  margin-top: 0.30rem;
+}
+.anxiang .tips {
+  margin-top: 0.18rem;
+  font-size: 0.24rem;
+}
+.anxiang .present {
+  margin-top: 0.63rem;
+  font-size: 0.24rem;
+  color: #fedc34;
+  text-decoration: underline;
+}
+.other {
+  background: #070707;
+  margin-top: 0.75rem;
+}
+.other h2 {
+  font-size: 0.40rem;
+  text-align: center;
+}
+.product {
+  padding-right: 0.60rem;
+  padding-top: 1.10rem;
+  text-align: right;
+  background-repeat: no-repeat;
+}
+.product .title {
+  font-weight: bold;
+  font-size: 0.32rem;
+}
+.product .subtitle {
+  font-size: 0.24rem;
+  margin-top: 0.20rem;
+}
+.product .price {
+  margin-top: 0.54rem;
+  font-size: 0.24rem;
+}
+.product .btn {
+  float: right;
+  margin-top: 0.20rem;
+  margin-bottom: 0.40rem;
+}
+.product .present {
+  display: block;
+  clear: both;
+  font-size: 0.24rem;
+  color: #fedc34;
+  text-decoration: underline;
+}
+.product1 {
+  margin-top: 0.68rem;
+  background-image: url('/pj_anxiang/public/images/bg2.jpg');
+  background-size: contain;
+  height: 4.56rem;
+}
+.product2 {
+  padding-top: 1.20rem;
+  margin-top: 0.80rem;
+  background-image: url('/pj_anxiang/public/images/bg3.jpg');
+  background-size: contain;
+  height: 4.65rem;
+}
+.store-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 0.04rem solid #202020;
+  font-size: 0.28rem;
+  text-align: center;
+  background: #343434;
+  height: 0.90rem;
+  line-height: 0.86rem;
+}
+.dialog {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.dialog .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.dialog .main {
+  position: absolute;
+  top: 10.77943615%;
+  left: 50%;
+  width: 6.30rem;
+  height: 8.00rem;
+  margin-left: -3.15rem;
+  background: #fff;
+  font-size: 0.28rem;
+}
+.dialog .close {
+  position: absolute;
+  width: 0.52rem;
+  height: 0.52rem;
+  top: 0.20rem;
+  left: 0.20rem;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAAAdHR0dHR0dHR0dHR3bbAkLAAAABHRSTlMAFdXRpOXUGQAAAG5JREFUKM9Vz8EJwCAQBdFvB5JUINiAkApM/z3lsBMG97i8w/y8PfHazLMS79q5IYCRBgH0FBEEIoAIIAKIACKAACQ/kAAkBSQbYLTgfLhirhMMcp1ZuQJyBeRGABEUEUAEEIEEIAFIAJICkhSQfG4sFg12wAqoAAAAAElFTkSuQmCC) no-repeat center center;
+  background-size: 0.32rem;
+}
+.dialog .hd {
+  position: relative;
+  margin-top: 0.95rem;
+  text-align: center;
+  padding-bottom: 0.42rem;
+}
+.dialog .hd .title {
+  font-size: 0.32rem;
+}
+.dialog .hd .subtitle {
+  margin-top: 0.28rem;
+  font-size: 0.28rem;
+}
+.dialog .hd:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #fcad1e;
+  color: #fcad1e;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  width: 4.00rem;
+  left: 50%;
+  bottom: 0;
+  margin-left: -2rem;
+}
+.dialog .bd {
+  padding-top: 0.55rem;
+}
+.dialog li {
+  position: relative;
+  margin-left: 1.49rem;
+  margin-bottom: 0.30rem;
+}
+.dialog li:before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  margin-top: -3px;
+  left: -0.26rem;
+  border-radius: 1px;
+  background: #fcad1e;
+}
+.dialog-rules .main {
+  overflow: auto;
+  height: auto;
+  bottom: 13.10116086%;
+  padding-bottom: 1.50rem;
+}
+.dialog-rules p {
+  padding: 0 0.40rem;
+  font-size: 0.24rem;
+  line-height: 158.33333333%;
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>她，比震车更刺激</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_luckydraw/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /* global CONFIG */
+        window.CONF = {
+            isapp: {{ isapp }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            iswechat: {{iswechat}},
+            openid: '{{ openid }}',
+
+            // shareconfig
+            activeName: '一元夺宝',
+            shareUrl: '{{ shareUrl }}',
+            shareContent: '{{ shareContent }}',
+            shareTitle: '{{ shareTitle }}',
+            shareSubTitle: '{{ shareContent }}',
+            shareImgUrl: '{{ shareIcon }}',
+
+            urlAbout: '{{ urlAbout }}'
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]);
+                return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                    _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                    _vds.push(['setPS1', '一元夺宝']);
+                    _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+
+            {% if iswechat %}
+            _ax.push(['set', 'source', 'wechat']);
+            _ax.push(['set', 'openid', CONF.openid]); 
+            {% endif %} 
+            {% if isapp %}
+            _ax.push(['set', 'source', 'app']); 
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+
+    </script>
+</head>
+
+<body>
+
+<section class="intro-animation">
+    <section class="loading-box animation" id="loading">
+        <div>
+            <i class="loading-icon"></i>
+            <div class="loading-txt-box">
+                <i class="loading-text"></i>
+                <i class="loading-dot"></i>
+                <i class="loading-dot"></i>
+                <i class="loading-dot"></i>
+                <i class="loading-dot"></i>
+                <i class="loading-dot"></i>
+                <i class="loading-dot"></i>
+            </div>
+        </div>
+
+    </section>
+    <section class="enter-bg enter-first hidden"  id="enterFirst">
+        <div class="kouqi-box">
+            <i class="kouqi-ya"></i>
+            <!--<i class="kouqi-o"></i>-->
+            <!--<i class="kouqi-wa"></i>-->
+            <i class="kouqi-a"></i>
+            <!--<i class="kouqi-en"></i>-->
+        </div>
+        <div class="intro-car"></div>
+        <div class="intro-finger"></div>
+    </section>
+    <section class="enter-bg enter-second hidden"  id="enterSecond">
+        <div class="intro-fight"></div>
+    </section>
+</section>
+<section class="page-1 hide">
+    <div class="fixed-about" data-animate="rotateInRight" data-delay="800">活动说明</div>
+    <div class="fixed-record" data-animate="rotateInRight" data-delay="1000">中奖记录</div>
+    <div class="yearcard-wrap" data-animate="cardFadeInDown">
+        <img src="/pj_luckydraw/public/images/year_card.jpg" alt="" id="yearcard-img">
+    </div>
+    <div class="main-wrap">
+        <div class="main-btn" data-animate="btnFadeInDown" data-delay="200">
+            1元抢她
+        </div>
+    </div>
+    <footer data-animate="footerFadeIn" data-delay="1000">
+  
+    </footer>
+    <div class="win-bg hide" id="page1-record">
+        <div class="win-box win-null">
+            <div class="win-header">
+                <div class="win-title">往期中奖记录</div>
+            </div>
+            <div class="win-content">
+            </div>
+            <div class="win-btn" win-close>关闭</div>
+        </div>
+    </div>
+</section>
+<section class="page-2 hide">
+    
+</section>
+<section class="page-3 hide">
+    <div class="page3-tips">
+        抱歉，亲爱的用户<br />
+    您暂无资格参与本期活动
+    </div>
+</section>
+
+<div class="share-mask hide">
+    <img src="/pj_luckydraw/public/images/share_mask.png" alt="">
+</div>
+
+<div class="win-bg hide" id="win-process">
+    <div class="win-box win-null">
+        <div class="win-header">
+            <div class="win-title">如何参加</div>
+            <div class="win-close" win-close>关闭</div>
+        </div>
+        <div class="win-content">
+            <p>使用一网通支付“1元”参加活动</p>
+            <p class="win-arrow"></p>
+            <p>支付成功，获得奖券号码</p>
+            <p class="win-arrow"></p>
+            <p>每满499人则公布中奖号码<br />号码相同即中奖</p>
+            <p class="win-arrow"></p>
+            <p>24小时内客服通知兑换方式</p>
+        </div>
+        <div class="win-btn" id="go-to-pay">去支付</div>
+    </div>
+</div>
+
+{%raw%}
+<script type="text/template" id="p1-footer">
+    <div class="col-e71">还需要{{ leaveNumber }}人即可开奖</div>
+    <div class="process">
+        <div class="process-value"></div>
+    </div>
+    <div>{{ joinedNumber }}/{{ totalNumber }}</div>
+</script>
+<script type="type/template" id="p2-page">
+    <header>
+        <div class="header-num">{{ current }}<br />期</div>
+        <div class="header-text">
+            {{ if isWinner }}
+                恭喜您获得<br /><strong>典典绝版年卡</strong>
+            {{ else }}
+                {{ if winnerInfo }}
+                    抱歉<br /><strong>本期您没中奖~</strong>
+                {{ else }}
+                    您已参与本期1元抢她活动<br/>请耐心等待开奖
+                {{ endif }}
+            {{ endif }}
+        </div>
+        <div class="fixed-about">活动说明</div>
+        <div class="fixed-record">中奖记录</div>
+    </header>
+    <div class="result">
+        {{ if !isWinner && !winnerInfo }}
+        <div class="result-await">
+            <div class="result-code">
+                您的奖券号<br /><span>{{ code }}</span>
+            </div>
+            <div class="line"></div>
+            <div class="result-process-wrap">
+                <div class="result-process-title">还需要{{ leaveNumber }}人，即可开奖</div>
+                <div class="result-process">
+                    <div class="result-process-value" style="width:{{ processValue }}%"></div>
+                </div>
+                <div class="result-process-text">{{ joinedNumber }}/{{ totalNumber }}</div>
+            </div>
+        </div>
+        {{ endif }}
+        {{ if isWinner }}
+        <div class="result-win ">
+            <div class="result-code">
+                您的奖券号<br /><span>{{ code }}</span>
+            </div>
+        </div>
+        {{ endif }}
+        {{ if !isWinner && winnerInfo }}
+        <div class="result-fail">
+            <div class="result-winer">
+                <div class="result-winer-icon">
+                    <img data-original="{{ winnerInfo.headimgurl }}" src="https://store.ddyc.com/res/xkcdn/icons/default/car_logo@2x.png" alt="">
+                    <span>中奖者</span>
+                </div>
+                <div class="col-98">{{ winnerInfo.phone }}</div>
+                <div class="col-f61">奖券号： {{ winnerInfo.code }}</div>
+            </div>
+            <div class="line"></div>
+            <div class="result-fail-code">
+                您的奖券号： {{ code }}
+            </div>
+        </div>
+        {{ endif }}
+    </div>
+    <div class="join-content">
+        <div class="join-wrap">
+            <div class="join-line"></div>
+            <div class="join-text">本期参与人</div>
+            <div class="join-line"></div>
+        </div>
+        <ul class="join-list" id="join-list">
+            <li id="win-load-more">加载更多</li>
+        </ul>
+    </div>
+    <div class="win-bg hide" id="win-record">
+        <div class="win-box win-null">
+            <div class="win-header">
+                <div class="win-title">往期中奖记录</div>
+            </div>
+            <div class="win-content">
+            </div>
+            <div class="win-btn" win-close>关闭</div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="p2-joinlist">
+{{ if data && data.length }}
+    {{ each data as item i }}
+    <li>
+        <div class="join-icon"><img data-original="{{ item.headimgurl }}" src="https://store.ddyc.com/res/xkcdn/icons/default/car_logo@2x.png" alt=""></div>
+        <div class="join-phone">{{ item.phone }}</div>
+        <div class="join-time">{{ item.date }}<br />{{ item.time }}</div>
+    </li>
+    {{ endeach }}
+{{ endif }}
+</script>
+<script type="text/template" id="p2-record">
+{{ if data && data.length }}
+    <ul class="join-list">
+    {{ each data as item i }}
+    <li>
+        <div class="join-icon"><img data-original="{{ item.headimgurl }}" src="https://store.ddyc.com/res/xkcdn/icons/default/car_logo@2x.png" alt=""></div>
+        <div class="join-phone">{{ item.phone }}</div>
+        <div class="join-current">第{{ item.round }}期</div>
+        <div class="join-time">{{ item.date }}<br />{{ item.time }}</div>
+    </li>
+    {{ endeach }}
+    </ul>
+{{ else }}
+    <div class="join-null">亲，还没开奖哦~</div>
+{{ endif }}
+</script>
+{%endraw%}
+
+</body>
+<!--<script src="/node_modules/alloylever/dist/alloy_lever.min.js"></script>-->
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_luckydraw/public/js/index.js"></script>
+
+</html>

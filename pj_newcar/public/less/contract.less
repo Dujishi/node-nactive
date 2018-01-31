@@ -1,0 +1,72 @@
+@import "@ui/base-less/index.less";
+
+body{
+    background-color: #112D57;
+    font-size: .24rem;
+}
+
+.wrap{
+    padding:.4rem .3rem 2.03rem;
+    font-size:.24rem;
+    line-height: .48rem;
+    color:#6995CB;
+    span{
+        font-weight:600;
+        text-decoration: underline;
+    }
+}
+
+.bar{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height:1.8rem;
+    background-color: #09172F;
+    text-align: center;
+    .tips{
+        font-size:.24rem;
+        height:.8rem;
+        line-height: .8rem;
+        color: #C1D7F2;
+        text-align: center;
+        div{
+            display: inline-block;
+            vertical-align: middle;
+        } 
+        .check-text{
+            display: inline-block;
+        }
+        div.check-icon{
+            background-size:contain; 
+            background-color: #FF6E00;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAilBMVEUAAAD/dQD/dAD/hwD/dQD/dQD/dQD/dAD/dQD/dQD/dQD/dgD/dQD/dgD/dQD/dAD/dgD/eQD/ewD/eAD/qgD/dAD/////dwb/egz/fRH/6df/5M//4Mb/1bL/w5H/tHb/gxz/gBf/3L//2Lj/y6D/xpj/v4r/7d7/zqb/u4P/r23/8eb/0Kr/q2bfXlhIAAAAFXRSTlMA9uYJ+fLs28u3r498ZmBcTjcbEQPx359OAAABTUlEQVRIx5WW6VKDMBSFs7BvhdKTWhekbtWq7/96MqJNaAjhfr9g5jvM3CTcG2Yh6zyNoyCI4jSvJfPQVhmHAc+qdkGXRQiLsJAOfVcKzCLK3Zy/TeAk2dp+I7CAaK79DccifHPlw8sk0XB44Y1Rr8AKxKXyXYJVJP+rW2Il5ehLgZWIcc8LrKb4PW8hVhO2Q6DyWfteP1dDIPP5DyedyBiT3Ocr1endk6z2+197/V6zfNl/VuodBjlLST5SFnv8F0yIWeT2b54sHxELSD4CFiz5r7ADkbmEZ8O/n/MRmUV3Sp09PmJzWfuTUo/a7zBDOtm4/vYvcXD5yKdH4zgmDndKvWGWmkluJRZ8LvXx1olPp4/M/oGOw+fVBxxU9i86FOD2w3auCRy+4aIgtxlqIyO3SmozprZ76kChjyz6UKSPXfpgp18d6JcT8vXnB2hilW0Sr0+OAAAAAElFTkSuQmCC");
+        }
+        .check-icon-disabled{
+            display: inline-block;
+            margin-right:.05rem;
+            width:.32rem;
+            height:.32rem;
+            border-radius: .16rem;
+            background-size:contain; 
+            background-image:none;
+            background-color: #ddd;
+        }
+    }
+    .bar-btn{
+        display: inline-block;
+        width:5.7rem;
+        height:.8rem;
+        line-height: .8rem;
+        background-color: #FF6E00;
+        border-radius: .4rem;
+        text-align: center;
+        font-size: .32rem;
+        color:#fff;
+        border:none;
+        outline:none;
+    }
+    .bar-btn-no{
+        background-image:linear-gradient(top,#797979,#6a6a6a);
+        color: #fff;
+    }
+}

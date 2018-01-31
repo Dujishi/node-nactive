@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>活动说明</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+
+    <link rel="stylesheet" href="/pj_luckydraw/public/css/about.css" type="text/css" >
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }}, 
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+            
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}'
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+            
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '一元夺宝']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+            
+            {% if iswechat %}
+                _ax.push(['set', 'source', 'wechat']);
+                _ax.push(['set', 'openid', CONF.openid]);
+            {% endif %}
+            {% if isapp %}
+                _ax.push(['set', 'source', 'app']);
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+<div class="container">
+    <p>1、活动时间：2016年12月1日-2017年1月2日。</p>
+    <p>2、活动期间仅支持在典典养车App首次使用“一网通银行卡支付”的用户参与，且每个用户只能参与1次。</p>
+    <p>3、参与方式：用户成功使用“一网通银行卡支付”1元，即可获取奖券号。每期满499名用户时则抽取一名中奖者赠送年卡。</p>
+    <p>
+    4、中奖规则：<br />
+    中奖券号 =（A/499)的余数+10001<br />
+    <span class="col-af">(A=每期最后50人的支付时间进行求和)<br />
+    *每个支付时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则为201525362；</span>
+    </p>
+    <p>5、奖品介绍：</p>
+    <div class="table">
+        <div class="raw header">
+            <div class="col">绝版年卡福利内容（价值2500）</div>
+        </div>
+        <div class="raw">
+            <div class="col">全年免费洗车，每自然周一次</div>
+        </div>
+        <div class="raw">
+            <div class="col">加油卡充值95折，每月优惠上限1000元</div>
+        </div>
+        <div class="raw">
+            <div class="col">5条违章代缴免服务费</div>
+        </div>
+        <div class="raw">
+            <div class="col">1.5倍积分礼品兑换机会</div>
+        </div>
+    </div>
+    <p>注：洗车业务仅限以下城市：杭州、苏州、南京、重庆、武汉、天津、上海、嘉兴、深圳、北京、成都、广州、无锡、合肥、济南、宣城、廊坊、东莞、泉州、宁波、厦门、长沙、佛山、常州。</p>
+    <p>6、同一个典典养车账号、手机号、设备号、银行卡号均被认定为同一用户，奖品不可重复获得。</p>
+    <p>7、客服将在24小时内通知中奖人年卡兑换方式，如中奖人已是典典养车年卡用户，则使用中的年卡不予退款。</p>
+    <p>8、该活动由典典养车保留最终解释权，如有疑问、请进入典典养车App【我的】，点击右上角【在线客服】咨询。</p>
+</div>
+</body>
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_luckydraw/public/js/about.js"></script>
+</html>

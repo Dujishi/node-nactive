@@ -1,0 +1,17 @@
+{
+    "apps": [{
+        "name": "node-nactive",
+        "script": "./boot_app.js",
+        "instances": "4",
+        "merge_logs": true,
+        "log_date_format": "YYYY-MM-DD_HH:mm:ss.SSS",
+        "exec_mode": "cluster",
+        "out_file": "/data/xiaoka/log/node-nactive/nactive-out.log",
+        "error_file": "/data/xiaoka/log/node-nactive/nactive-error.log",
+        "watch": false,
+        "env": {
+            "NODE_ENV": "prod",
+            "NODE_PORT": 3002
+        }
+    }]
+}

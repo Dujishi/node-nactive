@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内部管理页-一元夺宝</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="/pj_luckydraw/public/css/admin.css">
+    <script>
+        (function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<section>
+    <h1>一元夺宝统计内容</h1>
+    {% if code %}
+    <nav class="total-nav">
+        <dl>
+            <dt>当前活动轮数</dt>
+            <dd>{{data.current}}</dd>
+        </dl>
+        <dl>
+            <dt>活动总轮数</dt>
+            <dd>{{data.totalRound}}</dd>
+        </dl>
+        <dl>
+            <dt>活动总参与人</dt>
+            <dd>{{data.totalMember}}</dd>
+        </dl>
+    </nav>
+    <form method="post" action="" class="admin-form">
+        <div class="form-box">
+            <input type="text" name="pwd" placeholder="请输入密码">
+            <input type="number" name="round" placeholder="请属于要修改的总轮数">
+        </div>
+        <div class="form-box">
+            <input type="hidden" name="type" value="change">
+            <input type="submit" value="修改总轮数">
+        </div>
+
+    </form>
+    {% else %}
+    <form method="post" action="" class="admin-form">
+        <div class="form-box">
+            <input type="text" name="pwd" placeholder="请输入密码查看数据">
+        </div>
+       <div class="form-box">
+           <input type="hidden" name="type" value="get">
+           <input type="submit" value="查看">
+       </div>
+
+    </form>
+    {% endif %}
+
+
+
+</section>
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+</body>
+</html>

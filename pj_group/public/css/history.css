@@ -1,0 +1,356 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ */
+* {
+  box-sizing: border-box;
+}
+html {
+  cursor: default;
+  /* Add normal cursor  Improves visual focus of page during mouse use in all browsers */
+  -webkit-tap-highlight-color: transparent;
+  /* Add vertical scrollbar  Keeps page centered in all browsers regardless of content height */
+  -webkit-text-size-adjust: 100%;
+  /* Define maximum text display as 100% to document Corrects text displayed oddly after orientation change in handheld browsers */
+}
+html,
+body {
+  border: 0;
+  background-color: #fff;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
+}
+img {
+  border: 0 none;
+}
+/*
+ * Remove outline
+ * Improves appearance when active or hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+a,
+a:active,
+a:hover {
+  outline: none;
+  text-decoration: none;
+}
+/*
+ * Define outline as thin dotted
+ * Improves appearance displayed oddly in C10
+*/
+a:focus {
+  outline: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hide {
+  display: none !important;
+}
+.tl {
+  text-align: left;
+}
+.tr {
+  text-align: right;
+}
+.tc {
+  text-align: center;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.flex-box {
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: .24rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: #210035;
+}
+img {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.group-wrap {
+  padding: 0 .25rem .3rem .25rem;
+}
+.group-wrap .group-item {
+  height: auto;
+}
+.group-wrap .group-img {
+  position: relative;
+  height: 2.8rem;
+  background-color: #F7F7F7;
+  overflow: hidden;
+}
+.group-wrap .group-img .group-tag {
+  position: absolute;
+  top: .3rem;
+  left: .3rem;
+  padding: 0 .35rem;
+  width: auto;
+  height: .55rem;
+  text-align: center;
+  line-height: .55rem;
+  font-size: .3rem;
+  color: #fff;
+  border-radius: .3rem;
+}
+.group-wrap .group-img .group-tag-ok {
+  background-color: #1EB700;
+}
+.group-wrap .group-img .group-tag-error {
+  background-color: #FF1E00;
+}
+.group-wrap .group-img img {
+  width: 100%;
+  height: 100%;
+}
+.group-wrap .group-text {
+  height: 2.2rem;
+  background-color: #fff;
+}
+.group-wrap .text-wrap {
+  padding: .2rem .3rem;
+  height: 1.3rem;
+}
+.group-wrap .text-wrap .text-wrap-title {
+  font-size: .3rem;
+  color: #333;
+}
+.group-wrap .text-wrap .text-wrap-exp {
+  font-size: .26rem;
+  color: #999;
+}
+.group-wrap .btn-wrap {
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.group-wrap .btn-wrap .btn-item-text {
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  /* OLD - Firefox 19- */
+  -webkit-flex: 1;
+  /* Chrome */
+  /* IE 10 */
+  flex: 1;
+  border-top: .01rem solid #E2E2E2;
+  padding: .1rem .3rem;
+}
+.group-wrap .btn-wrap .btn-item-text .btn-item-text-people {
+  color: #999;
+  font-size: .24rem;
+}
+.group-wrap .btn-wrap .btn-item-text .btn-item-text-time {
+  color: #f00;
+}
+.group-wrap .btn-wrap .status-init {
+  height: .7rem;
+  line-height: .7rem;
+}
+.group-wrap .btn-wrap .status-init .btn-item-text-time {
+  display: none;
+}
+.group-wrap .btn-wrap .btn {
+  width: 2.3rem;
+  height: .9rem;
+  line-height: .9rem;
+  text-align: center;
+  font-size: .26rem;
+  color: #fff;
+}
+.group-wrap .btn-wrap .btn-item-buy {
+  width: 2.3rem;
+  height: .9rem;
+  line-height: .9rem;
+  text-align: center;
+  font-size: .26rem;
+  color: #fff;
+  background-color: #888;
+}
+.group-wrap .btn-wrap .btn-item-group {
+  width: 2.3rem;
+  height: .9rem;
+  line-height: .9rem;
+  text-align: center;
+  font-size: .26rem;
+  color: #fff;
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  padding: .1rem 0;
+  line-height: .35rem;
+  background-color: #676767;
+}
+.group-wrap .history-time {
+  height: 1rem;
+  line-height: 1rem;
+  font-size: .3rem;
+  color: #8C8591;
+}
+.no-data {
+  display: none;
+  margin-top: 1rem;
+  text-align: center;
+  color: #fff;
+  font-size: .3rem;
+}
+.no-data .no-data-img {
+  height: 3rem;
+  line-height: 3rem;
+  background: url('/pj_group/public/img/nodata.png') no-repeat center center;
+  background-size: contain;
+}
+.no-data p {
+  margin-top: 1rem;
+}

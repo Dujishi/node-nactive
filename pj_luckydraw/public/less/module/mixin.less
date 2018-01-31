@@ -1,0 +1,77 @@
+.fullScreen(){
+  width: 100%;
+  height: 100%;
+}
+.absolute(@anmate-index:200){
+  position: absolute;
+  z-index: @anmate-index;
+}
+.no-txt(){
+  text-indent:-999px;
+  overflow: hidden;
+}
+
+.imgToBg(@url,@base-url:''){
+  @imgUrl:'@{base-url}@{url}';
+  @width:unit(image-width(@imgUrl)/100,rem);
+  @height:unit(image-height(@imgUrl)/100,rem);
+  width: @width;
+  height:@height;
+  background-image: url(@imgUrl);
+  background-size:@width @height;
+}
+.imgPosToBg(@sprite,@wucha:0px 0px,@wuchaPosX:0px,@wuchaPosY:0px){
+  .spriteRemHeight(@sprite,extract(@wucha,2));
+  .spriteRemWidth(@sprite,extract(@wucha,1));
+  .spriteRemPosition(@sprite,@wuchaPosX,@wuchaPosY);
+}
+.spriteCenter(@sprite){
+  @width: extract(@sprite, 5);
+  left: 50%;
+  margin-left:unit(-@width/200,rem);
+}
+.spriteRemHeight(@sprite,@wucha:0px){
+  @height: extract(@sprite, 6) + @wucha;
+  .heightToRem(@height);
+}
+.spriteRemWidth(@sprite,@wucha:0px){
+  @width: extract(@sprite, 5) + @wucha;
+  .widthToRem(@width);
+}
+.spriteRemPosition(@sprite,@wuchaX:0px,@wuchaY: 0px){
+  @sprite-offset-x: extract(@sprite, 3) + @wuchaX;
+  @sprite-offset-y: extract(@sprite, 4) + @wuchaY;
+  .bgposToRem(@sprite-offset-x,@sprite-offset-y);
+}
+
+.imgCenter(@url,@base-url:''){
+  @imgUrl:'@{base-url}@{url}';
+  @width:unit(image-width(@imgUrl)/100,rem);
+  left: 50%;
+  margin-left: -@width/2;
+}
+.widthToRem(@px){
+  width: unit(@px/100,rem);
+}
+.heightToRem(@px){
+  height: unit(@px/100,rem);
+}
+.bgposToRem(@Xpx,@Xpy){
+  background-position: unit(@Xpx/100,rem) unit(@Xpy/100,rem);
+}
+.bgSizeToRem(@w,@h){
+  background-size:unit(@w/100,rem) unit(@h/100,rem);
+}
+
+
+
+//动画
+
+.keyframes(@name,@content){
+  @keyframes @name{
+    @content();
+  }
+  @-webkit-keyframes @name{
+    @content();
+  }
+}

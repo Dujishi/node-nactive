@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>加入VIP赢大奖</title>
+
+    <link rel="stylesheet" href="/pj_dialdraw/public/css/index.css" type="text/css">
+
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            phone: '{{ phone }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '加入VIP赢大奖',
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '快来养车神器,赢1000元加油卡啦~',
+            shareContent: '典典VIP洗车5折起，加油98折等37项专属特权只属于你！',
+            shareSubTitle: '典典VIP洗车5折起，加油98折等37项专属特权只属于你！',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_dialdraw170104.jpeg'
+        }
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <img src="/pj_dialdraw/public/images/bg.jpg" width="100%">
+        <!--<a href="javascript:window.location.reload()">ssss</a>-->
+        <div class="swiper">
+            <ul>
+                {% for author in number %}
+                <li>{{author}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="status-text">
+            <div class="join">立即加入</div>
+            <div class="description">4.01~4.09 期间加入典典VIP即可抽奖</div>
+
+        </div>
+        <div class="circle">
+            <div class="bg"></div>
+            <div class="cover hide"></div>
+            <div class="point"></div>
+        </div>
+        <div class="instructions">
+            <div class="title">活动说明</div>
+            <div class="arrow"></div>
+            <div class="text">
+                <ul>
+                    <li>1.参与方式：用户在活动期间成功加入典典VIP后 ，即可参与一次幸运轮盘抽奖。</li>
+                    <li>2.活动时间：2017年4月1日-2017年4月9日</li>
+                    <li>3.奖品介绍:<br />
+                        0元违章代办券1条（价值30元）<br />
+                        0元精致洗车券1张（价值40元）<br />
+                        0元去欧式精洗1张（价值118元）<br />
+                        0元内室清洗券1张（价值358元）<br />
+                        0元保养券一张1张（价值528元）<br />
+                        1000元加油充值卡1张（价值1000元）<br />
+                    </li>
+                    <li>温馨提示：<br />
+                        1.以上所有的0元券在典典连锁门店均可支持使用<br />
+                        2.保养券为德国进口机油品牌亚德龙4L，券内含工时机滤费用<br />
+                        3.加油充值卡为1000元的中石化加油充值卡<br />
+                    </li>
+                    <li>4.活动期间仅支持在典典养车app非年卡、VIP的用户参与，且每个用户只能参与1次</li>
+                    <li>5.同一个典典养车账号、手机号、设备号均被认定为同一用户，不可享受重复抽奖</li>
+                    <li>6.抽到的奖品可在典典养车APP【我的】-【红包/券】中查看、使用</li>
+                    <li>7.该活动最终解释权归典典养车所有，如对活动规则有疑问，请进入典典养车APP【我的】-右上角【在线客服】进行咨询</li>
+                    <li>附：典典VIP支持城市如下 ： <br />
+                        杭州、苏州、南京、重庆、武汉、天津、上海、嘉兴、深圳、北京、成都、广州、无锡、合肥、济南、宣城、廊坊、东莞、泉州、宁波、厦门、长沙、佛山、常州
+                    </li>
+                </ul>
+                <!--<ul>二.兑换流程:
+                    <li>
+                        电影票<br />
+                        1.登录爱奇艺APP-【乐活】首页-【电影票】-选影片《一万公里的约定》，选择喜欢的影院、场次、座位<br />
+                        2.收银台页面点击“输入优惠码”，输入并添加您获得的优惠码后点击确认完成出票<br />
+                        3.凭取票短信至影院自助取票机取票观影<br />
+                    </li>
+                    <li>
+                        30万元疾病保障：<br />
+                        中奖后您只需在领取页面填入手机号码以及被保障人姓名、身份证号即可领取该奖
+                    </li>
+                    <li>
+                        行车记录仪：<br />
+                        中奖后您需要在领取页面中填入姓名、电话及收货地址信息即可，我们将会在3个工作日内寄出奖品
+                    </li>
+                    <li>
+                        红包：<br />
+                        中奖后可在典典养车APP【我的】-【红包/券】中查看、使用<br />
+                        如对流程有疑问，请进入典典养车APP【我的】-右上角【在线客服】进行咨询
+                    </li>
+
+                </ul>-->
+            </div>
+        </div>
+    </div>
+    <div class="modal hide" id="modal-win">
+        <div class="modal-new-box">
+            <div class="modal-new-close"></div>
+            <div class="modal-new-title">
+                <img src="/pj_dialdraw/public/images/modaltitle.png">
+            </div>
+            <div class="modal-new-text">
+            </div>
+            <div class="modal-new-btn">
+                <div class="modal-new-btn-text3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="share hide">
+        <img src="/pj_dialdraw/public/images/share.png" alt="">
+    </div>
+</body>
+
+{% if iswechat %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_dialdraw/public/js/index.js"></script>
+</html>

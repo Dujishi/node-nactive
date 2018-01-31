@@ -1,0 +1,127 @@
+@import './module/base';
+@import './module/icon';
+
+
+.content{
+    width: 100%;
+    box-sizing:border-box;
+    padding: 0 0.25rem 0.5rem;
+    overflow: hidden;
+}
+
+.title-sub{
+    margin-top: 0.25rem;
+}
+
+.win-box{
+    margin-top: 0.6rem;
+
+    .win-item{
+        height: 1.04rem;
+        line-height: 1.04rem;
+    }
+    .win-label{
+        padding-left:0.3rem;
+        width: 2.5rem;
+    }
+    .win-value{
+        width: 3.19rem;
+        padding-right: 0.3rem;
+    }
+    #remark{
+        width: 3.8rem;
+        line-height: 0.6rem;
+        padding: 0.2rem 0.3rem 0.2rem 0;
+    }
+    .raw0{line-height: 1;}
+    .raw1{ line-height: 0.6rem; }
+    .raw2{ line-height: 0.3rem; }
+
+    .win-code-label{
+        line-height: 1;
+        padding-top: 0.3rem;
+    }
+    .win-code{
+        padding:0.3rem;
+        min-height: 80px;
+
+        img{
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+    }
+}
+
+
+footer{
+    height: 1.8rem;
+
+    .footer-content{
+        height : 1.8rem;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 7.5rem;
+        z-index: 5;
+        background-color: @cl-112;
+    }
+    .footer-text{
+        display: block;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        background-color: #FCEED4;
+        color: #A37D66;
+    }
+    .footer-btn-wrap{
+        text-align: center;
+        height: 1.2rem;
+        line-height: 1.2rem;
+    }
+
+    .footer-btn{
+        width: 5.7rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        border-radius:  0.4rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 auto;
+
+        background-color: #FF6A00;
+        background: linear-gradient(#FF6A00, #FF5800);
+
+        &.gray{
+            background-color: #797979;
+            background: linear-gradient(#797979, #6a6a6a);
+        }
+    }
+}
+
+/** 弹窗 */
+.winmask {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: table;
+}
+
+.winmask-box {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.winmask-content {
+    background-color: #FFF;
+    margin: 0 auto;
+    width: 3.8rem;
+    height: 3.8rem;
+}

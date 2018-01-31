@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>服务协议</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_newcar/public/css/contract.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /* global CONFIG */
+        window.CONF = {
+            isapp: {{ isapp }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            iswechat: '{{iswechat}}',
+            openid: '{{ openid }}',
+
+            // shareconfig
+            activeName: '典典新车团',
+            shareUrl: '{{ shareUrl }}',
+            shareContent: '{{ shareContent }}',
+            shareTitle: '{{ shareTitle }}',
+            shareSubTitle: '{{ shareContent }}',
+            shareImgUrl: '{{ shareIcon }}',
+
+            urlAbout: '{{ urlAbout }}'
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]);
+                return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                    _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                    _vds.push(['setPS1', '典典新车团']);
+                    _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+
+            {% if iswechat %}
+            _ax.push(['set', 'source', 'wechat']);
+            _ax.push(['set', 'openid', CONF.openid]);
+            {% endif %}
+            {% if isapp %}
+            _ax.push(['set', 'source', 'app']);
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+
+    </script>
+</head>
+<body>
+<div class="wrap">
+    车辆委托订购服务协议（以下简称本协议）由购车用户（以下简称甲方）和杭州小卡科技有限公司（以下简称乙方）签订。根据《中华人民共和国合同法》及其他有关法律法规的规定，甲乙双方经协商一致，就甲方委托乙方提供车辆订购服务等相关事宜，特订立本协议，以兹共同遵守。<br>
+    第一条 委托事项<br>
+    1、甲方在乙方典典养车APP发布的机动车信息中自选并决定委托乙方向车辆供应商订购其选定的车辆，并由乙方代为收取订车意向金。乙方同意接受甲方委托，向甲方提供车辆订购、代为支付意向金及与订车相关的服务。车辆及配置信息详见甲方填写的车辆订单。<br>
+    2、本协议项下的车辆订单价为人民币<span id="conPrice" class="con-price">---</span> 元（大写<span id="bigPrice" class="big-price">---</span>），订单价格包含车辆单价、代收代付杂费，前述费用在甲方提车时由车辆供应商开具发票或收据。<br>
+    3、乙方应在收取订车意向金之日起30日内向甲方发出车辆订购通知，乙方按前述要求向甲方发出通知的，即表示成功订购本协议下车辆。<br>
+    第二条 款项支付<br>
+    1、订车意向金：甲方应本合同签订时向乙方支付订车意向金 <span>5000</span>元，支付方式为典典养车线上平台支付。此意向金由乙方代收代交给车辆供应商。<br>
+    2、车辆尾款：甲方应在提车前与车辆供应商签订车辆买卖合同，并向车辆供应商支付车辆尾款。 <br>
+    第三条 甲方权利义务<br>
+    1、甲方保证其能够独立承担法律责任，并具有签订和履行本协议所必须的一切民事权利能力和民事行为能力。<br>
+    2、甲方保证向乙方提交真实的的个人资料及信息，并对所提交的各类资料信息的真实性、准确性和合法性负责。由于甲方信息虚假或不准确造成的一切风险及责任均由甲方自行承担。<br>
+    3、甲方应足额支付意向金，并按乙方通知的时间及地点及时与车辆供应商签订车辆买卖合同，付清全部车辆款尾款，进行车辆验收及提车。<br>
+    4、本合同生效后，如甲方单方面取消订车则视为违约，支付的意向金乙方不予返还，同时甲方也无权要求乙方返还。<br>
+    5、若甲方未在乙方通知提车日期内提车或未足额向车辆供应商支付购车尾款的均视为违约，乙方有权解除本协议，不退还甲方交付的意向金，并追究甲方的违约责任。<br>
+    第四条 乙方权利义务<br>
+    1、本合同生效后，乙方应将代收的订车意向金及时转交给车辆供应商，并开始提供车辆订购服务。<br>
+    2、乙方应当勤勉尽责的为甲方提供订车等相关服务，所订购车辆应符合甲方车辆订单确定的车辆型号及配置。<br>
+    3、乙方仅为甲方提供本协议约定的车辆订购等相关服务，不为本协议项下的车辆的质量、标准承担责任。因车辆质量、标准等引起纠纷的，相应的法律和经济责任皆由车辆供应商承担。<br>
+    4、乙方成功订购本协议项下车辆后，应通知甲方交接提车日期及地点，为甲方与车辆供应商签订车辆买卖合同及办理交接提车手续提供必要协助。<br>
+    5、若因为车辆供应商的原因导致乙方未能成功订购本协议项下车辆的，乙方应向甲方全额无息退还订车意向金。<br>
+    第五条 不可抗力<br>
+    本合同所称不可抗力包括自然原因引起的，如火灾﹑旱灾﹑大雪﹑地震等；由于社会引起的，如战争行为﹑政府行为﹑封锁、禁运﹑罢工等；以上不可抗力事故致使乙方不能在本合同规定期限内成功订购车辆的，乙方不承担违约责任。甲乙双方可以根据不可抗力的影响程度选择是否解除本协议或延期履行本协议。<br>
+    第六条 违约责任<br>
+    1、本合同生效后，甲乙双方应正当行使权利，履行义务，保证本合同的顺利履行。任何一方发生违约行为，应当承担违约责任；给守约方造成的损失，违约方应承担赔偿责任。<br>
+    2、本协议自生效后即进入履行状态，车辆车型及配置均不能更改、调换、退车，否则由此所引起的所有经济损失，由违约方承担（如因生产厂家在配置上发生变化或实际产品的配置与本协议约定有出入，乙方在征得甲方同意后更改除外）。<br>
+    3、本合同项下车辆为乙方按照甲方确认车辆订单代为订购的高价商品，甲方须按乙方通知要求与车辆供应商签订车辆买卖合同，付清车辆尾款并提车。如果乙方逾期未前往指定地点办理交接提车手续超过【5】日的，乙方有权解除本协议，不予退还订车意向金。因此导致乙方向车辆供应商违约造成的损失，应当由甲方承担所有损失并向乙方赔偿。<br>
+    第七条 争议的解决<br>
+    1、本协议的签订、生效、履行、争议的解决均适用中华人民共和国法律。<br>
+    2、本协议项下的任何争议，双方应友好协商解决。协商不成的，任何一方均可将争议提交乙方注册所在地人民法院裁决。<br>
+    第八条 其他<br>
+    1、与本协议有关的全部通知，可以采取典典养车APP端书面通知、短信通知、电话通知、书面邮寄、电子邮件等形式发出。乙方按照甲方提供的的通讯方式以本协议约定方式发出通知后，则视为该通知已经送达甲方。<br>
+    2、车辆订单是本协议不可分割的组成部分，与本协议具有同等法律效力。<br>
+    3、甲方通过典典养车APP页面点击确认的方式选择接受本协议，即表示已充分理解本协议中各条款，并同意接受本协议各项条款的约束。<br>
+    4、本协议自甲方点击确认接受本协议且足额支付订车意向金之时生效。<br>
+</div>
+
+    <div class="bar" id="barBox">
+        <div class="tips" id="checkWrap">
+            <div id="check" class="check-icon-disabled"></div>
+            <div class="check-text">我已确认并同意以上合同条款</div>
+        </div>
+        <div class="bar-btn bar-btn-no" id="payBtn">支付订金￥5000.00</div>
+    </div>
+
+    {% if iswechat %}
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% endif %}
+    <script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_newcar/public/js/contract.js"></script>
+
+</body>
+</html>

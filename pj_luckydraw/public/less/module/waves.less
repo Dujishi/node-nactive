@@ -1,0 +1,23 @@
+/**
+ * 波纹效果
+ */
+
+.waves{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    z-index: 0;
+    -webkit-tap-highlight-color:transparent;
+
+    .waves-animation{
+        position: absolute;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background-color: rgba(255,255,255, 0.3);
+        transition: all 0.75s ease-out;
+        transform: scale(0);
+        pointer-events: none;
+    }
+}

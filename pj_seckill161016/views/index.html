@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>{{ active.title }}</title>
+    <link rel="stylesheet" href="/pj_seckill161016/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+    </script>
+    <script>
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            openId: '{{ openid }}',
+            type: '{{ type }}',
+            startTime: '{{ active.start_time }}' - 0,
+            gotoUrlWechat: '{{ active.goto_url_wechat }}',
+            gotoUrlApp: '{{ active.goto_url_app }}',
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '{{ active.share_title }}',
+            shareContent: '{{ active.share_content }}',
+            shareSubTitle: '{{ active.share_content }}',
+            shareImgUrl: '{{ active.share_icon }}'
+        }
+    </script>
+
+    <script type='text/javascript'>
+        //获取浏览器参数
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        window.onload = function(){
+                var _vds = _vds || [];
+                window._vds = _vds;
+               (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', document.title]); //页面标题
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        }
+
+    </script>
+</head>
+
+<body ontouchstart>
+
+    <div class="banner">
+        <img src="{{ active.banner }}" alt="">
+    </div>
+
+    <div class="time-warp">
+        <div class="time"></div>
+    </div>
+
+    <div class="goods">
+        <div class="goods__hd">
+            <img src="{{ product.logo }}" alt="">
+        </div>
+        <div class="goods__bd">
+            <h2>{{ product.title }}</h2>
+            <div><span>秒杀价:</span><strong>¥{{ product.seckill_price }}</strong><del>¥ {{ product.origin_price }} </del></div>
+            <div class="goods__num">数量：{{ product.stock }}台 </div>
+        </div>
+    </div>
+
+    <div id="status-2" class="winner hide">
+        <h3>恭喜，<span id="winner-phone"></span> 用户秒到 <span id="prize">{{ product.product }}</span>！</h3>
+        <p>奖品将于24小时内发出，请注意查收。</p>
+    </div>
+
+    <div class="conditions hide">
+        <h2 class="ui-title">秒杀资格</h2>
+        <ul>
+            <li id="status-login" class="conditions__item hide">
+                <div class="conditions__bd">
+                    <h3>{{ active.notLoginText }}</h3>
+                </div>
+                <div class="conditions__ft"></div>
+            </li>
+            <li id="status-0" class="conditions__item conditions__item_warn hide">
+                <div class="conditions__bd">
+                    <h3>您暂未获得秒杀资格</h3>
+                    <p>{{ active.noQualificationText }}</p>
+                </div>
+                <div id="violation-btn" class="conditions__ft">{{ active.goto_text }}</div>
+            </li>
+            <li id="status-1" class="conditions__item conditions__item_success hide">
+                <div class="conditions__bd">
+                    <h3>恭喜您！已获得秒杀资格！</h3>
+                    <p>记得准时参与秒杀～</p>
+                </div>
+                <div class="conditions__ft"></div>
+            </li>
+        </ul>
+        <!-- <a class="login-btn" href="javascript:;">立即登录 查看秒杀资格</a> -->
+    </div>
+
+    <div class="rules">
+        <h2 class="ui-title">秒杀规则</h2>
+        {{rule}}
+    </div>
+
+    <div class="operation hide">
+        <a id="btn-login" class="ui-btn hide" href="javascript:;">登录查看资格</a>
+        <a id="btn-0" class="ui-btn ui-btn_disabled hide" href="javascript:;">秒杀暂未开始</a>
+        <a id="btn-1" class="seckill-btn ui-btn ui-btn_enable hide" href="javascript:;">立即秒杀</a>
+        <a id="btn-2" class="ui-btn ui-btn_disabled hide" href="javascript:;">秒杀已结束</a>
+    </div>
+
+    <div id="success-dialog" class="dialog hide">
+        <div class="dialog__mask"></div>
+        <div class="success-dialog__main">
+            <div class="success-dialog__hd">
+                <h2>喜报</h2>
+            </div>
+            <div class="success-dialog__bd">
+                <h3>恭喜你<br>秒杀到 {{ product.product }}</h3>
+                <p>客服将于2小时内联系您领取奖品</p>
+            </div>
+            <div class="success-dialog__ft">
+                <a class="ui-btn ui-btn_enable" href="javascript:;">确定</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 输手机号弹窗 -->
+    <div class="dialog login-dialog hide">
+        <div class="dialog__mask"></div>
+        <div class="login-dialog__main">
+            <i class="dialog__close"></i>
+            <div class="login-dialog__phone">
+                <input id="phone" type="tel" maxlength="11" placeholder="输入手机号">
+            </div>
+            <div class="login-dialog__vcode">
+                <input id="vcode" type="tel" maxlength="4" placeholder="输入验证码">
+                <a id="vcode-btn" href="javascript:;">获取验证码</a>
+            </div>
+            <a id="login-dialog-btn" class="ui-btn" href="javascript:;">登录查看资格</a>
+        </div>
+    </div>
+   
+
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+    <script src="/pj_seckill161016/public/js/index.js" async></script>
+</body>
+
+</html>

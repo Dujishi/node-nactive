@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的报名信息</title>
+
+    <link rel="stylesheet" href="/pj_drive/public/css/detail.css" type="text/css" >
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}',
+
+            uriIndex      : '{{ uriIndex }}',
+            uriSignup     : '{{ uriSignup }}',
+            uriDetail     : '{{ uriDetail }}',
+            uriProxy      : '{{ uriProxy  }}',
+            uriInsure     : '{{ uriInsure }}'
+        }
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+            
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '车友汇']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+            
+            {% if iswechat %}
+                _ax.push(['set', 'source', 'wechat']);
+                _ax.push(['set', 'openid', CONF.openid]);
+            {% endif %}
+            {% if isapp %}
+                _ax.push(['set', 'source', 'app']);
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+ 
+<div class="container hide">
+    <div class="content">
+        <div class="title-sub cl-f f17">
+            车游汇，汇车友 <br />
+            <span class="cl-c f14">{{ desc }}</span>
+        </div>
+        <div class="win-box f14">
+            <div class="win-item">
+                <div class="win-label fl tl cl-8">活动时间</div>
+                <div class="win-value fr tr cl-4" id="active-time"></div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl tl cl-8">集合地址</div>
+                <div class="win-value fr tr cl-4 raw0">
+                    <span class="raw1">典典养车线下门店</span><br />
+                    <span class="raw2 cl-8 f12">(领队通知为准)</span>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl tl cl-8">出游人数</div>
+                <div class="win-value fr tr cl-4" id="active-members"></div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item" >
+                <div class="win-label fl tl cl-8">订单备注</div>
+                <div class="win-value fr tr cl-4" id="remark">无</div>
+            </div>
+        </div>
+        <div class="win-box f14">
+            <div class="win-item">
+                <div class="win-label fl tl cl-8">领队微信</div>
+                <div class="win-value fr tr cl-4" id="active-leaderwx"></div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl tl cl-8  win-code-label">
+                    <span class="raw1 f15">活动微信群</span><br />
+                    <span class="raw2 cl-8 f12">(扫一扫加微信群)</span>
+                </div>
+                <div class="win-code win-value fr tr cl-4" >
+                    <img src="/pj_drive/public/images/tmp_code.png" alt="" id="active-wxgroup">
+                </div>
+            </div>
+        </div>
+        <div class="win-box f14">
+            <div class="win-item">
+                <div class="win-label fl tl cl-8">联系客服</div>
+                <div class="win-value fr tr">
+                    <a href="#" class="cl-06d" id="active-callnum"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text cl-a f12 tc" data-url="http://store.ddyc.com/activity/S290041/insure.pdf">
+            <!-- 您已提交投保信息，祝您出行愉快！ <span class="cl-18f">查看保险详情 ></span> -->
+                为了保障您的安全，典典为您准备了<span class="cl-18f">平安旅游意外险</span>
+            </div>
+            <div class="footer-btn-wrap">
+                <div class="footer-btn cl-f f18">免费领取赠险</div>       
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div class="winmask hide">
+    <div class="winmask-box">
+        <div class="winmask-content">
+            <img src="" alt="" width="100%" id="active-mask-code">
+        </div>
+    </div>
+</div>
+
+</body>
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_drive/public/js/detail.js"></script>
+</html>

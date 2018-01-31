@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>罚单代缴</title>
+
+    <link rel="stylesheet" href="https://store.ddyc.com/res/xkcdn/animate/v3.5.2/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="/pj_ticketpayment/public/css/index.css" type="text/css">
+
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            phone: '{{ phone }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '罚单代缴',
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '有罚单怎么办，典典帮您免费缴罚单',
+            shareContent: '有罚单怎么办，典典帮您免费缴罚单',
+            shareSubTitle: '有罚单怎么办，典典帮您免费缴罚单',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_ticketpayment161220.png',
+            openid: '{{openid}}'
+        }
+    </script>
+</head>
+
+<body>
+    <div class="page-wrap">
+        <div class="page-inner">
+            <section class="page1">
+            </section>
+            <section class="page2">
+            </section>
+            <section class="page3" data-original="/pj_ticketpayment/public/images/bg03.jpg">
+                <div class="page3-button1"></div>
+            </section>
+            <section class="page4" data-original="/pj_ticketpayment/public/images/bg04.jpg">
+                <div class="page4-button1"></div>
+            </section>
+        </div>
+        <div class="next-page animated cusFadeInDown infinite">
+        </div>
+</body>
+
+{% if iswechat %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_ticketpayment/public/js/index.js?v=1.0"></script>
+
+</html>

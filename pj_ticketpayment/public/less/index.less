@@ -1,0 +1,322 @@
+@import '@ui/fullpage-animate/src/index';
+
+@base-url: "/pj_ticketpayment/public/images";
+
+/** reset */
+html {
+   -webkit-tap-highlight-color: transparent; 
+   -webkit-text-size-adjust: 100%; 
+}
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+a,
+a:active,
+a:hover {
+  outline: none;
+  text-decoration: none;
+}
+a:focus {
+ outline:none;
+}
+
+
+.bz-cv{
+    background-size: cover;
+}
+/** page 1 */
+.page1{
+    background-image: url('@{base-url}/bg01.jpg');
+    .bz-cv;
+}
+
+/** page 2 */
+.page2{
+    background-image: url('@{base-url}/bg02.jpg');
+    .bz-cv;
+}
+
+/** page 3 */
+.page3{
+    // background-image: url('@{base-url}/bg03.jpg');
+    // .bz-cv;
+}
+.page3-img{
+    background-image: url('@{base-url}/bg03.jpg');
+    .bz-cv;
+}
+.page3-button1 {
+    display: none;
+    background-image: url('@{base-url}/button.png');
+    .bz-cv;
+    width: 4rem;
+    height: 1rem;
+    position: absolute;
+    top: 3.9rem;
+    left: 1.9rem;
+    z-index: 2;
+    animation: big 0.8s infinite;
+}
+
+.page3-button{
+    display: none;
+    width: 4rem;
+    height: 1rem;
+    position: absolute;
+    top: 3.9rem;
+    left: 1.9rem;
+    z-index: 2;
+    .page3-button-arr{
+        background-image: url('@{base-url}/pg3arrow.png');
+        position: absolute;
+        .bz-cv;
+        width: 0.48rem;
+        height: 0.39rem;
+        animation: leftmove 0.5s infinite;
+    }
+    .page3-button-text{
+        background-image: url('@{base-url}/pg3text.png');
+        .bz-cv;
+        width: 2.83rem;
+        height: 0.59rem;
+        position: relative;
+        left: 0.3rem;
+        animation: big 0.5s infinite;
+    }
+}
+.page3-button-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/** page 4 */
+.page4{
+    // background-image: url('@{base-url}/bg04.jpg');
+    // .bz-cv;
+}
+.page4-img{
+    background-image: url('@{base-url}/bg04.jpg');
+    .bz-cv;
+}
+.page4-button1 {
+    display: none;
+    width: 100%;
+    height: 1rem;
+    position: absolute;
+    left:0;
+    top: 7.4rem;
+    background-image: url('@{base-url}/pg4button.png');
+    .bz-cv;
+    z-index: 2;
+    animation: biger 0.8s infinite;
+}
+.page4-button-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page4-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 1rem;
+    position: absolute;
+    left:0;
+    top: 7.6rem;
+    .page4-button-arr-left{
+        background-image: url('@{base-url}/pg4left.png');
+        .bz-cv;
+        width: 0.46rem;
+        height: 0.44rem;
+        position: absolute;
+        animation: pgmoveleft 0.5s infinite;
+    }
+    .page4-button-text{
+        background-image: url('@{base-url}/pg4text.png');
+        .bz-cv;
+        width: 1.94rem;
+        height: 0.49rem;
+    }
+    .page4-button-arr-right{
+        background-image: url('@{base-url}/pg4right.png');
+        .bz-cv;
+        width: 0.46rem;
+        height: 0.44rem;
+        position: absolute;
+        animation: pgmoveright 0.5s infinite;
+    }
+}
+
+/** next page */
+@-webkit-keyframes cusFadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0.33rem, 0);
+        transform: translate3d(0, 0.33rem, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes cusFadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0.33rem, 0);
+        transform: translate3d(0, 0.33rem, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.cusFadeInDown {
+    -webkit-animation-name: cusFadeInDown;
+    animation-name: cusFadeInDown;
+}
+
+.next-page{
+    background-image: url('@{base-url}/arrow.png');
+    .bz-cv;
+
+    width: 0.56rem;
+    height: 0.8rem;
+    margin: 0 auto;
+    
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    margin-left: -0.28rem;
+    z-index: 9;
+}
+.next-page1{
+    width: 1.02rem;
+    height: 1.83rem;
+    margin: 0 auto;
+    
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    margin-left: -0.495rem;
+    z-index: 9;
+    .next-page-1{
+        background-image: url('@{base-url}/arr.png');
+        .bz-cv;
+        width: 1.02rem;
+        height: 0.61rem;
+        transform: scale(1);
+        animation: nextpageone 0.5s infinite;
+    }
+    .next-page-2{
+        background-image: url('@{base-url}/arr.png');
+        .bz-cv;
+        width: 1.02rem;
+        height: 0.61rem;
+        transform: scale(0.8);
+        animation: nextpagetwo 0.5s infinite;
+    }
+    .next-page-3{
+        background-image: url('@{base-url}/arr.png');
+        .bz-cv;
+        width: 1.02rem;
+        height: 0.61rem;
+        transform: scale(0.6);
+        animation: nextpagethree 0.5s infinite;
+    }
+}
+
+.page4-anim{
+    -webkit-transition: transform 500ms ease-out 0s;
+    transition: transform 500ms ease-out 0s; 
+}
+@keyframes leftmove {
+    from {
+        opacity: 0;
+        left: 0rem;
+        top: 0.3rem;
+    }
+    to {
+        opacity: 1;
+        left: 0.3rem;
+        top: 0.3rem;
+    }
+}
+
+@keyframes pgmoveleft {
+    from {
+        opacity: 0;
+        left: 1.8rem;
+        top: 0.3rem;
+    }
+    to {
+        opacity: 1;
+        left: 2.2rem;
+        top: 0.3rem;
+    }
+}
+
+@keyframes pgmoveright {
+    from {
+        opacity: 0;
+        left: 5.2rem;
+        top: 0.3rem;
+    }
+    to {
+        opacity: 1;
+        left: 4.8rem;
+        top: 0.3rem;
+    }
+}
+
+@keyframes big {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes biger {
+    from {
+        transform: scale(0.45);
+    }
+    to {
+        transform: scale(0.5);
+    }
+}
+
+@keyframes nextpageone {
+0%   {opacity: 0.1;}
+25%  {opacity: 0.4;}
+50%  {opacity: 0.7;}
+100% {opacity: 1;}
+}
+@keyframes nextpagetwo {
+0%   {opacity: 0.4;}
+25%  {opacity: 0.7;}
+50%  {opacity: 1;}
+100% {opacity: 0.1;}
+}
+@keyframes nextpagethree {
+0%   {opacity: 0.7;}
+25%  {opacity: 1;}
+50%  {opacity: 0.1;}
+100% {opacity: 0.4;}
+}
+
+.modal-box {
+    border-radius: 0.2rem;
+}
+
+.modal-bg .modal-input{
+    height: 0.8rem;
+    text-align: center;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>幸运大转盘</title>
+
+    <link rel="stylesheet" href="/pj_turntable/public/css/index.css" type="text/css">
+
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            phone: '{{ phone }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '幸运大转盘',
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '玩幸运大转盘，赢真皮汽车座椅套抢LED前大灯！',
+            shareContent: '已有{{shareNumber}}个人参与抽奖，就等你了',
+            shareSubTitle: '已有{{shareNumber}}个人参与抽奖，就等你了',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_turntable170912.jpg'
+        }
+    </script>
+    <script src="//store.ddyc.com/res/xkcdn/webp/webp.min.js"></script>
+</head>
+
+<body>
+    <div class="content">
+        <img src="/pj_turntable/public/images/bg.jpg!/compress/true/quality/60" width="100%">
+        <div class="swiper">
+            <ul>
+                {% for author in number %}
+                <li>{{author}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="status-text">
+            <div class="join">中奖记录</div>
+            <div class="description s-times">您今日还有<span id="times"></span>次抽奖机会</div>
+            <div class="description n-login">登录查看抽奖机会</div>
+        </div>
+        <div class="circle">
+            <div class="bg"></div>
+            <div class="cover hide"></div>
+            <div class="point"></div>
+        </div>
+        <div class="instructions">
+            <div class="title">活动规则</div>
+            <div class="arrow"></div>
+            <div class="desc"></div>
+            <div class="text">
+                <ul>
+                    <li>1. 活动时间：2017年9月12日-2017年9月30日</li>
+                    <li>2. 活动抽奖只在当月进行，每位用户每天可获得免费1次抽奖机会；登录典典养车APP，可再免费获抽奖机会1次；转发抽奖结果至好友或朋友圈可再免费获取1次抽奖机会；在APP上面每完成1次支付即可再免费获取1次获奖机会</li>
+                    <li>3. 千元礼包奖品包含: 汽车真皮座椅套、LED前大灯、功能性雨刮、4L清洗油、4L极风机油、5LMAG机油、4LTIBAO机油、燃油宝，以上奖品随机抽取</li>
+                    <li>4. 抽中千元礼包后，只需支付1元即可获得礼包里面的礼品。待客服人员线下联系，礼包中的商品将在2周内寄送给您，以上所有礼包奖品只提供配件，不提供施工服务</li>
+                    <li>5. 抽到的红包可在典典养车APP【我的】-【红包/券】中查看，不可叠加使用</li>
+                    <li>6. 该活动最终解释权归典典养车所有，如对活动规则有疑问，请进入典典养车APP【我的】-右上角【在线客服】进行咨询</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal hide" id="modal-win">
+        <div class="modal-new-box">
+            <div class="modal-new-close"></div>
+            <div class="modal-new-title"></div>
+            <div class="modal-new-text">
+            </div>
+            <div class="modal-new-btn">
+                <div class="modal-new-btn-text3"></div>
+            </div>
+            <div  class="modal-new-btns">
+                
+            </div>
+        </div>
+    </div>
+    <div class="share hide">
+        <img src="/pj_turntable/public/images/share.png" alt="">
+    </div>
+</body>
+
+{% if iswechat %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_turntable/public/js/index.js"></script>
+</html>

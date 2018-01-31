@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>拼手气红包</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_luckpacket/public/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/pj_luckpacket/public/css/update.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: '{{ isapp }}' === 'true',
+            iswechat: '{{ iswechat }}' === 'true',
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '{{ commodityName }}',
+            // for share
+            shareUrl: '',
+            shareTitle: '',
+            shareContent: '',
+            shareSubTitle: '',
+            shareImgUrl: ''
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container" id="bodyContainer">
+        <p class="tc">当前绑定手机：<span class="scolor">{{phone}}</span></p>
+        <div class="block mt20 pd40">
+            <input type="tel" class="input" maxlength="11" id="phone" placeholder="点此输入手机号"/>
+            <a href="jaascript:;" class="opt-btn mt20 disabled" id="confirm_btn">确定</a>
+        </div>
+        <p class="optimum">修改后，下次领取的红包将自动放入新手机号</p>
+    </div>
+
+{% if iswechat %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_luckpacket/public/js/update.js"></script>
+</body>
+</html>

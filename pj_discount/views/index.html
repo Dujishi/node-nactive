@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>典典商城活动</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_discount/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            
+        };
+
+    </script>
+</head>
+
+<body>
+
+<div class="rules">
+    <div class="rules__mask"></div>
+    <div class="rules__main">
+        <span class="rules__close"></span>
+        <div class="rules__hd">活动规则</div>
+        <ul class="rules__bd">
+        </ul>
+    </div>
+</div>
+
+{%raw%}
+<script type="text/template" id="page-tpl">
+    <div class="container">
+        <div class="header">
+            <img src="{{ bannerImage }}" alt="">
+            {{ if rules }}
+            <a class="rules-btn" href="javascript:;">活动<br>规则</a>
+            {{ /if }}
+        </div>
+        <div class="goods-list">
+            
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="product-tpl">
+    {{ each data }}
+        <div class="goods">
+            {{ if config.hasReducePrice }}
+            <span class="tag">立省<br><strong>{{ $value.reduceMoney }}</strong>元</span>
+            {{ else if $value.couponMoney }}
+            <span class="tag">送<strong>{{ $value.couponMoney }}</strong>元<br>洗美红包</span>
+            {{ /if }}
+            <div class="goods-img">
+                <img src="{{ $value.url }}" alt="">
+            </div>
+            {{ if config.isSingle }}
+            <ul>
+                <li>
+                    {{ $value.fullName }}
+                    {{ if config.showUnit }}
+                    <span>￥{{ $value.price }}/瓶</span>
+                    {{ /if }}
+                </li>
+            </ul>
+            {{ else }}
+            <ul>
+                {{ each $value.childItemList }}
+                <li>
+                    {{ $value.fullName }}
+                    {{ if config.showUnit }}
+                    <span>￥{{ $value.price }}/瓶</span>
+                    {{ /if }}
+                </li>
+                {{ /each }}
+            </ul>
+            {{ /if }}
+            <div class="actions">
+                <span>现价:￥<strong>{{ $value.price }}</strong></span>
+                <a href="com.xk.shopkeeper://mall/commodityDetail?sellerId={{$value.sellerId}}&commodityCode={{$value.commodityCode}}&shopId=">立即抢购</a>
+            </div>
+        </div>
+    {{ /each }}
+</script>
+{%endraw%}
+
+
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="https://store.ddyc.com/res/xkcdn/arttemplate/template.js"></script>
+<script src="/pj_discount/public/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+@import './reset';
+
+.f10{ font-size:10px; }
+.f12{ font-size:12px; }
+.f13{ font-size:13px; }
+.f14{ font-size:14px; }
+.f15{ font-size:15px; }
+.f16{ font-size:16px; }
+.f17{ font-size:17px; }
+.f18{ font-size:18px; }
+.f20{ font-size:20px; }
+.f24{ font-size:24px; }
+
+@cl-a   : #aaa;
+@cl-ddd : #dbdcde;
+@cl-f   : #fff;
+@cl-0   : #000;
+@cl-555 : #5C5A5A;
+@cl-94  : #949494;
+@cl-c   : #ccc;
+@cl-8   : #888;
+@cl-4   : #444;
+@cl-f72 : #ff7421;
+@cl-fff : #F7F9FB;
+@cl-112 : #101726;
+@cl-06d : #0068DC;
+@cl-18f : #188DFB;
+@cl-99a : #9399A6;
+
+@cl-line: #DDDFE1;
+
+.cl-a  { color: @cl-a; }
+.cl-ddd{ color: @cl-ddd; }
+.cl-f  { color: @cl-f; }
+.cl-555{ color: @cl-555; }
+.cl-94 { color: @cl-94;}
+.cl-c  { color: @cl-c;}
+.cl-8  { color: @cl-8;}
+.cl-4  { color: @cl-4;}
+.cl-f72{ color: @cl-f72;}
+.cl-06d{ color: @cl-06d;}
+.cl-18f{ color: @cl-18f;}
+.cl-99a{ color: @cl-99a;}
+
+body{
+    background-color : #353d4f;
+}
+
+/**
+ * 惰性加载
+ */
+[data-original]{
+    width: 2.3rem !important;
+    height : 1.2rem !important;
+}
+
+.line{
+    width: 200%;
+    overflow: hidden;
+    height: 1px;
+    background-color: @cl-line;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.bottom-line{
+    position: relative;
+    
+    &:after{
+        position: absolute;
+        content: '';
+        top: -50%;
+        bottom: -50%;
+        left: -50%;
+        right: -50%;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        border-bottom: 1px solid @cl-line;
+    }
+    
+}
+
+/** 窗口 */
+.win-box{
+    width: 7rem;
+    border-radius: 5px;
+    background-color: @cl-f;
+    margin: 0 auto;
+    box-shadow:0 2px 6px 0px rgba(0,0,0, 0.5);
+    overflow: hidden;
+
+    .win-item{
+        height: 1.1rem;
+        line-height: 1.1rem;      
+    }
+}
+
+.title-main{
+    font-size: 14px;
+    position: relative;
+    display: block;
+    text-align: center;
+    
+    &:after,
+    &:before{
+        content: ' ';
+        position: absolute;
+        background-color: #4b5160;
+        opacity: 0.31;
+        height: 1px;
+        width: 2rem;
+        top: 50%;
+    }
+    &:after{ 
+        right: 0.24rem ;
+        background: linear-gradient(left, #BCB8B8 , rgba(230,230,230,0));
+    }
+    &:before{ 
+        left: 0.24rem ;
+        background: linear-gradient( right, #BCB8B8 , rgba(230,230,230,0));
+    }
+}
+
+.title-sub{
+    padding-left: 0.24rem;
+    position: relative;
+    
+    &:before{
+        content: ' ';
+        position: absolute;
+        left: 0;
+        width: 3px;
+        border-radius: 1px;
+        height: 100%;
+        background-color: #0068dc;
+    }
+}

@@ -1,0 +1,110 @@
+/**
+ * 从右向左旋转进入
+ */
+.rotateInRight{
+    animation-duration: 0.8s;
+    animation-name: rotateInRight;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+    transform-origin: 90% 50%;
+}
+
+@keyframes rotateInRight{
+    0%{
+        transform: rotateY(90deg) rotateZ(90deg);
+    }
+    40%{
+        transform: rotateY(0deg) rotateZ(-20deg);
+    }
+    60%{
+        transform: rotateY(0deg) rotateZ(10deg);
+    }
+    80%{
+        transform: rotateY(0deg) rotateZ(-5deg);
+    }
+    100%{
+        transform: rotateY(0deg) rotateZ(0deg);
+    }
+}
+
+/**
+ * 年卡动画
+ */
+.cardFadeInDown{
+    animation-duration: 1s;
+    animation-name: cardFadeInDown;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+@keyframes cardFadeInDown{
+    0%{
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    40%{
+        opacity: 1;
+        transform: translateY(30px);
+    }
+    60%{
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    80%{
+        opacity: 1;
+        transform: translateY(5px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/**
+ * “抢”按钮动画
+ */
+.btnFadeInDown{
+    animation-duration: 1s;
+    animation-name: btnFadeInDown;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+@keyframes btnFadeInDown{
+    0%{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    40%{
+        opacity: 1;
+        transform: translateY(20px);
+    }
+    60%{
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    80%{
+        opacity: 1;
+        transform: translateY(5px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/**
+ * footer 动画
+ */
+.footerFadeIn{
+    animation-duration: 0.5s;
+    animation-name: footerFadeIn;
+    animation-timing-function: linear;
+    transform-style: preserve-3d;
+}
+@keyframes footerFadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

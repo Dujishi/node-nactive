@@ -1,0 +1,255 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ */
+* {
+  box-sizing: border-box;
+}
+html {
+  cursor: default;
+  /* Add normal cursor  Improves visual focus of page during mouse use in all browsers */
+  -webkit-tap-highlight-color: transparent;
+  /* Add vertical scrollbar  Keeps page centered in all browsers regardless of content height */
+  -webkit-text-size-adjust: 100%;
+  /* Define maximum text display as 100% to document Corrects text displayed oddly after orientation change in handheld browsers */
+}
+html,
+body {
+  border: 0;
+  background-color: #fff;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
+}
+img {
+  border: 0 none;
+}
+/*
+ * Remove outline
+ * Improves appearance when active or hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+a,
+a:active,
+a:hover {
+  outline: none;
+  text-decoration: none;
+}
+/*
+ * Define outline as thin dotted
+ * Improves appearance displayed oddly in C10
+*/
+a:focus {
+  outline: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hide {
+  display: none !important;
+}
+.tl {
+  text-align: left;
+}
+.tr {
+  text-align: right;
+}
+.tc {
+  text-align: center;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+body {
+  background-color: #112D57;
+  font-size: .24rem;
+}
+.wrap {
+  padding: .4rem .3rem 2.03rem;
+  font-size: .24rem;
+  line-height: .48rem;
+  color: #6995CB;
+}
+.wrap span {
+  font-weight: 600;
+  text-decoration: underline;
+}
+.bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 1.8rem;
+  background-color: #09172F;
+  text-align: center;
+}
+.bar .tips {
+  font-size: .24rem;
+  height: .8rem;
+  line-height: .8rem;
+  color: #C1D7F2;
+  text-align: center;
+}
+.bar .tips div {
+  display: inline-block;
+  vertical-align: middle;
+}
+.bar .tips .check-text {
+  display: inline-block;
+}
+.bar .tips div.check-icon {
+  background-size: contain;
+  background-color: #FF6E00;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAilBMVEUAAAD/dQD/dAD/hwD/dQD/dQD/dQD/dAD/dQD/dQD/dQD/dgD/dQD/dgD/dQD/dAD/dgD/eQD/ewD/eAD/qgD/dAD/////dwb/egz/fRH/6df/5M//4Mb/1bL/w5H/tHb/gxz/gBf/3L//2Lj/y6D/xpj/v4r/7d7/zqb/u4P/r23/8eb/0Kr/q2bfXlhIAAAAFXRSTlMA9uYJ+fLs28u3r498ZmBcTjcbEQPx359OAAABTUlEQVRIx5WW6VKDMBSFs7BvhdKTWhekbtWq7/96MqJNaAjhfr9g5jvM3CTcG2Yh6zyNoyCI4jSvJfPQVhmHAc+qdkGXRQiLsJAOfVcKzCLK3Zy/TeAk2dp+I7CAaK79DccifHPlw8sk0XB44Y1Rr8AKxKXyXYJVJP+rW2Il5ehLgZWIcc8LrKb4PW8hVhO2Q6DyWfteP1dDIPP5DyedyBiT3Ocr1endk6z2+197/V6zfNl/VuodBjlLST5SFnv8F0yIWeT2b54sHxELSD4CFiz5r7ADkbmEZ8O/n/MRmUV3Sp09PmJzWfuTUo/a7zBDOtm4/vYvcXD5yKdH4zgmDndKvWGWmkluJRZ8LvXx1olPp4/M/oGOw+fVBxxU9i86FOD2w3auCRy+4aIgtxlqIyO3SmozprZ76kChjyz6UKSPXfpgp18d6JcT8vXnB2hilW0Sr0+OAAAAAElFTkSuQmCC);
+}
+.bar .tips .check-icon-disabled {
+  display: inline-block;
+  margin-right: .05rem;
+  width: .32rem;
+  height: .32rem;
+  border-radius: .16rem;
+  background-size: contain;
+  background-image: none;
+  background-color: #ddd;
+}
+.bar .bar-btn {
+  display: inline-block;
+  width: 5.7rem;
+  height: .8rem;
+  line-height: .8rem;
+  background-color: #FF6E00;
+  border-radius: .4rem;
+  text-align: center;
+  font-size: .32rem;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.bar .bar-btn-no {
+  background-image: -webkit-linear-gradient(top, #797979, #6a6a6a);
+  background-image: linear-gradient(top, #797979, #6a6a6a);
+  color: #fff;
+}

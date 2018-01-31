@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>{{ htmlTitle }}</title>
+    <link rel="stylesheet" href="/pj_upkeep/public/css/shoplist.css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            userId:'{{ userId }}',
+        // for share
+            shareUrl: '{{shareUrl}}',
+            shareContent: '{{shareContent}}',
+            shareTitle: '{{shareTitle}}',
+            shareSubTitle: '{{shareSubTitle}}',
+            shareImgUrl: 'https://store.ddyc.com/res/xkcdn/icons/share/icon_superupkeep.png'
+        }
+    </script>
+</head>
+<body>
+<div class="top-tips">点击选择服务商家，所选门店将为您准备机油商品<br>门店一经选择无法更换</div>
+<div class="wrap" id="wrap"></div>
+<div class="more" id="more">加载更多</div>
+
+{% if iswechat %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+{% endif %}
+<script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_upkeep/public/js/shoplist.js"></script>
+
+</body>
+</html>

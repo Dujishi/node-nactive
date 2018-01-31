@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>挑战美嘉壳</title>
+    <!-- css section -->
+    <link rel="stylesheet" href="/pj_superupkeep/public/css/index.css">
+    <!-- css section end-->
+    <script>
+
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+//        // 检查是否支持 webp，并将结果存在 localStorage 里
+//        ;(function() {
+//            if (!window.localStorage || typeof localStorage !== 'object') return
+//            const name = 'webpsupport'
+//            if (!localStorage.getItem(name) ||
+//                (localStorage.getItem(name) !== 'true' &&
+//                    localStorage.getItem(name) !== 'false')) {
+//                var img = new Image()
+//                img.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=='
+//                img.onload = function() {
+//                    localStorage.setItem(name, 'true')
+//                }
+//                img.onerror = function() {
+//                    localStorage.setItem(name, 'false')
+//                }
+//            }
+//        }())
+
+        /**CONFIG**/
+        window.CONF = {
+                debug: true,
+                isapp: {{ isapp }},
+                iswechat: {{ iswechat }},
+                appId: '{{ wechat.appId }}',
+                timestamp: '{{ wechat.timestamp }}',
+                nonceStr: '{{ wechat.nonceStr }}',
+                signature: '{{ wechat.signature }}',
+                openid: '{{ openid }}',
+                userId: '{{ userId }}',
+                viewCounts: '{{viewCounts}}',
+                status: '{{status}}',
+                remainSecs: '{{remainSecs}}',
+                isDebug: {{isDebug}},
+                // for share
+                shareUrl: '{{shareUrl}}',
+                shareContent: '{{shareContent}}',
+                shareTitle: '{{shareTitle}}',
+                shareSubTitle: '{{shareSubTitle}}',
+                shareImgUrl: 'https://store.ddyc.com/res/xkcdn/icons/share/icon_superupkeep.png'
+            }
+    </script>
+    
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="img-placeholder"></div>
+            <img class="img-small" src="/pj_superupkeep/public/images/new/bg1.jpg" data-large="/pj_superupkeep/public/images/new/bg1.jpg" data-largewebp="/pj_superupkeep/public/images/new/bg1.webp" width="100%" />
+            <!--<div class="arrow"></div>-->
+            <a class="block" id="goRule" data-href="#rule"></a>
+        </header>
+        <div class="fix-top fix-top-hascar hide">
+            <div class="fix-top-img"><img src="/pj_superupkeep/public/images/default_logo.png" alt="" /></div>
+            <div class="fix-top-xian"><img src="/pj_superupkeep/public/images/line.jpg" alt=""></div>
+            <div class="fix-top-text"><span>宝马 5系</span><br />2017款 528Li 领先型 </div>
+            <div class="fix-top-button">更改<br />车辆</div>
+        </div>
+        <div class="fix-top fix-top-nologin hide">
+            <div class="fix-top-text"><span>您还未登录</span><br/>典典无法为您推荐保养套餐</div>
+            <div class="fix-top-button">马上<br />登录</div>
+        </div>
+        <div class="fix-top fix-top-nocar hide">
+            <div class="fix-top-text"><span>完善车辆信息</span><br/>精准推荐保养套餐</div>
+            <div class="fix-top-button">立即<br />完善</div>
+        </div>
+
+        <div class="fix-top-other fix-top-other-hascar hide">
+            <div class="fix-top-img"><img src="/pj_superupkeep/public/images/default_logo.png" alt="" /></div>
+            <div class="fix-top-xian"><img src="/pj_superupkeep/public/images/line.jpg" alt=""></div>
+            <div class="fix-top-text"><span>宝马 5系</span><br />2017款 528Li 领先型 </div>
+            <div class="fix-top-button">更改车辆</div>
+        </div>
+        <div class="fix-top-other fix-top-other-nologin hide">
+            
+            <div class="fix-top-text"><span>您还未登录</span>典典无法为您推荐保养套餐</div>
+            <div class="fix-top-button">马上登录</div>
+        </div>
+        <div class="fix-top-other fix-top-other-nocar hide">
+            <div class="fix-top-text"><span>完善车辆信息</span>精准推荐保养套餐</div>
+            <div class="fix-top-button">立即完善</div>
+        </div>
+        <div class="ui-cell-box"></div>
+
+        <div class="ui-shop">
+            <h4 class="">距离您最近的门店</h4>
+            <div class="shop-item clearfix"></div>
+            <button class="shop-btn" type="button">查看更多商家</button>
+        </div>
+       <div class="ui-text" id="rule">
+            <div class="ui-text-title"><span></span>活动说明</div>
+            <ul>
+                <li>1.活动时间</li>
+                <li>购买时间：2017年5月20日0点--2017年6月4日24点  支付定金获得定金券及套餐附赠红包；</li>
+                <li>使用时间：2017年5月20日0点--2017年6月11日24点 到店支付尾款享受超级保养并以及活动套餐赠送免费服务；</li>
+                <li>获赠红包及免费服务使用时间：2017年5月20日0点--2017年6月30日24点；</li>
+                <li>2.参与方式</li>
+                <li>① 购买期间，选择合适的保养套餐（典典会为你智能推荐），支付定金即可获得套餐附赠红包且定金还可等额抵扣后续保养服务；</li>
+                <li>② 附赠红包会在支付定金成功后即刻发放到您的【红包/券】账户；</li>
+                <li>③ 您支付的定金会以等额保养券的方式发放到您的【红包/券】账户，到店支付时自动抵扣；</li>
+                <li>④ 到店支付尾款后，附赠免费服务会以券的方式放到您的【红包/券】账户；</li>
+                <li>⑤ 您可以打开APP【我的-红包/券】页面查看相关优惠券；</li>
+                <li>3.施工前请与门店再次确认保养适配方案，确保您的适配方案更加合适您的爱车；</li>
+                <li>4.定金支付成功后不支持退款；</li>
+                <li>5.定金支付后请选择使用门店，保养及附赠的红包与服务仅限选择门店使用；</li>
+                <li>6.机油套餐含4L机油（钢筋套餐为5L，暗香套餐为6L），机滤及工时费，超出部分按市场价计算，不足1L按照1L计算；</li>
+                <li>7.所有优惠每位车主仅限购买1次；</li>
+                <li>8.定金购买成功后只可抵扣购买时确认的保养服务，不可抵扣其他服务；</li>
+                <li>9.获赠红包及服务不予以延期、退款、折现或加价升级为其他服务；</li>
+                <li>10.如有疑问，请进入典典养车APP【我的】 ，点击右上角【在线客服】咨询；</li>
+                <li>11.本公司有权在法律允许的范围内保留对本次活动的最终解释权。</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="city-container">
+        <p>暂时获取不到您的城市位置，请手动定位</p>
+        <h4>活动城市</h4>
+        <div id="xk_select_button"></div>
+    </div>
+
+    <div class="mask-bg">
+        <div class="mask-con">
+            <div class="mask-box">
+                <div class="mask-header"></div>
+                <span class="mask-close">&times;</span>
+                <div class="mask-middle"></div>
+                <div class="mask-footer">
+                    <div class="mask-btn">马上抢</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_superupkeep/public/js/index.js"></script>
+    <script type='text/javascript'>
+		//获取浏览器参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return unescape(r[2]); return null;
+		}
+		var _vds = _vds || [];
+			window._vds = _vds;
+		(function() {
+			_vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+			if(getQueryString('trackId')){ //判断是否需要统计页面来源
+					_vds.push(['setPageGroup', 'activvityHongbaoPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+					_vds.push(['setPS1', '5月保养']);
+					_vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+			}
+
+			(function() {
+				var vds = document.createElement('script');
+				vds.type = 'text/javascript';
+				vds.async = true;
+				vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(vds, s);
+			})();
+		})();
+	</script>
+</body>
+
+</html>

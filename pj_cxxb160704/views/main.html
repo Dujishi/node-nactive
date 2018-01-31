@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>典典车险</title>
+    <link rel="stylesheet" href="https://store.ddyc.com/res/xkcdn/styles/base.min.css" />
+    <link href="/pj_cxxb160704/public/css/index.css" rel="stylesheet" type="text/css"/>
+    <script>
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /**CONFIG**/
+        window.CONF = {
+            isapp     : {{ isapp }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}'
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="banner">
+        <img src="/pj_cxxb160704/public/images/banner.png" alt="" width="100%"/>
+    </div>
+    <div class="content">
+        <div class="vertical-line">
+            
+        </div>
+        <div class="wrap-list">
+            {% if touse %}
+                <div class="list-item">
+                    <div class="tag js-dot">送</div>
+                    <div class="text-1 f13">
+                        您有100元车险抵扣红包可直接减保费~ <br />
+                        典典车险续保用户专享！
+                    </div>      
+                </div>
+                <div class="list-item">
+                    <div class="red-envelop to-use height" data-scheme="ddyc.car://ddcxHome">
+                        <div class="red-envelop-title">
+                            <span class="f40 fb">100</span>
+                            <span class="f20">元车险红包</span>
+                        </div>
+                        <div class="red-envelop-desc f12">仅用于购买车险</div>
+                        <div class="red-envelop-time f10 marg-btm">有效时间：从赠送日起3个月内均可使用</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="list-item">
+                    <div class="tag js-dot">送</div>
+                    <div class="text-1 f13">
+                        本活动仅限商业险到期日为2016.10.31前的典典车险用户参加~ <br />
+                        活动用户已获赠100元车险抵扣红包，快去看看吧！
+                    </div>      
+                </div>
+                <div class="list-item">
+                    <div class="red-envelop " data-scheme>
+                        <div class="red-envelop-title">
+                            <span class="f40 fb">100</span>
+                            <span class="f20">元车险红包</span>
+                        </div>
+                        <div class="red-envelop-desc f12">仅用于购买车险</div>
+                        <div class="red-envelop-time f10">有效时间：从赠送日起2个月内均可使用</div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if !touse %}
+            <div class="list-item">
+                <div class="tag js-dot">再送</div>
+                <div class="text-2 f13">
+                    续保车险后您可获赠加油卡红包/充值卡~ <br />
+                    根据商业险投保金额可获赠送以下1种礼品
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="red-envelop">
+                    <div class="red-envelop-title">
+                        <span class="f40 fb">50</span>
+                        <span class="f20">加油卡红包</span>
+                    </div>
+                    <div class="red-envelop-desc f12">商业险实付金额2500~3500元时赠送</div>
+                    <div class="red-envelop-time f10">有效时间：从赠送日期起1年内均可使用</div>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="card">
+                    <div class="card-title">
+                        <span class="f40 fb">100</span>
+                        <span class="f20">元加油卡充值卡</span>
+                    </div>
+                    <div class="card-desc f12">
+                        商业险实付金额3500~5000元时赠送
+                    </div>
+                </div>
+            </div>
+            <div class="list-item">
+                <div class="card">
+                    <div class="card-title">
+                        <span class="f40 fb">200</span>
+                        <span class="f20">元加油卡充值卡</span>
+                    </div>
+                    <div class="card-desc f12">
+                        商业险实付金额5000元以上时赠送
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="list-item">
+                <div class="instruct-title f13 fb js-dot">活动说明</div>
+                <div class="instruct-text f12">
+                    1.车险红包可在【红包/券】中进行查看和使用 <br />
+                    2.车险红包只可抵扣商业险 <br />
+                    3.去年商业险实际金额1000元以下的车险用户不参与本活动 <br />
+                    4.该红包不可与其他红包叠加使用 <br />
+                    5.活动中如有疑问，请进入典典养车APP【我的】，点击右上角【在线客服】咨询 <br />
+                    <hr />
+                    最终解释权归典典养车所有
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_cxxb160704/public/js/index.js"></script>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>测试你的污力指数</title>
+
+    <link rel="stylesheet" href="https://store.ddyc.com/res/xkcdn/animate/v3.5.2/animate.min.css" type="text/css" >
+    <link rel="stylesheet" href="/pj_wlwd20161223/public/css/index.css" type="text/css" >
+    
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            iswechat: {{ iswechat }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+            shareTitle: '题目太污了，宝宝不知道答案，求帮忙！',
+            shareContent: '我正在测试污力指数，一起来帮我答题赢“大保健”吧~',
+            shareSubTitle: '我正在测试污力指数，一起来帮我答题赢“大保健”吧~',
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_wlwd20161223.jpg',
+        }
+        window.imagesRes = [
+            '/pj_wlwd20161223/public/images/tap.png',
+            '/pj_wlwd20161223/public/images/shode_12.png',
+            '/pj_wlwd20161223/public/images/red_bag.png',
+            '/pj_wlwd20161223/public/images/phone-input.png',
+            '/pj_wlwd20161223/public/images/phone-btn.png',
+            '/pj_wlwd20161223/public/images/nobg_08.png',
+            '/pj_wlwd20161223/public/images/no_btn_13.png',
+            '/pj_wlwd20161223/public/images/music_on.png',
+            '/pj_wlwd20161223/public/images/music_off.png',
+            '/pj_wlwd20161223/public/images/help.png',
+            '/pj_wlwd20161223/public/images/C.png',
+            '/pj_wlwd20161223/public/images/btn_16.png',
+            '/pj_wlwd20161223/public/images/border.jpg',
+            '/pj_wlwd20161223/public/images/B.png',
+            '/pj_wlwd20161223/public/images/A.png',
+            '/pj_wlwd20161223/public/images/1_11.png',
+            '/pj_wlwd20161223/public/images/5-2.png',
+            '/pj_wlwd20161223/public/images/5-1.png',
+            '/pj_wlwd20161223/public/images/4-2.png',
+            '/pj_wlwd20161223/public/images/4-1.png',
+            '/pj_wlwd20161223/public/images/3-2.png',
+            '/pj_wlwd20161223/public/images/3-1.png',
+            '/pj_wlwd20161223/public/images/2-3.png',
+            '/pj_wlwd20161223/public/images/2-2.png',
+            '/pj_wlwd20161223/public/images/2-1.jpg'
+         ];
+
+    </script>
+</head>
+<body>
+
+
+<div class="page-wrap">
+    <div class="page-inner">
+        <!--加载-->
+            <audio autoplay="autoplay" loop="loop" preload="auto">
+                <source src="/pj_wlwd20161223/public/images/music.mp3" />
+            </audio>
+            <section class="page1">
+                <div class="header on"></div>
+                <div class="before"></div>
+                <div class="section">
+                    <img class="page-section" src='/pj_wlwd20161223/public/images/1-1.png'>
+                    <div class="page1-text">
+                        <img class='text1' src="/pj_wlwd20161223/public/images/1-3.png" alt="">
+                        <div class='text2'><img src="/pj_wlwd20161223/public/images/1-2.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="page-footer"></div>
+            </section>
+            
+    </div>
+    <div class="phone" style='display:none'>
+        <div class="phone-bg">
+            <span>
+                <input type="tel" placeholder='请输入手机号' maxlength='11'>
+            </span>
+            <img src="/pj_wlwd20161223/public/images/phone-btn.png" alt="" class='phone-btn'>
+        </div>
+        <div class="back"></div>
+    </div>
+    
+</div>  
+    
+</body>
+<script type="text/template" id='pages'>
+    <!--index-->
+        <section class="page2">
+            <div class="header on"></div>
+            <div class="page2-header"></div>
+            <div class="page2-section" data-anim-type="tada" data-anim-delay="10"></div>
+            <img class="page2-bottom" src="/pj_wlwd20161223/public/images/2-3.png" alt="">
+        </section>
+        <!--题目-->
+        <section class="page3 spage" name='1'>
+                <div class="page-nav"><span>1</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/3-1.png'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/3-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">马婊无耻</li>
+                    <li class="page-textB">站起来撸</li>
+                    <li class="page-textC">喝奶奶咯</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page4 spage" name='2'>
+                <div class="page-nav"><span>2</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/4-1.png' style='width:6.8rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/4-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">波多野结衣</li>
+                    <li class="page-textB">苍老师</li>
+                    <li class="page-textC">小泽玛利亚</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page5 spage" name='3'>
+            <div class="page-nav"><span>3</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/5-1.png' style='width:6.8rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/5-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">周董</li>
+                    <li class="page-textB">毕姥爷 </li>
+                    <li class="page-textC">小四</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page6 spage" name='4'>
+            <div class="page-nav"><span>4</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/6-1.png'  style='width:5rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/6-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">果实</li>
+                    <li class="page-textB">流氓</li>
+                    <li class="page-textC">片子</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page7 spage" name='5'>
+           <div class="page-nav"><span>5</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/7-1.png' style='width:6.8rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/7-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">活好</li>
+                    <li class="page-textB">手指灵活</li>
+                    <li class="page-textC">阅女无数</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page8 spage" name='6'>
+            <div class="page-nav"><span>6</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/8-1.png' style='width:5rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/8-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">跟电脑有关</li>
+                    <li class="page-textB">跟草帽有关</li>
+                    <li class="page-textC">以上都有关</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page9 spage" name='7'>
+            <div class="page-nav"><span>7</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/9-1.png' style='width:6.8rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/9-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">开空调，升升温</li>
+                    <li class="page-textB">坚决不开空调</li>
+                    <li class="page-textC">开大窗，让人拍</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page10 spage" name='8'>
+            <div class="page-nav"><span>8</span>/8</div>
+                <div class="header on"></div>
+                <div class="before"></div>
+                <img class="page-title" src='/pj_wlwd20161223/public/images/10-1.png' style='width:6.8rem'>
+                <div class="section">
+                    <img src="/pj_wlwd20161223/public/images/10-2.png" alt="" class="page-section">
+                </div>
+                <ul class="page-text">
+                    <li class="page-textA">保修</li>
+                    <li class="page-textB">保养</li>
+                    <li class="page-textC">保密</li>
+                </ul>
+                <img class='page-bottom' src="/pj_wlwd20161223/public/images/help.png" alt="">
+                <div class="page-footer"></div>
+                <div class="share"  style='display:none'>
+                    <div></div>
+                </div>
+        </section>
+        <section class="page11  spage">
+            <div class="header on"></div>
+            <div class="before"></div>
+            <div class="page11-section">
+                <div class="page11-text">
+                    <div>污力指数:<span>100</span></div>
+                    <p>击败了全国<span>99</span>%的宝宝</p>
+                </div>
+                <div class="page11-detail">原来你就是传说中的<br/><span>污力大神</span></div>
+                <div class="page11-row animated cusFadeInDown infinite" ></div>
+                <img src="/pj_wlwd20161223/public/images/11-3.png" alt="" class="page11-bottom">
+            </div>
+            <div class="page11-lf">
+                <button class="reset"> </button>
+            </div>
+            <div class="page11-rf">
+                <button class="page11-share"></button>
+            </div>
+            <div class="page-footer"></div>
+        <div class="redbag" style='display:none'>
+            <div class="bag" style='display:none'>
+                <ul class="luck" style='display:none'>
+                    <li>10元精洗红包</li>
+                    <li>50元年检红包</li>
+                    <li>30元违章代缴红包</li>
+                    <li>10元油卡充值红包</li>
+                    <li>10元油卡代办红包</li>
+                    <li>50元商业车险红包</li>
+                </ul>
+                <ul class="no" style='display:none'>
+                    <li>50元养护通用红包</li>
+                    <li>20元美容通用红包</li>
+                    <li>5元违章处理红包</li>
+                    <li>50元年检代办红包</li>
+                    <li>10元油卡代办红包</li>
+                </ul>
+                <img src="/pj_wlwd20161223/public/images/btn_16.png" alt="" class='redbag_btn'>
+                <div class="bottom-text">礼包已放入您的账号：<span></span></div>
+            </div>
+            <div class="unbag"  style='display:none'>
+                <img src="/pj_wlwd20161223/public/images/no_btn_13.png" alt="">
+            </div>
+        </div>
+        <div class="share"  style='display:none'>
+            <div></div>
+        </div>
+        </section>
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_wlwd20161223/public/js/index.js"></script>
+<script type='text/javascript'>
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activitywdPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '问答活动']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        }
+</script>
+
+</html>

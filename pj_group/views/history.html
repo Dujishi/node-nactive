@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="https://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_group/public/css/history.css">
+    <title>拼团记录</title>
+    <script>
+            // 设置rem字号
+            ;(function(doc, win) {
+                'use strict';
+                var docEl = doc.documentElement;
+                var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+                function recalc() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+                };
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+                recalc()
+            })(document, window);
+    
+            /**CONFIG**/
+            window.CONF = {
+                isapp: {{ isapp }},
+                iswechat: {{ iswechat }},
+                appId: '{{ wechat.appId }}',
+                timestamp: '{{ wechat.timestamp }}',
+                nonceStr: '{{ wechat.nonceStr }}',
+                signature: '{{ wechat.signature }}',
+                openId:'{{ openId }}',
+                userId:'{{ userId }}',
+                // for share
+                shareUrl: '{{ shareText.shareUrl }}',
+                shareTitle: '{{ shareText.shareTitle }}',
+                shareContent: '{{ shareText.shareContent }}',
+                shareSubTitle: '{{ shareText.shareSubTitle }}',
+                shareImgUrl: '{{ shareText.shareImgUrl }}'
+            }
+    
+        </script>
+</head>
+<body>
+
+    <div class="contenter">
+        <div class="group-wrap" id="groupWrap">
+        </div>
+        <div class="no-data">
+            <div class="no-data-img"></div>
+            <p>暂无记录！</p>
+        </div>
+    </div>
+            
+    {%raw%}
+    <script type="text/template" id="group-item-tpl">
+        {{ each }}
+        <div class="history-time">{{ $value.starttime | dateFormat}}</div>
+        <div class="group-item">
+            <div class="group-img">
+                {{ if $value.status == 1 }}
+                <div class="group-tag group-tag-ok">拼团中</div>
+                {{ else if $value.status == 2 }}
+                <div class="group-tag group-tag-ok">拼团成功</div>
+                {{ else }}
+                <div class="group-tag group-tag-error">慢了一步 抢光了</div>
+                {{ /if }}
+                <img src="{{ $value.thumbImg | imgSize}}" alt="">
+            </div>
+            <div class="group-text">
+                <div class="text-wrap">
+                    <p class="text-wrap-title">{{ $value.commodityName }}</p>
+                    <p class="text-wrap-exp">提高车漆亮度 增强车漆硬度 增强车漆硬度</p>
+                </div>
+                <div class="btn-wrap">
+                    <div class="btn-item-text status-init">
+                        <p class="btn-item-text-people">{{ $value.limit }}人成团</p>
+                        <p class="btn-item-text-time">剩余16:12:05</p>
+                    </div>
+                    <div class="btn-item-buy">￥ {{ $value.commodityOriginCodePrice }}单独购</div>
+                    <div class="btn-item-group">
+                            ￥{{ $value.appPrice }}拼团购
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ /each }}
+    </script>
+    {%endraw%}
+
+    {% if iswechat %}
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="https://store.ddyc.com/res/xkcdn/arttemplate/template.js"></script>
+    <script src="/pj_group/public/js/history.js"></script>
+    
+</body>
+</html>

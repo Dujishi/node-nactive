@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>农商银行活动</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_cooperation/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            };
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        window.CONF = {
+                isapp: '{{ isapp }}'  == 'true',
+                appId: '{{ wechat.appId }}',
+                timestamp: '{{ wechat.timestamp }}',
+                nonceStr: '{{ wechat.nonceStr }}',
+                signature: '{{ wechat.signature }}',
+                iswechat: '{{iswechat}}' == 'true',
+                // shareconfig
+                // for share
+                shareUrl: '{{ shareUrl }}',
+                shareTitle: '{{shareTitle}}',
+                shareContent: '{{shareContent}}',
+                shareSubTitle: '{{shareContent}}',
+                shareImgUrl: '{{shareIcon}}',
+            jsApiList: [],
+            notLocation: true
+        }
+    </script>
+</head>
+<body>
+    <section class="index-bg index-bg-srcb-wrap">
+        <div class="index-bg-srcb">
+           <header class="banner banner-srcb"></header>
+            <aside class="btn-box srcb-btn-box">
+                {% if btn.key == 'unLogin'%}
+                    <div class="srcb-login-box">
+                        <div class="s-ipt-box"><input type="tel" placeholder="请输入手机号" class="phone-ipt" maxlength="11"></div>
+                        <div class="s-ipt-box ipt-code-box">
+                            <input type="tel" placeholder="请输入验证码" maxlength="4" class="code-ipt">
+                            <button class="btn-code" data-key="getCode">获取验证码</button>
+                        </div>
+                    </div>
+                    <a href="javascript:void (0)" id="button" data-key="{{btn.key}}"  class="btn {{btn.cls}}">{{btn.txt}}</a>
+                {% else %}
+                    <a href="javascript:void (0)" id="button" data-key="{{btn.key}}"  class="btn btn-view {{btn.cls}}">{{btn.txt}}</a>
+                {% endif %}
+            </aside>
+            <article class="flow-info flow-info-spdb"></article>
+            <footer class="footer-action">
+                <a href="shoplist?appkey=2NTKU3KGHVR3KX2G" class="footer-link" id="footerLink">查看洗车商户</a>
+            </footer>
+        </div>
+        <aside class="active-info">
+            <h2><span>活动说明</span></h2>
+            <ol class="active-info-nav">
+                <li>标准洗车含车身和车内清洗，限5座小车。越野车及七座以 上的大车需自行在门店额外支付差价。</li>
+                <li>洗车次数使用时间为领券成功后，洗车券有效期1个月，过期作废；数量有限，领完为止。</li>
+                <li>洗车次数在有效期内可分次使用，或当天一次性使用。此活动不与门店内其他优惠、折扣共享。</li>
+                <li>满足条件的客户在次月可收到洗车券领取资格短信，客户需关注“成都农商银行信用卡中心”微信公众号或下载成都农商银行手机银行APP通过手机号码领取洗车券，客户凭洗车券在指定洗车门店进行使用。</li>
+                <li>如客户手机号码发生变更请提前致电成都农商银行客服热线（95392）更改信息。</li>
+                <li>该活动解释权归成都农商银行所有，如有活动调整请以成都农商银行公布为准。</li>
+            </ol>
+        </aside>
+    </section>
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_cooperation/public/js/srcb.js"></script>
+    <script type="text/javascript">
+        (function() {
+            var fpHost = '{{tongDun.fpHost}}';
+            var staticHost = '{{tongDun.staticHost}}';
+            var tcpHost = '{{tongDun.tcpHost}}';
+            var wsHost = '{{tongDun.wsHost}}';
+            
+            _fmOpt = {
+                partner: 'yangchediandian',
+                appName: 'yangche_web',
+                token: '{{sessionId}}'};
+
+            if(tcpHost){
+                _fmOpt.fpHost = fpHost;
+                _fmOpt.staticHost = staticHost;
+                _fmOpt.tcpHost = tcpHost;
+                _fmOpt.wsHost = wsHost;
+            }
+            
+            var cimg = new Image(1,1);
+            cimg.onload = function() {
+                _fmOpt.imgLoaded = true;
+            };
+            cimg.src = "{{tongDun.fpHost}}/fp/clear.png?partnerCode=yangchediandian&appName=yangche_web&tokenId=" + _fmOpt.token;
+            var fm = document.createElement('script'); fm.type = 'text/javascript'; fm.async = true;
+            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + '{{tongDun.staticHost}}/fm.js?ver=0.1&t=' + (new Date().getTime()/3600000).toFixed(0);
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fm, s);
+        })();
+    </script>
+</body>
+</html>

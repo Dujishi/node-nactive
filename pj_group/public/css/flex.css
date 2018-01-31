@@ -1,0 +1,6 @@
+.flex-box {
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}

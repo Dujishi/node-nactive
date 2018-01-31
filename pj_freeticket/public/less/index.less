@@ -1,0 +1,220 @@
+@import "@ui/base-less/index.less";
+
+body {
+  background-color: #122645;
+  font-size: .24rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding:0;
+  margin: 0;
+}
+
+.wrap{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: url(https://store.ddyc.com/res/xkcdn/images/freeticket/bg1.jpg) #072c55 no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+.content{
+    position: relative;
+    top:0;
+    left: 0;
+    width:100%;
+    height:100%;
+    background-size: contain;
+    .bg-img img{
+        width:100%;
+    }
+    .tips{
+        position: absolute;
+        top:0;
+        right:0;
+        width:2.8rem;
+        height:1.2rem;
+    }
+    .people{
+        width:90%;
+        margin:0 auto;
+        position: absolute;
+        top:1.5rem;
+        img{
+            width:100%;
+        }
+    }
+    .btn{
+        position: absolute;
+        left:50%;
+        bottom: 1.5rem;
+        margin-left: -2rem;
+        li{
+          width:4rem;
+          height:1.18rem;
+          background: url(../img/btn.png) no-repeat center center;
+          background-size: contain;
+        }
+    }
+    .view-text,.view-done{
+        position: absolute;
+        left:0;
+        bottom: .64rem;
+        width:100%;
+        text-align: center;
+        color: #fff;
+    }
+    .view-done{
+        display: none;
+        margin-top: .3rem;
+        padding: .2rem;
+        span{
+          letter-spacing: -0.15rem;
+        }
+    }
+    .active-text{
+        position: absolute;
+        top: 6.1rem;
+        right:.8rem;
+        li{
+          width:2.79rem;
+          height:1.86rem;
+          background: url(../img/text.png) no-repeat center center;
+          background-size: contain;
+        }
+    }
+    .btn-done{
+      li{
+        background-image: url(../img/btn2.png);
+      }   
+    }
+}
+
+.mask{
+    display: none;
+    position: fixed;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,.7);
+    z-index: 300;
+    .tips-1{
+        display: none; 
+        position: absolute;
+        top:1.7rem;
+        left:50%;
+        width:6rem;
+        height:7.62rem;
+        margin-left:-3rem;   
+        overflow: hidden;
+        background: url(../img/tipsheader1.jpg) no-repeat center top #fdf5f5;
+        background-size: contain;
+        .btn{
+            position: absolute;
+            bottom:.48rem;
+            left:50%;
+            width:2.8rem;
+            height:.9rem;
+            margin-left:-1.4rem;  
+            background: url(../img/btniknow.png) no-repeat center center;
+            background-size:contain;
+        }
+        .text{
+          margin-top:1.32rem;
+          padding:.4rem;
+          font-size: .28rem;
+          color: #000;
+          p{
+            margin:.15rem 0;
+            line-height: .48rem;
+          }
+          span{
+            color: #898989;
+          }
+        }
+    }
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated2 {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}

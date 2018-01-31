@@ -1,0 +1,422 @@
+@import '@ui/base-less/index';
+@import './module/intro.less';
+@import './module/waves';
+@import './module/win';
+@import './module/animation';
+
+.col-e71{ color: #e67715;}
+.col-98{ color: #989898; }
+.col-f61{ color:#ff6f1b; }
+
+html,body{
+    height: 100%;
+}
+body{
+    background-color: #FFF;
+    font-size: 12px;
+}
+.hidden{
+    visibility: hidden !important;
+}
+
+
+
+.page-1{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+
+    .fixed(@top){
+        position: absolute;
+        right: -0.1rem;
+        top : @top;
+        z-index: 1;
+        width: 1.54rem;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        border-radius: 0.25rem 0 0 0.25rem;
+        padding-left: 0.2rem;
+        background: #FF6F1b;
+        font-size: 12px;
+        text-align: left;
+        color: #FFF;
+    }
+    .fixed-about{
+        .fixed(0.48rem);
+    }
+    .fixed-record{
+        .fixed(1.47rem);
+    }
+    .yearcard-wrap{
+        padding-top:  2.6rem ;
+
+        img{
+            margin: 0 auto;
+            width: 7.02rem;
+            height: 4.03rem;
+            border-radius: 8px;
+        }
+    }
+
+    footer{
+        font-size: 14px;
+        color: #FFF;
+
+        .process{
+            margin: 0.38rem auto 0.16rem;
+            width: 6.3rem;
+            height: 0.15rem;
+            border-radius: 0.075rem;
+            background-color: #f9e3cc;
+        }
+        .process-value{
+            transition: width 1s;
+            height: 0.15rem;
+            width: 0;
+            border-radius: 0.075rem;
+            background-color: #ff6f1b;
+        }
+    }
+
+    /**
+     * 立即支付
+     */
+    .main-wrap{
+        margin: 1.1rem auto 0.6rem;
+    }
+
+    .main-btn{  
+        margin: 0 auto;
+        width: 4.6rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        background-color: #fb6d11;
+        border-radius: 0.4rem;
+
+        color: #FFF;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    // #payment-end{
+    //     .win-btn{
+    //         margin-top: 0.8rem;
+    //     }
+    // }
+}
+
+.page-2{
+    header{
+        position: relative;
+
+        width : 7.5rem;
+        height: 3.74rem;
+        background-image: url(../images/banner.jpg);
+        background-size: cover;
+
+        .header-num{  // 期号
+            position: absolute;
+            top : 0;
+            left: 0.19rem;
+            
+            padding-top: 0.1rem;
+            width: 0.58rem;
+            height: 0.92rem;
+            background-image: url(../images/num_bg.png);
+            background-size: cover;
+
+            font-size: 12px;
+            line-height: 0.35rem;
+            color: #FFF;
+            text-align: center;
+        }
+
+        .header-text{
+            padding-top: 1.5rem;
+
+            font-size: 16px;
+            line-height: 0.45rem;
+            color: #FFF;
+            text-align: center;
+
+            strong{
+                font-size: 18px;
+            }
+        }
+
+        &:after{
+            content: " ";
+            width:0;
+            height: 0;
+        
+            position: absolute;
+            top: 3.74rem;
+            left: 50%;
+            margin-left: -0.32rem;
+
+            border-top: 0.32rem solid #000;
+            border-left: 0.32rem solid transparent;
+            border-right: 0.32rem solid transparent;
+            border-bottom: 0.32rem solid transparent;
+        }
+    }
+
+    /********************
+     * 右上角浮动按钮
+     ********************/
+    .fixed-right(@top){
+        position: absolute;
+        right: 0;
+        top : @top;
+        
+        width: 1.34rem;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        border-radius: 0.25rem 0 0 0.25rem;
+
+        background: #FF6F1b;
+        font-size: 12px;
+        text-align: center;
+        color: #FFF;
+    }
+    .fixed-about{
+        .fixed-right(0.48rem);
+    }
+    .fixed-record{
+        .fixed-right(1.47rem);
+    }
+    /********************
+     * 中奖状态
+     * ******************/
+    .result{
+        text-align: center;
+        font-size: 14px;
+        color: #5d5d5d;
+        
+        .line{
+            position: relative;
+            &:after{
+                .setBottomLine(#aeaeae);
+            }
+        }
+
+        .result-code{
+            padding: 0.4rem 0;
+            position: relative;
+            font-size: 16px;
+            span{ 
+                .col-f61;
+                font-size: 30px;
+            }
+        }
+
+        .result-process-wrap{ padding: 0 0.56rem; }
+        .result-process-title{ 
+            height: 1.36rem;
+            padding: 0.65rem 0 0.38rem 0;
+            line-height: 0.33rem;
+            color: #313131; 
+        }
+        .result-process{
+            background-color: #f9e3cc;
+            width: 100%;
+            height: 0.16rem;
+            border-radius: 0.08rem;
+        }
+        .result-process-value{
+            background-color: #ff6f1b;
+            width: 50%;
+            height: 100%;
+            border-radius: 0.08rem;
+        }
+        .result-process-text{
+            padding-top: 0.17rem;
+            padding-bottom: 0.65rem;
+        }
+
+        .result-fail-code{
+            color: #262626;
+            font-size: 18px;
+            height: 1.95rem;
+            line-height: 1.95rem;
+        }
+
+        .result-winer{
+            line-height: 0.5rem;
+            padding-bottom: 0.25rem;
+        }
+        .result-winer-icon{
+            padding-top: 0.5rem;
+            position: relative;
+            img{
+                width: 1.33rem;
+                height: 1.33rem;
+                border: 0.04rem solid #cecece;
+                border-radius: 0.685rem;
+            }
+            span{
+                display: block;
+                position: absolute;
+                top: 0.5rem;
+                left: 50%;
+                margin-left: 0.25rem;
+
+                width: 1.1rem;
+                height: 0.36rem;
+                line-height: 0.36rem;
+                border: 0.18rem;
+                border-radius: 0.18rem;
+                background-color: #ff5613;
+                color: #fff;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.page-3{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    background-image: url(../images/intro-bg-1.jpg);
+    background-size: cover;
+    z-index: 10;
+    top: 0;
+    left: 0;
+
+    .page3-tips{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        color: #FFF;
+        font-size: 16px;
+
+        padding-top: 4.3rem;
+    }
+}
+
+
+/*******************
+*  本期参与
+* *****************/
+.join-null{
+    padding: 0.7rem 0;
+}
+.join-list{
+    li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0.32rem;
+        height: 1.6rem;
+        padding-top: 0.1rem;
+
+        position: relative;
+        &:after{
+            .setBottomLine(#d7d7d7);
+        }
+    }
+
+    .join-icon{
+        width: 1.2rem;
+        text-align: left;
+        img{
+            width: 0.8rem;
+            height: 0.8rem;
+            border: 0.04rem solid #ffd2b8;
+            border-radius: 0.42rem;
+        }
+    }
+        
+    .join-phone{
+        flex-grow: 1;
+        text-align: left;
+        font-size: 14px;
+        color: #000;
+    }
+    .join-current{
+        font-size: 12px;
+    }
+    .join-time{
+        width: 2rem;
+        text-align: right;
+        font-size: 12px;
+        color: #c6c6c6;
+    }
+
+}
+.join-wrap{
+    display: flex;
+    justify-content:space-between;
+    align-items : center;
+
+    width : 100%;
+    height: 0.5rem;
+}
+.join-line{
+    width: 2.57rem;
+    height: 0.2rem;
+    background-image: url(../images/line1.png);
+    background-size: cover;
+}
+.join-text{
+    font-size: 16px;
+    color: #999999;
+}
+
+/**
+ * 分享提示
+ */
+.share-mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 11;
+    text-align: center;
+    background-color: rgba(0,0,0,0.7);
+
+    img{
+        margin: 0 auto;
+        width: 4.91rem;
+        height: 4.01rem;
+    }
+}
+.browser-mask{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.83) url(../images/share-bg.png) right top no-repeat;
+    background-size:7.5rem auto;
+}
+
+
+/**
+ * 记载更多
+ */
+#win-load-more{
+    display: block;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #006dcc;
+    padding: 0;
+    margin: 0;
+
+    &:after{
+        border: none;
+    }
+}
+

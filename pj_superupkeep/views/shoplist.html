@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>请选择服务商家</title>
+    <link rel="stylesheet" href="/pj_superupkeep/public/css/shoplist.css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        // 检查是否支持 webp，并将结果存在 localStorage 里
+        ;(function() {
+            if (!window.localStorage || typeof localStorage !== 'object') return
+            const name = 'webpsupport'
+            if (!localStorage.getItem(name) ||
+                (localStorage.getItem(name) !== 'true' &&
+                localStorage.getItem(name) !== 'false')) {
+                var img = new Image()
+                img.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=='
+                img.onload = function() {
+                    localStorage.setItem(name, 'true')
+                }
+                img.onerror = function() {
+                    localStorage.setItem(name, 'false')
+                }
+            }
+        }())
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+        iswechat: {{ iswechat }},
+        // for share
+        shareUrl: '{{shareUrl}}',
+            shareContent: '{{shareContent}}',
+            shareTitle: '{{shareTitle}}',
+            shareSubTitle: '{{shareSubTitle}}',
+            shareImgUrl: 'https://store.ddyc.com/res/xkcdn/icons/share/icon_superupkeep.png'
+        }
+        //获取浏览器参数
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var _vds = _vds || [];
+        window._vds = _vds;
+        ;(function() {
+            _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+            if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                _vds.push(['setPageGroup', 'activvityHongbaoPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+                _vds.push(['setPS1', '5月保养']);
+                _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+            }
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        })();
+    </script>
+</head>
+<body>
+<div class="top-tips">点击选择服务商家，所选门店将为您准备机油商品<br>门店一经选择无法更换</div>
+<div class="wrap" id="wrap"></div>
+<div class="more" id="more">加载更多</div>
+
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_superupkeep/public/js/shoplist.js"></script>
+    
+</body>
+</html>

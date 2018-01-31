@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>拼手气红包</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_luckpacket/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: '{{ isapp }}' === 'true',
+            iswechat: '{{ iswechat }}' === 'true',
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '{{ commodityName }}',
+            // for share
+            shareUrl: '{{ shareData.shareUrl }}',
+            shareTitle: '{{ shareData.shareTitle }}',
+            shareContent: '{{ shareData.shareContent }}',
+            shareSubTitle: '{{ shareData.shareSubTitle }}',
+            shareImgUrl: '{{ shareData.shareImgUrl }}',
+
+            islogin: '{{ islogin }}' === 'true',
+            status: '{{ mine.status }}' - 0
+        }
+
+    </script>
+</head>
+
+<body>
+  <div class="container" id="bodyContainer">
+        <div class="name-box">
+            <ul>
+                <li><img src="//store.ddyc.com/res/xkcdn/icons/default/logo.png"/></li>
+                <li>{{shopName}}</li>
+            </ul>
+        </div>
+        <div class="block pd40" id="mine_block" {% if !islogin %}style="display:none"{% endif %}>
+            {% if mine.over %}
+            <div class="over">{{ mine.overTxt }}</div>
+            {% endif %}
+            {% if !mine.over %}
+            <ul class="packet-list">
+                <li>
+                    {% if mine.isOptimum %}<span class="must-tag">最佳</span>{% endif %}
+                    <div class="inner">
+                        <div class="money"><span>{{ mine.price }}</span></div>
+                        <div class="info">
+                            <p>{{mine.commodityName}}</p>
+                            <p>{{mine.limitRuleDesc}}</p>
+                            <p>有效期至：{{mine.expireTimeStr}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            {% endif %}
+            <p class="update-line mt20"><span>当前帐号：{{mine.userPhone}}</span> <a href="update">修改 ></a></p>
+            {% if !mine.over %}
+            <a href="https://m.ddyc.com/feopen/base/scheme?scheme=com.xk.ddyc%3A%2F%2Fwallet%2FcouponAndRedPacket" class="opt-btn mt20" id="go_use">立即使用</a>
+            {% endif %}
+        </div>
+
+        <div class="block mt30">
+            <div class="input-box" id="login_block" {% if islogin %}style="display:none"{% endif %}>
+                <input type="tel" class="input" maxlength="11"  id="phone" placeholder="点此输入手机号"/>
+                <a href="javascript:;" class="opt-btn mt20" id="login_btn">点击领取</a>
+            </div>
+            <div class="list" id="list_block" {% if !islogin %}style="display:none"{% endif %}>
+                <div class="title"><span>看看朋友们的手气</span></div>
+                <ul>
+                    {% for item in list %}
+                    <li>
+                        <div class="avatar">
+                            <img src="{{item.headImgUrl}}"/>
+                        </div>
+                        <div class="name">
+                            <p>{{item.headTitle}}</p>
+                            <p>{{item.reveiceTimeStr}}</p>
+                        </div>
+                        <div class="info">
+                            <p>{% if item.isOptimum %} <span class="scolor">手气最佳</span> {% endif %}<span class="money">￥{{item.price}}</span></p>
+                            <p>{{item.commodityName}}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% if !isOptimum %}<p class="optimum">最佳手气还未出现，稍后揭晓~</p>{% endif %}
+            </div>
+            <div class="rules mt54">
+                <div class="title"><span>活动规则</span></div>
+                <div class="desc">
+                    {% autoescape false %}
+                        {{ shareRuleDesc }}
+                    {% endautoescape %}
+                    <!-- <p>1.购买期间，选择合适的保养套餐，支付定金即可获得超额抵扣券</p>
+                    <p>2.到店支付尾款后即可获赠相应套餐专属大礼包所包含的免费服务券会在支付尾款成功后即刻发放到您的【红包/券】账户</p>
+                    <p>3.您支付的定金后获取的超额抵扣券会以保养券的方式发放到您的【红包/券】账户，到店支付时自动抵扣</p>
+                    <p>4.您可以打开APP【我的-红包/券】页面查看相关优惠券</p> -->
+                </div>
+            </div>
+        </div>
+  </div>
+  
+  {% raw %}
+  <script id="mine_tpl" type="type/template">
+    {{ if mine.over }}
+    <div class="over">{{ mine.overTxt }}</div>
+    {{ endif }}
+    {{ if !mine.over }}
+    <ul class="packet-list">
+        <li>
+            {{ if mine.isOptimum }}<span class="must-tag">最佳</span>{{ endif }}
+            <div class="inner">
+                <div class="money"><span>{{ mine.price }}</span></div>
+                <div class="info">
+                    <p>{{ mine.commodityName }}</p>
+                    <p>{{ mine.limitRuleDesc }}</p>
+                    <p>{{ mine.expireTimeStr }}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    {{ endif }}
+    <p class="update-line mt20"><span>当前帐号：{{ mine.userPhone }}</span> <a href="update">修改 ></a></p>
+    {{ if !mine.over }}
+    <a href="https://m.ddyc.com/feopen/base/scheme?scheme=com.xk.ddyc%3A%2F%2Fwallet%2FcouponAndRedPacket" class="opt-btn mt20" id="go_use">立即使用</a>
+    {{ endif }}
+  </script>
+
+  <script id="list_tpl" type="type/template">
+    <div class="title"><span>看看朋友们的手气</span></div>
+    <ul>
+        {{ each list as item }}
+        <li>
+            <div class="avatar">
+                <img src="{{ item.headImgUrl }}"/>
+            </div>
+            <div class="name">
+                <p>{{ item.headTitle }}</p>
+                <p>{{ item.reveiceTimeStr }}</p>
+            </div>
+            <div class="info">
+                <p>{{ if item.isOptimum }} <span class="scolor">手气最佳</span> {{ endif }}<span class="money">￥{{ item.price }}</span></p>
+                <p>{{ item.commodityName }}</p>
+            </div>
+        </li>
+        {{ endeach }}
+    </ul>
+    {{ if !isOptimum }}<p class="optimum">最佳手气还未出现，稍后揭晓~</p>{{ endif }}
+  </script>
+  {% endraw %}
+
+  {% if iswechat %}
+  <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  {% endif %}
+  <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+  <script src="/pj_luckpacket/public/js/index.js"></script>
+</body>
+</html>

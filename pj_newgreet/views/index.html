@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>养车服务，免费体验</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_newgreet/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            openId:'{{ openId }}',
+            // for share
+            shareUrl: '{{ shareData.shareUrl }}',
+            shareTitle: '{{ shareData.shareTitle }}',
+            shareContent: '{{ shareData.shareContent }}',
+            shareSubTitle: '{{ shareData.shareSubTitle }}',
+            shareImgUrl: 'https://store.ddyc.com/res/xkcdn/images/newgreet/shareicon.jpg'
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="logo"></div>
+<div class="content">
+    <div class="sale"></div>
+    <div class="main">
+        <div class="phone">
+            <input id="phoneText" type="tel" maxlength="11" placeholder="请输入手机号码">
+        </div>
+        <div class="code">
+            <input id="codeText" class="code-text" type="text" maxlength="10" placeholder="输入验证码">
+            <div id="getCode" class="btn">获取验证码</div>
+            <div id="codeTips" class="btn btn-sec"><span>60</span>秒后重新获取</div>
+        </div>
+        <div id="getBtn" class="get-btn">免费领取</div>
+    </div>
+    <div class="explain">
+        <h3>活动说明</h3>
+        <p>1、vip卡仅限非典典养车用户领取，每位新用户限领一次</p>
+        <p>2、vip卡自领取后30天内有效，请领取后尽快登陆典典app使用</p>
+        <p>3、领取后下载并登陆典典养车app，进入【年卡】页面自动升级
+            为vip及相关权益；</p>
+        <p>4、如有疑问 ， 请进入典典养车APP【我的】  ， 点击右上角
+            【在线客服】咨询</p>
+    </div>
+</div>
+
+<div class="share-mask"></div>
+
+<div class="tips tips-1">
+    <div class="tip-main">
+        <div class="tips-close">&times;</div>
+        <div class="tips-vip">
+            <img src="/pj_newgreet/public/img/vip.png" alt="">
+        </div>
+        <div class="tips-title">您已领取成功！</div>
+        <div class="tips-con">VIP 卡放至您的账号 <span id="tipsPhone"></span>登录 APP 即可使用</div>
+        <div class="tips-btn"><a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.chediandian.customer&g_f=995720">立即使用</a></div>
+        {% if iswechat %}
+        <div class="tips-weichat share-wx">喊好友来领取>></div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="tips tips-2">
+    <div class="tip-main">
+        <div class="tips-close">&times;</div>
+        <div class="tips-people">
+            <img src="" data-img1="/pj_newgreet/public/img/people1.png" data-img2="/pj_newgreet/public/img/people2.png" alt="">
+        </div>
+        <div class="tips-subtitle"></div>
+        {% if iswechat %}
+        <div class="tips-btn share-wx">喊好友来领</div>
+        {% endif %}
+    </div>
+</div>
+
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_newgreet/public/js/index.js"></script>
+</body>
+</html>

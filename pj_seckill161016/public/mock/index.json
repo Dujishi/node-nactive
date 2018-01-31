@@ -1,0 +1,11 @@
+{
+    "success": true,
+    "code": "-1",
+    "data": {
+        "timestamp": "1476848160562",
+        "qualified": false,
+        "phone": "10112341111",
+        "product": "iPhone 7",
+        "status": 0
+    }
+}

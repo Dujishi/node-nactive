@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>预约购车</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_newcar/public/css/booking.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /* global CONFIG */
+        window.CONF = {
+            isapp: {{ isapp }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            iswechat: '{{iswechat}}',
+            openid: '{{ openid }}',
+
+            // shareconfig
+            activeName: '典典新车团',
+            shareUrl: '{{ shareUrl }}',
+            shareContent: '{{ shareContent }}',
+            shareTitle: '{{ shareTitle }}',
+            shareSubTitle: '{{ shareContent }}',
+            shareImgUrl: '{{ shareIcon }}',
+
+            urlAbout: '{{ urlAbout }}'
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]);
+                return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                    _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                    _vds.push(['setPS1', '典典新车团']);
+                    _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+
+            {% if iswechat %}
+            _ax.push(['set', 'source', 'wechat']);
+            _ax.push(['set', 'openid', CONF.openid]); 
+            {% endif %} 
+            {% if isapp %}
+            _ax.push(['set', 'source', 'app']); 
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+
+    </script>
+</head>
+<body>
+    <div class="booking-wrap">
+        <div class="booking">
+        <div class="car" id="carBox">
+            
+        </div>
+        <div class="info">
+            <div class="tips">越早预约越有希望抢到心仪车辆</div>
+            <div class="content" id="infoBox">
+                <div class="item name">
+                    <span>姓名</span>
+                    <input type="text" id="bookName" placeholder="请输入姓名" maxlength="7">
+                    <p>请输入正确的姓名</p>
+                </div>
+                <div class="item tel">
+                    <span>手机号码</span>
+                    <input type="tel" id="bookTel" placeholder="请输入手机号码" maxlength="11">
+                    <p>请输入正确的手机号码</p>
+                </div>
+                <div class="item city" id="bookDesWrap">
+                    <span>所在城市</span>
+                    <input type="text" id="bookDes" placeholder="请选择城市" readonly="readonly">
+                    <p>请选择您的城市</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="bar-btn disabled">确认预约</div>
+    </div>
+    </div>
+    
+    
+    <div class="success">
+        <div class="icon"></div>
+        <div class="title">预约成功</div>
+        <div class="text">
+            预约截止后，典典会在该车型所剩的未被锁定(未付订金)车辆中，按照预约顺序跟您电话确定是否抢购成功，请保持电话畅通。
+        </div>
+        <a class="btn" id="successBtn" href="/nactive/newcar/contract" >付订金，立即锁定车辆</a>
+    </div>
+
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_newcar/public/js/booking.js"></script>
+
+    {%raw%}
+<script type = "text/template" id="car_info">
+    <div class="img" style="background-image:url('{{ data.commodity_imgs }}')"></div>
+    <div class="text">
+        <div class="text-title">{{ data.commodity_name }}</div>
+        <div class="text-price">
+            <span>典典秒杀价</span>
+            <span class="num">￥{{ data.seckill_price }}</span>
+        </div>
+    </div>
+</script>
+    {%endraw%}
+
+</body>
+</html>

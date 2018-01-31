@@ -1,0 +1,44 @@
+.map-box-page{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.map-header-page{
+  height: 1rem;
+  background: #fff;
+  font-size: .3rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  .back{
+    position: absolute;
+    font-style: normal;
+    margin-left: .1rem;
+    color: #0068dc;
+    top: 28%;
+    &:before{
+      content: '<';
+    }
+  }
+  h1{
+    flex: 1;
+    text-align: center;
+    font-weight: normal;
+    font-size: .3rem;
+  }
+}
+.map-box{
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+}
+.map-container{
+
+}

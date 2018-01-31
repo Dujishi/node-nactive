@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" href="/pj_storelist/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+    </script>
+    <script>
+        /**CONFIG**/
+        window.CONF = {
+            debug: false,
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '典典养车连锁店',
+            shareContent: '向你推荐典典养车汽车服务连锁店，快来体验吧！',
+            shareSubTitle: '向你推荐典典养车汽车服务连锁店，快来体验吧！',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_storelist.png',
+
+            jsApiList: ['openLocation'],
+
+            notLocation: true
+        }
+
+        //获取浏览器参数
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        var _vds = _vds || [];
+        window._vds = _vds;
+        ;(function() {
+            _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+            if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                _vds.push(['setPageGroup', 'activvityHongbaoPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+                _vds.push(['setPS1', '5月保养']);
+                _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+            }
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        })();
+    </script>
+</head>
+
+<body ontouchstart>
+
+   <div class="all-stores">
+        <ul class="store-list">
+
+        </ul>
+
+        <a id="more" href="javascript:;" style="display: none;">加载更多</a>
+
+        <img src="//store.ddyc.com/res/xkcdn/icons/loading/loading.gif" class="loading" id="loading">
+    </div>
+
+    <div class="empty">
+        <div class="empty-img"></div>
+        <div class="empty-text">没有发现门店哦~</div>
+    </div>
+
+    <!--通用-->
+    {% raw %}
+    <script id="common_tpl" type="type/template">
+    {{ each data as item }}
+    <li data-careshopid="{{ item.careShopId }}">
+        <img class="lazyload" data-original="{{ item.avatar }}">
+        <div class="bd">
+            {{ if !isapp }}
+            <span class="dh" data-name="{{ item.careShopName }}" data-address="{{ item.address || '' }}" data-lat="{{ item.latitude }}" data-lng="{{item.longitude}}">导航 &gt;</span>
+            {{ endif }}
+            <h3>{{ item.careShopName }}</h3>
+            <p class="address">{{ item.address }}</p>
+            <p>{{ item.distance }}km</p>
+        </div>
+    </li>
+    {{ endeach }}
+    </script>
+
+    <script id="rb_tpl" type="type/template">
+    {{ each data as item }}
+    <li data-careshopid="{{ item.careShopId }}">
+        <img class="lazyload" data-original="{{ item.avatar }}">
+        <div class="bd">
+            {{ if !isapp }}
+            <span class="dh rb" data-name="{{ item.careShopName }}" data-address="{{ item.address || '' }}" data-lat="{{ item.latitude }}" data-lng="{{item.longitude}}">导航 &gt;</span>
+            {{ endif }}
+            <h3>{{ item.careShopName }}</h3>
+            <p class="address">{{ item.address }}</p>
+            <p><span class="tel"><span style="color:#323232;">电话：</span><a href="tel:{{item.contactPhone}}">{{item.contactPhone}}</a></span> <span class="distance">{{ item.distance }}km</span></p>
+        </div>
+    </li>
+    {{endeach}}
+    </script>
+    {% endraw %}
+
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% else %}
+    <script src="//webapi.amap.com/maps?v=1.4.0&key=fbdfb337e8b6f9a60713900a4c5aac63"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+    <script src="/pj_storelist/public/js/index.js" async></script>
+</body>
+
+</html>

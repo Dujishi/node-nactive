@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>填写信息</title>
+
+    <link rel="stylesheet" href="/pj_drive/public/css/insure.css" type="text/css" >
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}',
+
+            uriIndex      : '{{ uriIndex }}',
+            uriSignup     : '{{ uriSignup }}',
+            uriDetail     : '{{ uriDetail }}',
+            uriProxy      : '{{ uriProxy  }}',
+            uriInsure     : '{{ uriInsure }}'
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '车友汇']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+            {% if iswechat %}
+                _ax.push(['set', 'source', 'wechat']);
+                _ax.push(['set', 'openid', CONF.openid]);
+            {% endif %}
+            {% if isapp %}
+                _ax.push(['set', 'source', 'app']);
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+
+<div class="container hide">
+    <div class="tips">
+            <i class="icon-broadcast"></i>
+            免费领取保险截止时间为{{ inend }}
+        </div>
+    <div class="content">   
+        <div class="content-text">为保证顺利投保，请务必提供你的真实信息</div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-btn cl-f f16" >确认领取</div>
+        </div>
+    </footer>
+    
+</div>
+<script type="text/template" id="tpl_input">
+    <div class="win-box">
+        <div class="win-item">
+            <div class="win-label fl cl-8 f14">被保人姓名</div>
+            <div class="win-value fr f16">
+                <input type="text" class="win-input" 
+                        name="name"
+                        placeholder="与身份证需一致" 
+                        data-validtype="empty" 
+                        data-errmsg="姓名不能为空">
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="win-item">
+            <div class="win-label fl cl-8 f14">身份证号码</div>
+            <div class="win-value fr">
+                <input type="text" class="win-input" 
+                        name="id"
+                        placeholder="用于购险" 
+                        data-validtype="id" 
+                        maxlength="18"
+                        data-errmsg="请填写正确的身份证号码"
+                        data-emptymsg="身份证号码不能为空"
+                        data-repeat="T"
+                        data-repeat-errmsg="身份证号码重复"
+                        data-group="id">
+            </div>
+        </div>
+    </div>
+</script>
+</body>
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_drive/public/js/insure.js"></script>
+</html>

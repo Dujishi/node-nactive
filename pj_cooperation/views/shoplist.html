@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>合作商户列表</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_cooperation/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            };
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        window.CONF = {
+            isapp: '{{ isapp }}'  == 'true',
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            iswechat: '{{iswechat}}' == 'true',
+            // shareconfig
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '{{shareTitle}}',
+            shareContent: '{{shareContent}}',
+            shareSubTitle: '{{shareContent}}',
+            shareImgUrl: '{{shareIcon}}',
+            jsApiList: ['openLocation', 'hideAllNonBaseMenuItem', 'hideOptionMenu'],
+            notLocation: true
+        }
+    </script>
+</head>
+<body>
+    <section class="">
+        <div class="shop-tips">服务前将兑换码出示给店员即可免费享受服务</div>
+        <nav class="shop-nav" id="shopNav">
+            {% for shop in shopList %}
+            <div class="shop-item">
+                <div class="shop-item-content">
+                    <h3>{{shop.name}}<span class="judge">{{shop.goodReputation}}好评</span></h3>
+                    <div>
+                        <span>{{shop.distance}}</span>
+                        <address>{{shop.address}}</address>
+                    </div>
+                </div>
+                <div class="shop-item-map">
+                    <a href="tel://{{shop.contactPhone}}" class="icon icon-tel"></a>
+                    <a href="javascript:void (0)"
+                       data-lat="{{shop.lat}}"
+                       data-lng="{{shop.lng}}"
+                       data-name="{{shop.name}}"
+                       data-address="{{shop.address}}"
+                       class="icon icon-address"></a>
+                </div>
+            </div>
+            {% endfor %}
+        </nav>
+    </section>
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% else %}
+    <script src="//webapi.amap.com/maps?v=1.3&key=fbdfb337e8b6f9a60713900a4c5aac63"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_cooperation/public/js/shopList.js"></script>
+</body>
+</html>

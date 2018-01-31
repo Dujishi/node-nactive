@@ -1,0 +1,540 @@
+@import url('@ui/base-less/index');
+@import url('./module/base');
+
+@sLheight:2.39rem;
+@color-warn: #FF6600;
+@background:#5e15e6;
+@time-down-height:0.9rem;
+
+body{
+    background: @background;
+}
+
+.container{
+    background: @background;
+    position: relative;
+    min-height: 100%;
+    padding: 0 0 0.3rem 0;
+
+    .scene{
+        position: absolute;
+        left:0;
+        top:0;
+        width: 100%;
+        height: 7.86rem;
+        display: block;
+        padding: 0;
+        margin: 0;
+        z-index: 1;
+
+        .layer{
+            overflow: hidden;
+            height: 7.86rem;
+            display: block;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            width: 100%;
+
+            &:first-child{
+                width: auto;
+            }
+        }
+
+        .background{
+            background: url(/pj_nationactivity/public/images/pre/page_bg_tp.jpg) no-repeat center 0.69rem;
+            width: 110%;
+            height: 110%;
+            background-size: cover;
+            position: absolute;
+            left: -5%;
+            top: -5%;
+            z-index: 1;
+        }
+
+        .img1{
+            display: block;
+            width: 1.92rem;
+            height: 2.06rem;
+            background: url(/pj_nationactivity/public/images/pre/page_img_3.png) no-repeat center top;
+            background-size: 100% 100%;
+            top:2.95rem;
+            left:0.30rem;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .img2{
+            display: block;
+            width: 0.85rem;
+            height: 1.45rem;
+            background: url(/pj_nationactivity/public/images/pre/page_img_2.png) no-repeat center top;
+            background-size: 100% 100%;
+            top:2.52rem;
+            left:6.05rem;
+            position: absolute;
+            z-index: 2
+        }
+
+        .img3{
+            display: block;
+            width: 4.72rem;
+            height: 2.43rem;
+            background: url(/pj_nationactivity/public/images/pre/page_img_4.png) no-repeat center top;
+            background-size: 100% 100%;
+            top:1.43rem;
+            left:1.32rem;
+            position: absolute;
+            z-index: 11;
+        }
+    }
+
+    .content{
+        position: relative;
+        z-index: 9;
+        padding: 4.09rem 0 0 0;
+
+        .time-bar{
+            height: 0.69rem;
+            background: url(/pj_nationactivity/public/images/page_img_1.jpg) no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            left:0;
+            top:0;
+            z-index: 99;
+            width: 100%;
+
+            .inner{
+                margin:  0 0 0 1.29rem;
+                color: #fff;
+                display: flex;
+                font-size: 0.20rem;
+                align-items: center;
+                height: 100%;
+
+                .time{
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 0.24rem 0 0;
+                    width: 1rem;
+
+                    &:first-child{
+                        width: 0.8rem;
+                    }
+                }
+
+                .text{
+                    line-height: 0.30rem;
+
+                    span{
+                        font-weight: 600;
+                    }
+                }
+
+                .time-line{
+                    width: 0.01rem;
+                    height: 0.39rem;
+                    border-left:1px solid #fff;
+                    transform: rotate(10deg);
+                    margin: 0 0.22rem;
+                }
+            }
+        }
+
+        .slogo{
+            width: 1.12rem;
+            height: 1.12rem;
+            position: absolute;
+            left:0;
+            top:0;
+            background: url(/pj_nationactivity/public/images/page_img_2.png) no-repeat;
+            background-size: 100% 100%;
+            z-index: 101;
+        }
+
+        .b-box{
+            width: 7.06rem;
+            height: 2.95rem;
+            background: url(/pj_nationactivity/public/images/pre/page_img_1.png) no-repeat;
+            background-size: 100% 100%;
+            margin: 0 auto;
+            position: relative;
+
+            .btn{
+                width: 1.16rem;
+                height: 1.16rem;
+                border-radius: 1.14rem;
+                background: none;
+                display: block;
+                position: absolute;
+                right: 0.42rem;
+                bottom: 0.51rem;
+                                
+                span{
+                    display: block;
+                    height: 100%;
+                    width:100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &.btn-selected{
+                    background: #7a1bf0;
+                    font-size: 0.26rem;
+                    line-height: 0.30rem;
+                    color: #ffd444;
+                }
+            }
+
+            .text-box{
+                position: absolute;
+                color: #fff;
+                top:1.14rem;
+                left:2.21rem;
+                text-shadow: 0 1px 5px #5919e7;
+
+                p{
+                    &:first-child{
+                        font-size: 0.4rem;
+                        .ellipsis(3.01rem);
+                    }
+                    &:nth-child(2){
+                        display: flex;
+
+                        span{
+                            display: block;
+                        }
+                        .pr{
+                            font-size: 0.88rem;
+                            line-height: 0.8rem;
+                            margin: 0 0.12rem 0 0;
+                        }
+                        .pr-tx{
+                            font-size: 0.28rem;
+                            line-height: 0.42rem;
+
+                            span{
+                                display: block;
+
+                                &:nth-child(2){
+                                    text-decoration: line-through;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        .b-num{
+            margin: 0 0 0.48rem 0;
+            color:rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .s-container{
+            margin: 0 0.4rem;
+
+            .sheader{
+                margin: .37rem .14rem;
+                position: relative;
+                text-align: center;
+                height: 0.2rem;
+                background: url(/pj_nationactivity/public/images/page_img_9.png) repeat-x left top;
+                background-size: auto 100%;
+                
+                span{
+                    background: @background;
+                    padding: 0 .22rem;
+                    color: #fff000;
+                    position: relative;
+                    z-index: 9;
+                    font-weight: 700;
+                    top: -.12rem;
+                    left: -.08rem;
+                    text-transform: uppercase;
+                    font-size: .3rem;
+                }
+
+                &.mr0{
+                    margin-top: 0;
+                }
+
+                &.theader{
+                    background: url(/pj_nationactivity/public/images/page_img_13.png) repeat-x left top;
+                    background-size: auto 100%;
+
+                    span{
+                        color: #fff;
+                    }
+                }
+
+            }
+
+            .p-list-box{
+
+                li{
+                    background: #fff;
+                    border-radius: 0.08rem;
+                    padding: 0.2rem;
+                    margin: 0 0 0.4rem 0;
+                    position: relative;
+                    
+                    .tag{
+                        position: absolute;
+                        width: 0.85rem;
+                        height: 1.12rem;
+                        background: url(/pj_nationactivity/public/images/page_img_10.png) no-repeat;
+                        background-size: 100% 100%;
+                        left:0.23rem;
+                        top:-0.10rem;
+                        z-index: 9;
+                        display: block; 
+                    }
+
+                    .img-box{
+                        display: flex;
+
+                        .img-s{
+                            width: 2.75rem;
+                            position: relative;
+                            font-size: 0;
+                            background: #e4e3e3;
+
+                            img{
+                                width: 100%;
+                            }
+
+                            .name{
+                                position: absolute;
+                                width: 100%;
+                                background: rgba(0, 0, 0, 0.5);
+                                color:#fff;
+                                font-size: 0.28rem;
+                                padding: 0.05rem 0;
+                                left:0;
+                                bottom:0;
+
+                                span{
+                                    display: block;
+                                    margin: 0 0 0 0.1rem;
+                                }
+                            }
+                        }
+                        .img-line{
+                            width: 0.8rem;
+                            background: url(/pj_nationactivity/public/images/page_img_6.png) no-repeat center center;
+                            background-size: 50% auto;
+                            height: 2.30rem;
+                        }
+                    }
+                    
+
+                    .text-box{
+                        display: flex;
+                        margin: .38rem 0 0.1rem;
+                        justify-content: flex-end;
+                        
+                        
+                        .num{
+                            color: #999999;
+                            line-height: 0.34rem;
+                        }
+
+                        .price{
+                            display: flex;
+                            align-self: flex-end;
+                            margin: 0 0.92rem 0 0 ;
+
+                            span{
+                                display: block;
+                                color: #fd1e21;
+
+                                &:first-child{
+                                    text-align: right;
+                                    line-height: 0.28rem;
+                                }
+
+                                &:nth-child(2){
+                                    align-self: flex-end;
+                                    margin: 0 0.04rem;
+                                }
+
+                                &:nth-child(3){
+                                    align-self: flex-end;
+                                    font-size: 0.64rem;
+                                    line-height: 0.58rem;
+                                    transform:scaleX(0.9);
+                                }
+                                &:nth-child(4){
+                                    align-self: flex-end;
+                                    margin: 0 0 0 0.04rem;
+                                    font-size: 0.2rem;
+                                }
+                            }
+                        }
+                    }
+
+                    .btn{
+                        width: 0.91rem;
+                        height: 0.91rem;
+                        border-radius: 0.91rem;
+                        background: #999999;
+                        color: #fff;
+                        display: block;
+                        position: absolute;
+                        right:0.15rem;
+                        bottom:0.15rem;
+                        text-align: center;
+                        
+                        span{
+                            display: block;
+                            height: 100%;
+                            width:100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        &.btn-init{
+                            
+                            span{
+                                font-size: 0.4rem;
+                            }
+                        }
+
+                        &.btn-selected{
+                            background: #999999;
+                            font-size: 0.26rem;
+                            line-height: 0.30rem;
+                        }
+                    }
+                    
+                }
+            }
+
+            .s-list{
+
+                li{
+                    .img-box{
+
+                        .img-line{
+                            background: url(/pj_nationactivity/public/images/page_img_12.png) no-repeat center center;
+                            background-size: 50% auto;
+                        }
+
+                        .img-s{
+
+                            .sname{
+
+                                span{
+
+                                    &:first-child{
+                                        .ellipsis(2.51rem);
+                                    }
+                                    &:nth-child(2){
+                                        float: left;
+                                        margin: 0 0 0 0.1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .tag{
+                        background: url(/pj_nationactivity/public/images/page_img_11.png) no-repeat;
+                        background-size: 100% 100%;
+                    }
+                    
+                }
+            }
+
+            .footer{
+                margin: 0.4rem 0 0 0;
+                padding: 0 0 1.03rem 0;
+
+                a{
+                    display: block;
+                    width: 4.99rem;
+                    background: #ffcd2b;
+                    color:#5a10e3;
+                    text-align: center;
+                    line-height: 0.8rem;
+                    border-radius: 0.8rem;
+                    margin: 0 auto;
+                }
+            }
+
+        }
+
+        .time-down{
+            height: @time-down-height;
+            background: #eec615;
+            position: fixed;
+            left:0;
+            bottom:0;
+            width:100%;
+            z-index: 999;
+
+            .inner{
+                margin: 0 0.4rem;
+                height: @time-down-height;
+                background: #ffde27;
+                display: flex;
+                color: #6020d7;
+            }
+
+
+            .l-label{
+                font-size: 0.3rem;
+                line-height: 0.4rem;
+                margin: 0.06rem 0 0 0.1rem;
+            }
+
+            .time-line{
+                margin: 0.24rem 0.2rem 0;
+                border:1px solid #6020d7;
+                height: 0.49rem;
+                width: 1px;
+
+                &:after{
+                    content: ' ';
+                    display: block;
+                    .setArrow(right,0.08rem,#6020d7);
+                    position: absolute;
+                    top: 0.39rem;
+                }
+            }
+
+            .time-num{
+                margin: 0.14rem 0 0 0;
+                display: flex;
+
+                .num{    
+                    font-size: 0.85rem;
+                    line-height: 0.68rem;
+                    letter-spacing: -0.08rem;
+                    font-family: 'arial';
+                    display: flex;
+                    transform:scaleX(0.9);
+                }
+
+                .num-txt{
+                    color: #c95a00;
+                    display: flex;
+                    font-size: 0.26rem;
+                    align-items: flex-end;
+                    margin: 0 0.1rem 0 0.04rem;
+                    position: relative;
+                    top:-0.05rem;
+                }
+
+            }
+        }
+        
+    }
+    
+
+}
+

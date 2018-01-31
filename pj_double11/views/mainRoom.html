@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>11.11爆款返场</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_double11/public/css/main.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: '{{ isapp }}' === 'true',
+            iswechat: '{{ iswechat }}' === 'true',
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+
+            // for share
+            shareUrl: '{{ shareData.shareUrl }}',
+            shareTitle: '{{ shareData.shareTitle }}',
+            shareContent: '{{ shareData.shareContent }}',
+            shareSubTitle: '{{ shareData.shareSubTitle }}',
+            shareImgUrl: '{{ shareData.shareImgUrl }}',
+
+            activityId:'{{ activityId }}',
+            waxIds: JSON.parse('[{{ waxIds }}]'),
+            oilIds: JSON.parse('[{{ oilIds }}]')
+        }
+
+    </script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <a class="tip active-rule">活动规则</a>
+    </header>
+
+    <section>
+      <!-- {% if washStatus === 'washEnd' %}
+      <a class="wash-end">
+        <div class="time">
+          洗车活动已结束
+        </div>
+      </a>
+      {% else %}
+      <a class="go-wash">
+        <div class="time">
+           距离活动结束时间<span class="time-text"></span>
+        </div>
+      </a>
+      {% endif%} -->
+
+      <div class="wash-sku wax-block">
+        <img src="/pj_double11/public/images/main/title1.png" class="title">
+
+      </div>
+
+      <div class="wash-sku oil-block">
+        <img src="/pj_double11/public/images/main/title2.png" class="title">
+
+      </div>
+    </section>
+
+  </div>
+
+  <div class="main-dialog">
+
+    <div class="content">
+             <span class="close">×</span>
+
+
+             <p class="title">返场美容活动规则:</p>
+             <p>1.活动时间：2017年11月13月0点-11月17日24点</p>
+             <p>2.用户在活动页面购买指定商家的漆面去污增亮打蜡（含洗车）+15元全国通用洗车红包，15元全国通用红包立即到账</p>
+             <p>3.用户支付完成后，典典养车平台会将美容产品发货到指定门店，门店收到货后将以短信的形式通知用户到指定门店享受漆面去污增亮打蜡服务（含洗车）</p>
+             <p>4.用户可从“典典养车APP-我的-红包/券”查看和使用15元洗车红包，有效期：自购买日起截止2017年11月30日24点，逾期作废</p>
+             <p>5.洗车红包不限门店使用</p>
+             <p>6.活动商品不可与其他活动优惠叠加</p>
+             <p>7.活动商品及服务原则上不支持退款</p>
+
+             <p class="title">返场保养活动规则:</p>
+             <p>1.活动时间：2017年11月13月0点-11月17日24点</p>
+             <p>2.用户在活动页面购买指定商家的机油保养套餐</p>
+             <p>3.用户支付完成后，典典养车平台会将保养产品发货到指定门店，门店收到货后将以短信的形式通知用户到指定门店享受指定保养服务</p>
+             <p>4.活动商品不可与其他活动优惠叠加</p>
+             <p>5.活动商品及服务原则上不支持退款</p>
+    </div>
+  </div>
+
+  {% raw %}
+    <script id="wax_tpl"  type="type/template">
+      {{each waxData as item}}
+        <div class="sku-info">
+          <div class="fl sku-img button"  data-code="{{ item.commodityCode }}" data-shopid="{{item.shopId}}" data-lv1="3">
+            <p>送15元洗车通用红包</p>
+          </div>
+          <div class="fl sku-price">
+            <div class="price">
+              <p class="sku-name  button" data-code="{{ item.commodityCode }}" data-shopid="{{item.shopId}}" data-lv1="3">{{item.commodityName}}</p>
+              <p class="sku-include">含洗车</p>
+              <p class="sku-sold">已预订{{item.orderSaleNum}}单</p>
+            </div>
+
+          <div class="button-box">
+            <p class="price-info">
+              现价：<span class="now-price">{{item.price}}</span><span class="origin-price">{{item.origPrice}}</span>
+            </p>
+            <button class='pay-btn' type="button" data-shopid="{{ item.shopId }}" data-code="{{ item.commodityCode }}" data-item="{{ item.commodityItems }}">
+              立即购买
+            </button>
+          </div>
+         </div>
+        </div>
+      {{endeach}}
+    </script>
+  {% endraw %}
+
+   {% raw %}
+     <script id="oil_tpl"  type="type/template">
+       {{each oilData as item}}
+         <div class="sku-info">
+
+          <div class="fl">
+            <img class='good-img  button'  data-code="{{ item.commodityCode }}" data-shopid="{{item.shopId}}" data-lv1="2" src="{{item.commodityImgUrl}}" />
+          </div>
+           <div class="fl sku-price">
+             <div class="price">
+               <p class="sku-name  button"  data-code="{{ item.commodityCode }}" data-shopid="{{item.shopId}}" data-lv1="2">{{item.commodityName}}</p>
+               <p class="sku-include">含机油、机滤、工时费</p>
+               <p class="sku-sold">已预订{{item.orderSaleNum}}单</p>
+            </div>
+
+           <div class="button-box">
+             <p class="price-info">
+               现价：<span class="now-price">{{item.price}}</span><span class="origin-price">{{item.origPrice}}</span>
+             </p>
+             <button class='pay-btn' type="button" data-shopid="{{ item.shopId }}" data-code="{{ item.commodityCode }}" data-item="{{ item.commodityItems }}">
+               立即购买
+             </button>
+           </div>
+          </div>
+         </div>
+       {{endeach}}
+     </script>
+   {% endraw %}
+
+  {% if iswechat %}
+  <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  {% endif %}
+  <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+  <script src="/pj_double11/public/js/main.js"></script>
+</body>
+</html>

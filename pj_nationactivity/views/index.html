@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>1119典典连锁周年庆</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="https://store.ddyc.com" />
+
+    <link rel="stylesheet" href="/pj_nationactivity/public/css/index.css" type="text/css" >
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }}, 
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+            payUrl    : '{{ payUrl }}',
+
+            indexUrl  : '{{ shareUrl }}',
+            
+            activeName : document.title,
+            
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}'
+        }
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+            var _vds = _vds || [];
+            window._vds = _vds;
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', document.title]);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+
+
+<div class="container hide" id="container">
+    <ul class="scene" id="scene">
+        <li class="layer" data-depth="0.10">
+            <div class="background"></div>
+        </li>
+        <li class="layer" data-depth="0.20">
+            <span class="img1"></span>
+        </li>
+        <li class="layer" data-depth="0.20">
+            <span class="img2"></span>
+        </li>
+        <li class="layer" data-depth="0.25">
+            <span class="img3 {%if isTicketTime %}simg3{%endif%}"></span>
+        </li>
+    </ul>
+    
+    <div class="content">
+        <div class="time-bar">
+            <div class="inner">
+                <div class="time">11/19-11/27</div>
+                <div class="text"><span>超低价抢购</span><br/>优惠券</div>
+                <div class="time-line"></div>
+                <div class="time">11/19-17/01/18</div>
+                <div class="text"><span>到店用券享受服务</span><br/>全城连锁店通用</div>
+            </div>
+            <div class="slogo"></div>
+        </div>
+
+        <a href="javascript:;" class="switch-city" id="switch_city"><span>杭州</span>切换</a>
+        <a href="javascript:;" class="switch-rule" id="switch_rule">规则</a>
+
+        <!--爆款-->
+        <div class="b-box-container" id="b_box_container">
+            
+        </div>
+        
+
+        <!--列表-->
+        <div class="s-container">
+            <div class="sheader">
+                <span>组合优惠 ALL IN 50% OFF</span>
+            </div>
+            
+            <ul class="p-list-box" id="p_list_box">
+                
+            </ul>
+
+            <div class="sheader mr0">
+                <span style="left: -0.04rem;">买一赠一 Two for one price</span>
+            </div>
+
+            <ul class="p-list-box s-list" id="s_p_list_box">
+                
+            </ul>
+
+            <div class="footer">
+                <a href="javascript:;" id="view_shops">查看活动门店</a>
+            </div>
+
+
+            <div class="sheader theader mr0" id="intro_header">
+                <span style="left: 0.05rem;">活动说明</span>
+            </div>
+
+            <div class="intro">
+                <p>1. 活动规则：2016.11.19-2016.11.27在活动页面购买优惠项目后，系统会自动发放相关服务的优惠券至您的账户，您可以打开APP【我的-红包/券】页面查看。到店完成服务后，优惠券全额抵扣，无需再次支付费用,（请在有效2016.11.19-2017.01.18内使用）</p>
+                <p>2. 所有优惠购买成功后，在该城市的所有典典养车汽车服务连锁门店通用，可点击活动页面最底部【查看活动门店】查看周围门店</p>
+                <p>3. 所有优惠每位车主仅限购买1次</p>
+                <p>4. 本活动优惠项目购买成功后不予退款</p>
+                <p>5. 机油套餐含4L机油，机滤及工时费，超出4L部分按亚德龙99.5/L、修磨225/L价格支付，不足1L按照1L计算</p>
+                <p>6. 如有疑问，请进入典典养车APP【我的】 ，点击右上角【在线客服】咨询或者前往该城市典典连锁各大门店进行咨询。</p>
+                {%if isTicketTime %}
+                <p>7.系统会从今天成功支付活动订单的用户中抽取100名赠送《冲天火》电影票，抽中用户将以短信通知</p>
+                <p>8. 本次活动不享受其他优惠或特权政策的叠加使用</p>
+                <p>9. 本公司有权在法律范围内保留对本活动的最终解释权</p>
+                {% endif %}
+                {% if !isTicketTime %}
+                <p>7. 本次活动不享受其他优惠或特权政策的叠加使用</p>
+                <p>8. 本公司有权在法律范围内保留对本活动的最终解释权</p>
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="c-container hide" id="c_container">
+    <p id="c_h_tip">暂时获取不到您的城市位置，请手动定位</p>
+    <div class="list-container">
+        <h4>活动城市</h4>
+        <ul class="clearfix">
+            
+        </ul>
+    </div>
+</div>
+
+<!-- 输手机号弹窗 -->
+<div class="dialog login-dialog hide">
+    <div class="dialog__mask"></div>
+    <div class="login-dialog__main">
+        <i class="dialog__close"></i>
+        <div class="login-dialog__phone">
+            <input id="phone" type="tel" maxlength="11" placeholder="输入手机号">
+        </div>
+        <div class="login-dialog__vcode">
+            <input id="vcode" type="tel" maxlength="4" placeholder="输入验证码">
+            <a id="vcode-btn" href="javascript:;">获取验证码</a>
+        </div>
+        <a id="login-dialog-btn" class="ui-btn" href="javascript:;">立即抢购</a>
+    </div>
+</div>
+
+</body>
+{% if isWechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_nationactivity/public/js/index.js"></script>
+
+<script type="text/template" id="catgory1_tmp">
+    <div class="b-box">
+        <div class="scroll">
+            <div class="s-l">抢购播报</div>
+            <div class="s-r clearfix" id="s_scroll_container">
+                
+            </div>
+        </div>
+        <div class="text-box">
+            <p>[[title]]</p>
+            <p>
+                <span class="pr">[[appPrice]]</span>
+                <span class="pr-tx"><span>元</span><span>原价:￥[[originPrice]]</span></span>
+            </p>
+        </div>
+        <a data-code="[[commodityCode]]" title="[[commodityName]]-抢" data-packagename="[[commodityName]]" class="btn btn-init [[if status==2]]hide[[/if]]" href="javascript:;"></a>
+        <a href="javascript:;" title="[[commodityName]]-查看" class="btn btn-selected [[if status==1]]hide[[/if]]"><span>立即<br/>查看</span></a>
+    </div>
+    <div class="b-num">[[usedCount]] 人已抢购</div>
+</script>
+
+<script type="text/template" id="catgory2_tmp">
+    [[each data]]
+    <li>
+        <span class="tag"></span>
+        <div class="img-box">
+            [[each $value.details]]
+            <div class="img-s">
+                <img class="lazyload" src="https://store.ddyc.com/res/xkcdn/icons/default/icon_pack1_default@2x.png" data-original="[[$value.imageUrl]]" />
+                <p class="name clearfix">
+                    [[each $value.title]]<span>[[$value]]</span>[[/each]]
+                    <span>￥[[$value.price]]</span>
+                </p>
+            </div>
+            [[if $index == 0]]
+            <div class="img-line"></div>
+            [[/if]]
+            [[/each]]
+        </div>
+        <div class="text-box">
+            <div class="num">
+                <p>[[$value.usedCount]] 人</p>
+                <p>已抢购</p>
+            </div>
+            <div class="price">
+                <span>5折<br/>组合价</span>
+                <span>: ¥</span>
+                <span>[[$value.appPrice]]</span>
+            </div>
+        </div>
+        <div class="btn-box">
+            <a href="javascript:;" title="[[$value.commodityName]]-抢" data-code="[[$value.commodityCode]]" data-packagename="[[$value.commodityName]]" class="btn btn-init [[if $value.status==2]]hide[[/if]]"><span>抢</span></a>
+            <a href="javascript:;" title="[[$value.commodityName]]-查看" class="btn btn-selected [[if $value.status==1]]hide[[/if]]"><span>立即</br>查看</span></a>
+        </div>
+    </li>
+    [[/each]]
+</script>
+<script type="text/template" id="catgory3_tmp">
+    [[each data]]
+    <li>
+        <span class="tag"></span>
+        <div class="img-box">
+            [[each $value.details]]
+            <div class="img-s">
+                <img class="lazyload" src="https://store.ddyc.com/res/xkcdn/icons/default/icon_pack1_default@2x.png" data-original="[[$value.imageUrl]]" />
+                <p class="name clearfix sname">
+                    [[each $value.title]]<span>[[$value]]</span>[[/each]]
+                </p>
+            </div>
+            [[if $index == 0]]
+            <div class="img-line"></div>
+            [[/if]]
+            [[/each]]
+        </div>
+        <div class="text-box">
+            <div class="num">
+                <p>[[$value.usedCount]] 人</p>
+                <p>已抢购</p>
+            </div>
+            <div class="price">
+                <span>限时<br/>抢购价</span>
+                <span>: ¥</span>
+                <span>[[$value.appPrice]]</span>
+            </div>
+        </div>
+        <div class="btn-box">
+            <a href="javascript:;" title="[[$value.commodityName]]-抢" data-code="[[$value.commodityCode]]" data-packagename="[[$value.commodityName]]" class="btn btn-init [[if $value.status==2]]hide[[/if]]"><span>抢</span></a>
+            <a href="javascript:;" title="[[$value.commodityName]]-查看" class="btn btn-selected [[if $value.status==1]]hide[[/if]]"><span>立即</br>查看</span></a>
+        </div>
+    </li>
+    [[/each]]
+</script>
+<script type="text/template" id="city_tmp">
+    [[each data]]
+    <li data-cityid="[[ $value.cityId ]]"><a href="javascript:;">[[ $value.cityName ]]</a></li>
+    [[/each]]
+</script>
+</html>

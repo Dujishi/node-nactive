@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="https://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_group/public/css/rule.css">
+    <title>拼团规则</title>
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            openId:'{{ openId }}',
+            
+            // for share
+            shareUrl: '{{ shareText.shareUrl }}',
+            shareTitle: '{{ shareText.shareTitle }}',
+            shareContent: '{{ shareText.shareContent }}',
+            shareSubTitle: '{{ shareText.shareSubTitle }}',
+            shareImgUrl: '{{ shareText.shareImgUrl }}'
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div class="contenter">
+        <h3>以下为典典养车拼团规则</h3>
+        <p>A. 开团：第一位成功支付即可开团；</p>
+        
+        <p>B. 拼团时效：第一位成功支付后24小时内该团有效；</p>
+        
+        <p>C. 邀请好友参团：开团后可以将拼团链接分享给好友，成功支付视为参团，团内成员都可以分享拼团链接邀请更多好友参团；</p>
+        
+        <p>D. 取消订单：拼团订单支付成功后不支持取消订单；</p>
+        
+        <p>E. 拼团成功：开团24小时内达到成团人数即视为拼团成功，系统发货；</p>
+        
+        <p>F. 拼团失败：开团24小时内未达到指定成团人数或被其他用户抢光，拼团失败后系统自动退款；</p>
+        
+        <p>G. 优惠券适用：拼团商品以团购价购买时不支持使用任何优惠券；</p>
+        
+        <p>H. 差价：单独购买时不会补贴差价。</p>    
+    </div>
+    
+
+    {% if iswechat %}
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="https://store.ddyc.com/res/xkcdn/arttemplate/template.js"></script>
+</body>
+</html>

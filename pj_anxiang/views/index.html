@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>{{ activityTitle }}</title>
+    <link rel="stylesheet" href="/pj_anxiang/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '{{ activityTitle }}',
+            cityList: '{{ activityConfig.cityIds }}',
+            storeList: '{{ storeList }}',
+            isLogin: {{ isLogin }},
+
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '{{ activityConfig.shareTitle }}',
+            shareContent: '{{ activityConfig.shareDesc }}',
+            shareSubTitle: '{{ activityConfig.shareDesc }}',
+            shareImgUrl: '{{ activityConfig.sharePic }}',
+        };
+    </script>
+</head>
+<body>
+
+    <div class="slide">
+        <ul class="content">
+            <li class="page1">
+                <div class="page-inner">
+                    <div class="hd">超级保养</div>
+                    <div class="bd"><span>暗香</span>润滑油 新品首发</div>
+                    <i class="arrow-down"></i>
+                </div>
+            </li>
+            <li class="page2">
+                <div class="page-inner">
+                    <div class="hd">对发动机极致呵护</div>
+                    <div class="bd">2万公里不用换油</div>
+                    <div class="bd">1次保养双倍效果</div>
+                    <a class="buy-btn" href="javascript:;">预购 ></a>
+                    <i class="arrow-down"></i>
+                </div>
+            </li>
+            <li class="page3">
+                <div class="page-inner">
+                    <div class="hd">添加特种重金属离子</div>
+                    <div class="bd">超静音更省油</div>
+                    <a class="buy-btn" href="javascript:;">预购 ></a>
+                    <i class="arrow-down"></i>
+                </div>
+            </li>
+            <li class="page4">
+                <div class="page-inner">
+                    <div class="bd">来自汽车发源地德国的</div>
+                    <div class="hd">高端原装机油,豪华车专用</div>
+                    <a class="buy-btn" href="javascript:;">预购 ></a>
+                    <i class="arrow-down"></i>
+                </div>
+            </li>
+            <li class="page5">
+                <div class="page-inner">
+                    <div class="hd">德国HDI Global SE保险公司力荐</div>
+                    <div class="bd">品质保证</div>
+                    <a class="buy-btn" href="javascript:;">预购 ></a>
+                    <i class="arrow-down"></i>
+                </div>
+            </li>
+            <li class="page6">
+                <div class="sale">
+                    <div class="infomation">
+                        <div class="date">
+                            <strong>3.17</strong>
+                            <div>预售开始</div>
+                        </div>
+                        <div class="date">
+                            <strong>3.17-3.26</strong>
+                            <div>支付定金</div>
+                        </div>
+                        <div class="date">
+                            <strong>3.17-3.31</strong>
+                            <div>支付尾款</div>
+                        </div>
+                        <div class="rules">活动<br>规则</div>
+                    </div>
+                    <div class="anxiang">
+                        <h2>暗香保养套餐</h2>
+                        <div class="subtitle">包含机油6L+机油滤芯+工时费</div>
+                        <div class="img"></div>
+                        <div class="price">总价:¥<span>2286</span></div>
+                        <a data-name="{{ activityConfig.skuList[0].commodityName }}" class="btn" href="javascript:;" data-shopid="{{ activityConfig.skuList[0].shopId }}" data-code="{{ activityConfig.skuList[0].commodityCode }}">预付 ¥<strong>{{activityConfig.skuList[0].price }}</strong> 抵¥150</a>
+                        <a class="present" href="javascript:;">还送价值 ¥2061 套餐</a>
+                    </div>
+                    <div class="other">
+                        <h2>更多超级保养套餐推荐</h2>
+                        <div class="product product1">
+                            <div class="title">亚德龙套餐</div>
+                            <div class="subtitle">机油4L+机油滤芯+工时费</div>
+                            <div class="price">总价:¥528</div>
+                            <a class="btn btn-s" href="javascript:;" data-name="{{ activityConfig.skuList[1].commodityName }}" data-shopid="{{ activityConfig.skuList[1].shopId }}" data-code="{{ activityConfig.skuList[1].commodityCode }}">预付¥<strong>{{activityConfig.skuList[1].price }}</strong> 抵¥50</a>
+                            <a class="present" href="javascript:;">还送价值 ¥466 套餐</a>
+                        </div>
+                        <div class="product product2">
+                            <div class="title">修磨套餐</div>
+                            <div class="subtitle">机油4L+机油滤芯+工时费</div>
+                            <div class="price">总价:¥1030</div>
+                            <a class="btn btn-s" href="javascript:;" data-name="{{ activityConfig.skuList[2].commodityName }}" data-shopid="{{ activityConfig.skuList[2].shopId }}" data-code="{{ activityConfig.skuList[2].commodityCode }}">预付¥<strong>{{activityConfig.skuList[2].price }}</strong> 抵¥100</a>
+                            <a class="present" href="javascript:;">还送价值 ¥966 套餐</a>
+                        </div>
+                    </div>
+                    <div class="store-btn">查看适用门店</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container"></div>           
+
+    <div class="dialog dialog-anxiang hide">
+        <div class="mask"></div>
+        <div class="main">
+            <div class="close"></div>
+            <div class="hd">
+                <div class="title">施工完毕 还送卡蓝巴名车精致护理套餐</div>
+                <div class="subtitle">价值 ¥2061</div>
+            </div>
+            <div class="bd">
+                <ul>
+                    <li>欧式精洗×1</li>
+                    <li>功夫引擎室清洁保护×1</li>
+                    <li>功夫轮毂光洁焕新×1</li>
+                    <li>功夫内室收纳清洁×1</li>
+                    <li>功夫真皮清洁润养×1</li>
+                    <li>功夫塑料件品质还原×1</li>
+                    <li>功夫玻璃镀膜×1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog dialog-product1 hide">
+        <div class="mask"></div>
+        <div class="main">
+            <div class="close"></div>
+            <div class="hd">
+                <div class="title">施工完毕 还送卡蓝巴名车精致护理套餐</div>
+                <div class="subtitle">价值 ¥466</div>
+            </div>
+            <div class="bd">
+                <ul>
+                    <li>欧式精洗×1</li>
+                    <li>功夫轮毂光洁焕新×1</li>
+                    <li>功夫塑料件品质还原×1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog dialog-product2 hide">
+        <div class="mask"></div>
+        <div class="main">
+            <div class="close"></div>
+            <div class="hd">
+                <div class="title">施工完毕 还送卡蓝巴名车精致护理套餐</div>
+                <div class="subtitle">价值 ¥966</div>
+            </div>
+            <div class="bd">
+                <ul>
+                    <li>欧式精洗×1</li>
+                    <li>功夫真皮清洁润养×1</li>
+                    <li>功夫玻璃镀膜×1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog dialog-rules hide">
+        <div class="mask"></div>
+        <div class="main">
+            <div class="close"></div>
+            <div class="hd">
+                <div class="title">活动规则</div>
+            </div>
+            <div class="bd">
+                {{ activityConfig.rule }}
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript'>
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '{{ activityTitle }}']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        }
+    </script>
+
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="//store.ddyc.com/res/xkcdn/motion/slide/slide.v2.0.min.js"></script>
+    <script src="/pj_anxiang/public/js/index.js" async></script>
+    <script>
+        $('.slide').css('display', 'block');
+        new mo.Slide({
+            target: $('.slide li'),
+            effect: 'slide',
+            event: {
+                change: function(i, j) {
+                    if (j == 5) {
+                        $('.slide').addClass('hide');
+                        $('.sale').appendTo('.container');
+                        // $('.slide').addClass('hide');
+                        // $('.sale').removeClass('hide');
+                        // $('li').eq(3).appendTo('.box');
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>填写信息</title>
+
+    <link rel="stylesheet" href="/pj_drive/public/css/signup.css" type="text/css" >
+    <script>      
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document,window);
+        
+        /* global CONFIG */
+        /* jshint ignore:start */
+        window.CONF = {
+            isapp     : {{ isapp }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+
+            openid    : '{{ openid }}',
+            payUrl    : '{{ payUrl }}',
+            // shareconfig
+            shareUrl      : '{{ shareUrl }}' ,
+            shareContent  : '{{ shareContent }}',
+            shareTitle    : '{{ shareTitle }}',
+            shareSubTitle : '{{ shareContent }}',
+            shareImgUrl   : '{{ shareIcon }}',
+
+            price  : {{ price }} ,
+
+            uriIndex      : '{{ uriIndex }}',
+            uriSignup     : '{{ uriSignup }}',
+            uriDetail     : '{{ uriDetail }}',
+            uriProxy      : '{{ uriProxy  }}',
+            uriInsure     : '{{ uriInsure }}'
+        }
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+ 
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '车友汇']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+            {% if iswechat %}
+                _ax.push(['set', 'source', 'wechat']);
+                _ax.push(['set', 'openid', CONF.openid]);
+            {% endif %}
+            {% if isapp %}
+                _ax.push(['set', 'source', 'app']);
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+        /* jshint ignore: end */
+    </script>
+</head>
+<body>
+
+<div class="container hide">
+    <div class="content">
+        <div class="title-sub cl-f f17">
+            车游汇，汇车友 <br />
+            <span class="cl-c f14">{{ desc }}</span>
+        </div>
+        <div class="win-box mt-6">
+            <div class="win-title cl-8">
+                <div class="icon-info"></div> 
+                报名信息
+                <span class="win-title-text">(报名成功后，24h内会有领队联系您)</span>
+            </div>
+            <div class="win-item">
+                <div class="win-label fl cl-8">参加人数</div>
+                <div class="win-value fr f16">
+                    <div class="win-num">1</div>
+                    <div class="win-num">2</div>
+                    <div class="win-num">3</div>
+                    <div class="win-num">4</div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl cl-8">联系人</div>
+                <div class="win-value fr">
+                    <input type="text" class="win-input" id="nickname" 
+                            name="nickname"
+                            placeholder="请填写您的姓名" 
+                            data-validtype="empty" 
+                            data-errmsg="请填写您的姓名">
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl cl-8">手机号</div>
+                <div class="win-value fr">
+                    <input type="tel" class="win-input" id="phone"
+                            name="phone"
+                            placeholder="请输入您的手机号码" 
+                            maxlength="11"
+                            data-validtype="phone" 
+                            data-errmsg="请输入您的有手机号码"
+                            data-repeat="T"
+                            data-group="phone">
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl cl-8">微信号</div>
+                <div class="win-value fr">
+                    <input type="text" class="win-input" id="wxid"
+                            name="wxid"
+                            placeholder="请输入您的微信号" 
+                            data-validtype="empty" 
+                            data-errmsg="请输入您的微信号">
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="win-item">
+                <div class="win-label fl cl-8">备用手机号</div>
+                <div class="win-value fr">
+                    <input type="tel" class="win-input" id="phone1"
+                            name="phone1"
+                            placeholder="请输入备用手机号码"
+                            maxlength="11"
+                            data-validtype="phone" 
+                            data-errmsg="请输入备用手机号码"
+                            data-repeat="T"
+                            data-repeat-errmsg="手机号码重复"
+                            data-group="phone">
+                </div>
+            </div>
+        </div>
+        {% if citys %}
+        <div class="win-box mt-3">
+            <div class="win-item">
+                <div class="win-label fl cl-8 f16">出发城市</div>
+                <div class="win-value fr">
+                {% for item in citys%}
+                    <div class="win-radio">
+                        <div class="icon-radio"></div><span>{{ item }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div> 
+        </div>
+        {% endif %}
+        <div class="win-box mt-3">
+            <div class="win-item">
+                <div class="win-label fl cl-8 f16">订单备注</div>
+                <div class="win-value fr">
+                    <textarea name="content" id="remark" cols="0" rows="2" 
+                        class="win-textarea"  data-validtype maxlength="50" 
+                        placeholder="(选填)可以备注你的特殊要求哦，50字以内"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="agree-content">
+                <div class="agree-btn"><i class="icon-unchoose"></i> 我已阅读并同意</div>
+                <div class="agree-text">《服务协议》</div>
+            </div>
+            <div class="footer-btn-wrap">
+                <div class="footer-total">合计:￥<span id="total-price"></span></div>
+                <div class="footer-btn cl-f f16 disable" id="goto-payment">去支付</div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal-tips hide">
+        <div class="modal-tips-box">
+            <div class="modal-content">
+                <div class="modal-title f-30">
+                    <div class="modal-close-btn">
+                        <div class="modal-close-icon"></div>
+                    </div>
+                    活动安全责任协议
+                </div>
+                <div class="modal-text f-24">
+<strong>请仔细阅读此协议</strong><br />
+<br />
+<p>
+    &nbsp;《活动安全责任协议》（以下简称本协议）由杭州小卡科技有限公司（以下简称“发起者”）和活动参与者（以下更多简称“您”或“参与者”）就活动相关安全责任事项所订立的协议。您确认在本协议签署之前已认真阅读本协议，充分理解本协议中各条款，并同意接受本协议各项条款的约束。
+</p>
+<strong>一、声明</strong><br />
+<p>
+    1.本协议的目的是为了发起者与您明确知晓活动本身可能存在的风险，提高活动参与者的抗风险和自律能力，免除发起者和其他参与者在活动中出现的相关赔偿及法律连带等责任，让活动更加安全、健康、快乐。
+</p>
+2.活动中，对于您违犯国家相关法规、恶意侵犯他人或其它涉及犯罪行为的事件，则不本协议范围内，必须由您个人承担相应的法律责任。<br />
+3.本活动会有潜在的危险性，参加者应对自己的行为安全负责。凡报名参加者年满18岁者均视为具有完全民事行为能力人，未满18周岁的，由其活动时的监护人负责其全部行为安全。如在活动中发生人身损害后果，发起者和其他参与者不承担赔偿责任，由受害人依据法律规定和本声明依法解决，凡参加者均视为接受本声明。代他人报名须告知被代报人本协议的全部条款，参加活动的被代报人也视同接受了本协议全部条款。代他（她）人报名者，被代报名参加者如遭受人身损害，发起者和其他参与者同样不承担赔偿责任。<br />
+4.凡报名参加本活动的参与者均视为已经仔细阅读和完全理解并同意接受本协议的全部条款，在参加活动前均须本协议上处签定真实姓名并确认，方可参加本活动。同时，您知晓报名前必须事先与自己的家属沟通，取得家属的理解和支持，知晓并同意接受本协议全部条款后，报名后视同其家属也已知情并同意。<br />
+<p>
+    5.此协议为相关责任的豁免，权利的放弃，风险的承担的协议。您如果在本协议上签字，您就已经完全知晓、理解和同意接受本协议全部条款，您就放弃了向活动发起者和其他参加成员提起诉讼的权利；永远免除本活动的发起者和其他参与者的赔偿及法律连带责任。
+</p>
+<strong>二、承诺与保证</strong><br />
+<p>
+    1.你承诺您具有法律规定的完全民事权利能力和民事行为能力，能够独立承担民事责任，持有有效中华人民共和国大陆居民身份证且年满18周岁。不具备前述条件的，您应立即停止阅读本协议、点击确认及活动报名等行为。
+</p>
+2.您承诺参加此次活动是在完全自愿的基础上，是以签署本协议为前提要件的。您知晓活动的发起者只是活动的联系人，并非职业导游，领队或有许可证的急救人员。您知晓发起者和其他参与者可能并没有参加过活动的相关课程或急救（包括野外）的培训和经验。您知晓他们并不能对您的安全负责。<br />
+3.您清楚知道本活动的发起者不是保险公司，没有义务为您购买意外保险等险种，您知道自己购买保险的意义，以防万一；您知道发起者已在活动内容中提醒您本人，在活动开始前您已了解保险类别和购买保险；对于活动中可能出现的意外事故，可由投保的保险公司承担相应的责任。<br />
+4.您保证自己身体健康，适合参加本活动，身体没有损伤、病痛、心脏病、突发病历或其它疾病；您理解通过以下措施来减少您的风险：注意环境，注意您的身体和精神状况，注意所有与安全相关的衣物和装备的适用状况，您只参加那些自己精神和身体能力之内的活动；您清楚知道，您的安全是您个人的责任，并取决于您的警惕和良好的判断；您同意和保证，如果任何时候您认为是不安全的，那么您会立刻中断活动的进行。如您在活动中发生各种疾病或伤害，甚至死亡，您同意放弃追究和要求赔偿的权利，同时您永远免除此次活动发起者和其他参与者的赔偿及法律连带责任。<br />
+&nbsp;5.您在此特意和有意的声明：您理解参加本活动相关的风险；您同意承担由于选择和参加本活动而随之<br />
+来的全部责任；对于参加本活动而引发或与之连带的任何和所有的法律要求（包括第三方的法律要求）和无论出现任何形式和性质的害伤，无论这些法律要求是基于某方的疏忽或其它原因引起的，您永远免除本活动发起者和其他参与者的赔偿及法律责任。<br />
+<p>
+    6.您知晓在活动报名前必须事先与您自己的家属沟通，取得家属的理解和支持，知道并同意接受本协议全部条款后，才能报名参加本次活动，报名后视同其家属也已知情并同意；您知晓，一旦签署，此协议将生效，也知晓本协议同样有效于您的继承人、近亲、执行人、管理人、个人代表和转让人。
+</p>
+
+<p>
+    <strong>三、风险承担及权利放弃</strong>
+</p>
+
+1、本活动可能会存在很多不可预见的危险，自然灾害、意外事件等许多非人为的因素、道路行驶、旅游过程、食宿自身身体健康等均有可能造成对您的生命财产的伤害和损失。发起者不对任何由户外运动本身具有的风险、不可抗力、意外事件以及往返路途中发生的危险所产生的后果负责。参与者应当积极主动的购买保险，降低损失。一旦发生意外事故和人身伤害，由保险公司和您负责赔偿，不牵扯参与活动的发起者和其他参与者。<br />
+2.本活动并非旅行社组团旅游的商业活动，活动性质仅限共同爱好者自愿参加、共同参与、风险自担、<br />
+责任自负。本活动是非营利的自助活动，参与者需要自行承担活动中产生的必要交通费、食宿费、门票费等费用，不需要另行向发起者交纳其他活动费用；发起者和其它活动参与者一样，同样也是自愿参与者，对其他参与者没有绝对的管理和支配权力；对于活动中突发的一切足以影响到大家切身安全和利益的不可抗因素等重大事项尚需参与者共同商定；发起者仅有义务对参与者进行组织协调，参加者也有义务服从活动的整体安排并承担自助义务和注意义务。<br />
+3.本活动是非营利的自助活动，不同于常规的旅游活动，发起者不提供交通工具，由参与者自行选择交通工具前往活动目的地。活动本身可能具有一定的风险性，报名前，您承诺已阅读活动内容和本协议的全部条款，并经过合理判断，同意接受和本协议和活动计划全部条款，同意自行承担本活动的所有的风险和后果，包括交通工具及其他第三方设施带来的风险；如果由于您的行为和您的参与而导致了第三方的财产损失和人员伤害，您愿意承担相应的损失和责任，导致您本人伤害，您同意免除所有其他人的赔偿和连带责任。<br />
+4.由于活动为自愿参加的性质，一但出现事故，活动中任何非事故当事人将不承担事故任何责任，但有<br />
+互相援助的义务。活动的发起者应当积极主动的组织实施救援协助工作，对事故本身不承担任何法律责任和经济责任。&nbsp; <br />
+5.活动参与者都应该遵守国家相关法律、法规，一切因参与者直接或间接引起的法律责任由参与者自行<br />
+独立承担。一切活动的车辆、设施以及有关装备属于参加者自己所有，所产生的一切风险及责任也由参与者自己承担。&nbsp; &nbsp; <br />
+6.参与者应发扬团结互助、助人为乐的精神，在力所能及的范围内尽量给予他人便利和帮助。但任何便<br />
+利和帮助的给予并不构成法律上的义务，更不构成对其他参与者损失或责任在法律上分担的根据。<br />
+7.活动本身可能包括徒步、活动观看、郊游、途中乘车、住宿（露营）、就餐、以及装备的使用等活动（活动内容以具体活动方案为准）。上述等活动都存在有潜在危险，可能会受到身体损伤、瘫痪、甚至死亡的风险，您清楚的知道健身和休闲等一般社会活动也存在突发病、心脏病等和甚至死亡的风险；您自愿参加这些活动和使用活动装备，如果因为在参加上述某一活动中受到任何伤害，您同意自行承担和接受所有伤害的风险，甚至死亡的风险，并且放弃追究和要求赔偿的权利，同时您永远免除本活动发起者和其他参与者的赔偿及法律连带责任。<br />
+8.活动可能对身体和精神方面都有一定考验，可能会遇到恶劣天气，也可能远离救助和医疗服务地点，短时间（或24小时）内无法得到救援，也有可能遇到包括跌坠、落石、冰崩、雪崩、闪电、过河、失温、冻伤、咬伤、刺伤、犬咬、野兽等袭击及各种意外伤害，甚至死亡；您清楚的知晓活动发起者无法全面预见活动中所有的风险和不利因素，即使活动发起者对安全隐患尽到谨慎的注意义务，也不能够完全避免损害结果的产生。您知道以上所列的风险并不完全包含活动中的所有可能的风险；当您遇不幸到上述等伤害后，所有救援和医疗等全部费用您同意全部承担，活动的发起者和其它参加者不承担所发生的一切费用和法律连带责任；同时您永远免除本活动的发起者和其他参与者的赔偿和法律责任，并不仅限于以上所列的风险中。<br />
+9.活动往返由参与者自驾或自行乘坐其他交通工具，同样存在较大危险，您清楚获知您已经被提供了自由选择的权利，您同意乘座或自驾车，一旦发生交通事故和受到伤害，甚至死亡,您同意只在该车已投保的保险范围额度内接受保险公司的赔偿，不再另行向该车主（司机）索赔；如您是车主（司机）受到伤害，甚至死亡，您也同意只在该车已投保的保险范围额度内接受保险公司的赔偿；发起者和其它参与者不承担任何赔偿和法律责任；您永远免除此次活动发起者和其他参与者的赔偿及法律连带责任。车主（司机）由于违反相应交通法规等行为所造成的损失或伤害，不在本协议范围内，按国家相关规定承担相应责任和自行办理。<br />
+<p>
+    10.当由于出现各种意外事故、突发气候变化和急性疾病等不可预测因素造成身体损害时，发起者和同行成员有义务尽力救助，但如果造成了不可逆转的损害，您同意放弃追究和要求赔偿的权利，同时您永远免除本活动发起者和其他参与者的赔偿及法律连带责任；您完全理解，在其他参与者需要协助的时候，您将配合协助发起者及其他参与者尽力协助我的同伴，但这只是在以下情况：在您的判断中，这是自己力所能及的范围内，并且不会给您自己带来不合理的危险；您进一步理解到，您没有法律上的责任去协助别人，同时，发起者以及其他参与者也没有任何法律上的责任来协助您。
+</p>
+<p>
+    <strong>免责声明</strong>
+</p>
+
+本活动具有一定风险，活动发起者有尽力保障参与者安全的义务，但没有必然的责任。参与或观看活动及<br />
+驾驶、乘坐交通工具，具有一定的危险性，参与者应对自己行为负全责，活动发起者和其他参与者对此<br />
+不承担任何责任。<br />
+其他<br />
+参与者对本活动的参与都是完全自愿的，参与者事先对本协议条款的含义及相关法律后果已全部通晓并充分理解，并完全接受该协议条款。本协议自参与者签名确认之时生效，至活动结束自动时终止。（签字前和活动结束后，已不属于本次活动范围内）<br />
+<br />
+<p>
+    <strong>我已经年满18岁。我已阅读和理解以上声明和全部条款内容，并同意以上全部内容，报名参加本次活动。</strong>
+</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.1.4/zepto.min.js"></script>
+<script src="/pj_drive/public/js/signup.js"></script>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>典典新车团-杭州站</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="https://store.ddyc.com/res/xkcdn/swiper/swiper-3.4.0.min.css" type="text/css">
+    <link rel="stylesheet" href="/pj_newcar/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /* global CONFIG */
+        window.CONF = {
+            isapp: {{ isapp }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            iswechat: {{iswechat}},
+            openid: '{{ openid }}',
+
+            // shareconfig
+            activeName: '典典新车团',
+            shareUrl: '{{ shareUrl }}',
+            shareContent: '{{ shareContent }}',
+            shareTitle: '{{ shareTitle }}',
+            shareSubTitle: '{{ shareContent }}',
+            shareImgUrl: '{{ shareIcon }}',
+
+            urlAbout: '{{ urlAbout }}'
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]);
+                return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                    _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                    _vds.push(['setPS1', '典典新车团']);
+                    _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+
+            {% if iswechat %}
+            _ax.push(['set', 'source', 'wechat']);
+            _ax.push(['set', 'openid', CONF.openid]); 
+            {% endif %} 
+            {% if isapp %}
+            _ax.push(['set', 'source', 'app']); 
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+
+    </script>
+</head>
+<body>
+    <div class="big-wrap">
+    <div class="countdown">
+        <span class="countdown-icon"></span>
+        <span>距离活动结束还剩</span>
+        <div class="countdown-time" id="countdownTime">
+            <span class="time time-d">--</span>
+            <span>天</span>
+            <span class="time time-h">--</span>
+            <span>时</span>
+            <span class="time time-m">--</span>
+            <span>分</span>
+            <span class="time time-s">--</span>
+            <span>秒</span>
+        </div>
+    </div>
+    <div class="show">
+        <img src="https://store.ddyc.com/res/xkcdn/images/newcar/bgsw.jpg" alt="">
+        <a href="tel:057128299797">
+            <i></i><span>电话客服</span>
+        </a>
+    </div>
+    <div class="flow" id="flowBtn">
+        <div class="flow-con">
+            <span>选车预约</span>
+            <span>支付订金</span>
+            <span>等待交车</span>
+            <span>结清提车</span>
+        </div>
+    </div>
+    <div class="car" id="carBox">
+    </div>
+    <div class="share">
+        <p class="">特价好车挑花眼？让朋友来帮我参考下！</p>
+        <div class="btn" id="shareBtn"><i></i><span>去分享</span></div>
+    </div>
+    <div class="car-more">
+        <div class="title">
+            更多优惠车型
+        </div>
+        <div class="box clearfix" id="carMoreBox">
+        </div>
+    </div>
+    <div class="car-apply">
+        <div class="title">
+            没有我想要的车
+        </div>
+        <div class="explain">想要什么车？帮你找到比4S店更便宜的！</div>
+        <div class="content">
+            <div class="car-icon"></div>
+            <div class="item after-scale2">
+                <span>姓名</span>
+                <input type="text" placeholder="请输入车主姓名" id="applyName" maxlength="7">
+                <p class="item-warn-name">请输入正确的姓名</p>
+            </div>
+            <div class="item after-scale2">
+                <span>电话</span>
+                <input type="tel" placeholder="请输入手机号码" id="applyTel" maxlength="11">
+                <p class="item-warn-tel">请输入正确的手机号码</p>
+            </div>
+            <div class="item district after-scale2 apply-district-box" id="applyDistrictBox">
+                <span>地区</span>
+                <input type="text" id="applyDes" class="apply-des" readonly="readonly" placeholder="请选择地区">
+            </div>
+            <div class="item after-scale2 apply-car-box" id="applyCarBox">
+                <span>意向车型</span>
+                <input class="apply-car" id="applyCar" readonly="readonly" placeholder ="请选择意向车型">
+            </div>
+            <div class="btn" id="applyBtn">提交</div>
+        </div>
+    </div>
+    <div class="active">
+        <div class="title">
+            活动说明
+        </div>
+        <div class="item">
+            <span class="item-rank">1</span>
+            本次活动为杭州地区限时团购，其它地区用户想参与，请致电客服详询；
+        </div>
+        <div class="item">
+            <span class="item-rank">2</span>
+            所有车型数量有限，每人限购一台，售完即止。订金5000元，支付完成后生成电子合同，并需提供购车人身份证信息，便于开票；
+        </div>
+        <div class="item">
+            <span class="item-rank">3</span>
+            本次活动所售车型均为品牌直供现车，手续齐全，与4S所售车型一致，享受质保；
+        </div>
+        <div class="item">
+            <span class="item-rank">4</span>
+            活动车型默认交车周期在一个月之内，特殊情况会通过客服联系；
+        </div>
+        <div class="item">
+            <span class="item-rank">5</span>
+            <strong>提车地点：</strong>请根据合作方提供地点提车；
+        </div>
+        <div class="item">
+            <span class="item-rank">6</span>
+            提车前若需临牌、按揭、保险、代办上牌等业务，请提前告知合作方；
+        </div>
+        <div class="item">
+            <span class="item-rank">7</span>
+            请在线上或通过客服确认所购车型，如无质量问题不可退换；
+        </div>
+        <div class="item">
+            <span class="item-rank">8</span>
+            如有疑问，请进入典典养车APP【我的】，点击右上角【在线客服】咨询；
+        </div>
+    </div>
+    </div>
+
+    <div class="share-mask"></div>
+    <div class="flow-mask">
+            <div class="flow-mask-img">
+                <img src="https://store.ddyc.com/res/xkcdn/images/newcar/buycarflow.png">
+                <div class="flow-mask-btn" id="flowMaskBtn">我知道了</div>
+            </div>
+    </div>
+
+    <div class="sale-mask">
+        <div class="sale-mask-wrap">
+            <div class="sale-mask-text">
+                还有人未付款，如果10分钟后仍未付款，你将还有抢购机会!
+            </div>
+            <div class="sale-mask-btn" id="saleMaskBtn">我知道了</div>
+        </div>
+    </div>
+
+{%raw%}
+
+<script id="swiper_item" type="text/template">
+{{ each data as $value $index }}
+    <div class="swiper-mask animated">
+            <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="swiper-zoom-container">
+                                <img class="swiper-lazy" data-src="{{ $value.thumbImg }}" alt="" src="">
+                            </div>
+                            <div class="swiper-lazy-preloader"></div>
+                        </div>
+                        {{ each $value.commodityImgs as $value $index }}
+                        <div class="swiper-slide">
+                            <div class="swiper-zoom-container">
+                                <img class="swiper-lazy" data-src="{{ $value.oriUrl }}" alt="" src="">
+                            </div>
+                            <div class="swiper-lazy-preloader"></div>
+                        </div>
+                        {{ endeach }}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="pagination">
+                        <span class="pagination-num">1</span>
+                        /
+                        <span>{{ $value.commodityImgs.length+1 }}</span>
+                    </div>
+                </div>
+    </div>
+{{ endeach }}
+</script>
+
+<script id="car_item" type="text/template">
+    {{ each data as $value $index }}
+    <div class="car-item" data-code = "{{ $value.commodityCode }}">
+            <div class="car-item-img">
+                <div class="car-item-mask lazyimg" data-index="{{$index}}" data-original="{{ $value.thumbImg }}" style="background-image:url('https://store.ddyc.com/res/xkcdn/icons/default/icon_pack1_default@2x.png')"></div>
+                <div class="pagination">
+                        <span class="pagination-num">1</span>
+                        /
+                        <span>{{ $value.commodityImgs.length+1 }}</span>
+                </div>
+                <span class="stock">仅剩</br>{{ $value.stock }}台</span>
+            </div>
+            <div class="car-item-text">
+                <div class="title-box after-scale">
+                    <p class="title">{{ $value.commodityName }}</p>
+                    <p class="subtitle">{{ $value.description }}</p>
+                    <p class="more show-config">
+                        <span>展开配置</span>
+                        <i></i>
+                    </p>
+                    <ul class="config">
+                        {{ each $value.props as $value $index }}
+                        <li>{{ $value }}</li>
+                        {{ endeach }}
+                    </ul>
+                </div>
+                <div class="price">
+                    <div class="price-original">厂商指导价 <span>{{ $value.originPrice }}</span></div>
+                    <div class="price-new">典典秒杀价 <span>{{ $value.seckillPrice }}</span></div>
+                    <div class="time-btn">
+                    {{ if $value.isOrderd }}
+                        {{ if $value.isPaid }}
+                        <p class="item-text-btn-apply">已支付</p>
+                        <a data-code = "{{ $value.commodityCode }}" class="item-text-btn-pay booking-btn" data-href="/nactive/newcar/contract?commodity_code={{$value.commodityCode}}&look=look">查看合同</a>
+                        {{ else }}
+                        <p class="item-text-btn-apply">已预约</p>
+                        <a data-code = "{{ $value.commodityCode }}" class="item-text-btn-pay booking-btn" data-href="/nactive/newcar/contract?commodity_code={{$value.commodityCode}}">支付订金</a>
+                        {{ endif }}
+                    {{ else }}
+                        {{ if $value.stock>0 }}
+                        <a data-code = "{{ $value.commodityCode }}" class="item-text-btn booking-btn"  data-href="/nactive/newcar/booking?commodity_code={{$value.commodityCode}}">免费预约</a>
+                        {{ elseif $value.stock==0 && $value.lockedStock>0 }}
+                        <a data-code = "{{ $value.commodityCode }}" class="item-text-btn-chance booking-btn" data-href="/nactive/newcar/booking?commodity_code={{$value.commodityCode}}&booking_pay=no">还有机会</a>
+                        <span class="item-text-btn-chance-icon"></span>
+                        {{ elseif $value.stock==0 && $value.lockedStock==0 }}
+                        <p data-code = "{{ $value.commodityCode }}" class="item-text-btn-out">已售罄</p>
+                        {{ endif }}
+                    {{ endif }}
+                    </div>
+                </div>
+            </div>
+    </div>
+    {{ endeach }}
+</script>
+
+<script id="car_more_item" type="text/template">
+{{ each data as $value $index}}
+    <div class="item" data-code = "{{$value.commodityCode}}">
+        <div class="item-img">
+                    <span>仅剩</br>{{ $value.stock }}台</span>
+                    <div class="lazyimg" style="background-image: url(https://store.ddyc.com/res/xkcdn/icons/default/icon_pack1_default@2x.png)" data-original="{{$value.commodityImgs[0].imgUrl}}"></div>
+                </div>
+                <div class="item-text">
+                    <div class="item-text-title after-scale">
+                        <p>{{ $value.commodityName }}</p>
+                        <div>
+                            {{ $value.props[0] }}<br>
+                            {{ $value.props[1] }}<br>
+                        </div>
+                    </div>
+                    <div class="item-text-price">
+                        <div class="item-text-price-wrap">
+                            <div class="price-old">
+                                <span class="price-title-2">厂商指导价</span>
+                                <span class="price-num-2">{{ $value.originPrice }}</span>
+                            </div>
+                            <div class="price-new">
+                                <span class="price-title">典典秒杀价</span>
+                                <span class="price-num">{{ $value.seckillPrice }}</span>
+                            </div>
+                        </div>
+                        <div class="time-btn-2">
+                        {{ if $value.isOrderd }}
+                            {{ if $value.isPaid }}
+                            <a data-code = "{{$value.commodityCode}}" class="item-text-btn item-text-btn-pay booking-btn" data-href="/nactive/newcar/contract?commodity_code={{$value.commodityCode}}&look=look">已支付，查看合同</a>
+                            {{ else }}
+                            <a data-code = "{{$value.commodityCode}}" class="item-text-btn item-text-btn-pay booking-btn" data-href="/nactive/newcar/contract?commodity_code={{$value.commodityCode}}">已预约，支付订金</a>
+                            {{ endif }}
+                        {{ else }}
+                            {{ if $value.stock>0 }}
+                            <a data-code = "{{$value.commodityCode}}" class="item-text-btn item-text-btn-booking booking-btn" data-href="/nactive/newcar/booking?commodity_code={{$value.commodityCode}}">免费预约</a>
+                            {{ elseif $value.stock==0 && $value.lockedStock>0 }}
+                            <a data-code = "{{$value.commodityCode}}" class="item-text-btn item-text-btn-chance booking-btn" data-href="/nactive/newcar/booking?commodity_code={{$value.commodityCode}}&booking_pay=no">还有机会</a>
+                            <span class="item-text-btn-chance-icon"></span>
+                            {{ elseif $value.stock==0 && $value.lockedStock==0 }}
+                            <p data-code = "{{$value.commodityCode}}" class="item-text-btn item-text-btn-out">已售罄</p>
+                            {{ endif }}
+                        {{ endif }}
+                        </div>
+                    </div>
+                </div>
+    </div>
+{{ endeach }}
+</script>
+{%endraw%}
+
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="https://store.ddyc.com/res/xkcdn/swiper/swiper-3.4.0.min.js"></script>
+<script src="/pj_newcar/public/js/index.js"></script>
+
+
+
+
+</body>
+</html>

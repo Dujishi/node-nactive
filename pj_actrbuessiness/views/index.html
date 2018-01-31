@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>典典养车连锁加盟</title> 
+    <link rel="stylesheet" href="/pj_actrbuessiness/public/css/animate.css">
+    <link rel="stylesheet" href="/pj_actrbuessiness/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+        /* global CONFIG */
+        window.CONF = {
+            isapp: {{ isapp }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            iswechat: {{iswechat}},
+            openid: '{{ openid }}',
+
+            // shareconfig
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '{{shareTitle}}',
+            shareContent: '{{shareContent}}',
+            shareSubTitle: '{{shareContent}}',
+            shareImgUrl: '{{shareIcon}}',
+            openid: '{{ openid }}',
+        }
+
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]);
+                return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if (getQueryString('trackId')) { //判断是否需要统计页面来源
+                    _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                    _vds.push(['setPS1', '典典招商加盟']);
+                    _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+
+
+            {% if iswechat %}
+            _ax.push(['set', 'source', 'wechat']);
+            _ax.push(['set', 'openid', CONF.openid]); 
+            {% endif %} 
+            {% if isapp %}
+            _ax.push(['set', 'source', 'app']); 
+            {% endif %}
+
+            (function() {
+                var vds = document.createElement('script');
+                vds.type = 'text/javascript';
+                vds.async = true;
+                vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'store.ddyc.com/res/xkcdn/analytics/v1.0.0/analytics.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vds, s);
+            })();
+        }
+
+    </script>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="page-inner">
+            <section class="page1 move">
+                <div class="map"
+                    data-anim-group="k1"
+                    data-anim-step="0"
+                    data-anim-time="500"
+                    data-anim-type="slideInUp"></div>
+            </section>
+            <section id="page2" class="page2 move">
+                <div class="bg"></div>
+                <div class="people" >
+                    <div class="wrap">
+                        <div class="circle"></div>
+                        <div class="mask_top"></div>
+                        <div class="mask_bottom"></div>
+                    </div>
+
+                    <div class="mask_b"></div>
+                    <div class="people1"
+                        data-anim-group="g1"
+                        data-anim-step="0"
+                        data-anim-time="500"
+                        data-anim-type="slideInUp"></div>
+                    <div class="pop left"
+                        data-anim-group="g1"
+                        data-anim-step="1"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"><p>期望提高</br>区域竞争力</p></div>
+                    <div class="left_icon_1" 
+                        data-anim-group="g1"
+                        data-anim-step="2"
+                        data-anim-time="100"
+                        data-anim-type="zoomIn"></div>
+                    <div class="pop top" 
+                        data-anim-group="g1"
+                        data-anim-step="3"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"><p>想提高</br>经营效益</p></div>
+                    
+                    <div class="right_icon_1"
+                        data-anim-group="g1"
+                        data-anim-step="4"
+                        data-anim-time="100"
+                        data-anim-type="zoomIn"></div>
+                    <div class="pop right"
+                        data-anim-group="g1"
+                        data-anim-step="5"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"><p>期望提高</br>服务水平</p></div>
+                </div>
+                <div    data-anim-group="g1"
+                        data-anim-step="6"
+                        data-anim-time="500"
+                        data-anim-type="slideInUp">
+                    <div class="title_img img1"></div>
+                    <div class="content">
+                        <p>专业团队督导经营</p>
+                        <p>互联网级门店管理系统</p>
+                        <p>典典品牌授权经营</p>
+                    </div>
+                </div>
+            </section>
+            <!-- <section id="page3" class="page2 move">
+                <div class="bg"></div>
+                <div class="people">
+                    <div class="wrap">
+                        <div class="circle"></div>
+                        <div class="mask_top"></div>
+                        <div class="mask_bottom"></div>
+                    </div>
+                    <div class="mask_b"></div>
+                    <div class="people2" 
+                        data-anim-group="g2"
+                        data-anim-step="0"
+                        data-anim-time="500"
+                        data-anim-type="slideInUp"></div>
+                    <div class="pop left"
+                    data-anim-group="g2"
+                        data-anim-step="1"
+                        anim-time="100"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"><p>有资金</br>想投资</p></div>
+                    <div class="left_icon_2" 
+                        data-anim-group="g2"
+                        data-anim-step="2"
+                        data-anim-time="100"
+                        data-anim-type="zoomIn"></div>
+                    <div class="pop top"
+                        data-anim-group="g2"
+                        data-anim-step="3"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"><p>没有汽车</br>后市场经验</p></div>
+
+                    <div class="right_icon_2" 
+                        data-anim-group="g2"
+                        data-anim-step="4"
+                        data-anim-time="100"
+                        data-anim-type="zoomIn"></div>
+                    
+                    <div class="pop right"
+                        data-anim-group="g2"
+                        data-anim-step="5"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"><p>缺乏</br>管理经验</br>没精力</p></div>
+                    
+                </div>
+                <div data-anim-group="g2"
+                        data-anim-step="6"
+                        data-anim-time="500"
+                        data-anim-type="slideInUp">
+                    <div class="title_img img2"></div>
+                    <div class="content">
+                        <p>全托管（更省心）</p>
+                        <p>专业团队经营</p>
+                        <p>智能门店管理ERP系统</p>
+                        <p>0元加盟</p>
+                    </div>
+                </div>
+             </section>-->
+            <!-- <section class="page3 move">
+                <div class="vs" data-anim-group="g3"
+                        data-anim-step="0"
+                        data-anim-time="500"
+                        data-anim-type="zoomIn"></div>
+                <p class="p_top" data-anim-group="g3"
+                        data-anim-step="0"
+                        data-anim-time="300"
+                        data-anim-type="slideInLeft">全托管，更省</br>典典全套装修标准</br>1000米范围区域保护</br>月营业额3~4%管理费</br>T+45多项代付代发，业主无忧</p>
+                <p class="p_bottom" data-anim-group="g3"
+                        data-anim-step="0"
+                        data-anim-time="200"
+                        data-anim-type="slideInRight">自主经营，自由度高</br>统一店招软装</br>500米范围区域保护</br> 每月1~2K品牌使用费</br>T+1提现周期，资金流动快</p>
+            </section> -->
+            <section class="page4 move">
+                <div class="wrap">
+                    <div class="adv">
+                        <div class="one">
+                            <div class="title">01.平台持续活动支持</div>
+                            <p class="p_one">门店上线，平台统一开业活动，线上引流，后期可参加平台组织的各类营销活动推广，持续提升门店业绩</p>
+                            <div class="title t_two">02.平价供应链支撑</div>
+                            <p class="p_two">平价供应链支撑，洗美、保养等多项核心产品优势配件集采供应，大幅度降低经营成本</p>
+                        </div>
+                        <div class="two">
+                            <div class="title">03.互联网级门店管理系统</div>
+                            <p class="p_one">不但具备一般门店管理系统的功能，满足门店经营管理需要，还与车主端、供应商端联动，为门店不断供血 </p>
+                            <div class="title t_two">04.全方位门店管理解决方案</div>
+                            <p class="p_two">全方位门店管理解决方案：门店工位合理设计、开业、日常营销、6S、收银、库管等</p>
+                        </div>
+                        <div class="three">
+                            <div class="title">05.线上平台派单导流</div>
+                            <p class="p_one">平台承接车主订单并且配送产品到门店，减少门店库存的同时为门店引流，提升门店营收 </p>
+                            <div class="title t_two">06.众多盈利项目</div>
+                            <p class="p_two">更多盈利项目引入：车险代理、年卡销售提成、违章代理等项目；拓宽门店的业务范围，增强盈利能力</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="page5 move">
+                <div class="cont">如果您有意了解更多加盟细节，可直接拨打加盟热线或者提交相关加盟信息。典典期待您的加入！</div>
+                <a href="tel:0571-28299797"><div class="btn b1"><span><i></i>咨询热线</span></div></a>
+                <a href="https://hd.ddyc.com/franchisee/index.php?from=n"><div class="btn b2"><span><i></i>我要加盟</span></div></a>
+            </section>
+        </div>
+        <div class="arrow">
+            <div class="top animated"></div>
+            <div class="bottom animated"></div>
+        </div>
+    </div>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_actrbuessiness/public/js/index.js"></script>
+
+</body>
+</html>

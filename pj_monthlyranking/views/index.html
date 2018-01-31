@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <link rel="dns-prefetch" href="https://store.ddyc.com"/>
+    <link rel="stylesheet" href="/pj_monthlyranking/public/css/index.css">
+    <title>月月有礼</title>
+    <script>
+        // 设置rem字号
+        ;(function (doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        window.CONF = {
+            shopId: '{{shopId}}'
+        }
+    </script>
+</head>
+<body>
+<div class="gifts-page">
+
+</div>
+{%raw%}
+<script type="text/template" id="gifts-tpl">
+    <div class="gifts-details">
+        <div class="gifts-box">
+            <a href="/store/#/goodsDetail?commodityCode=P1096777&sellerId=29900">
+                <img src="/pj_monthlyranking/public/images/1st.png" alt="" class="fp">
+            </a>
+            <div class="bp">
+                <a href="/store/#/goodsDetail?commodityCode=P1096778&sellerId=29900">
+                    <img src="/pj_monthlyranking/public/images/2nd.png" alt="" class="sp">
+                </a>
+                <i></i>
+                <a href="/store/#/goodsDetail?commodityCode=P1096810&sellerId=29900">
+                    <img src="/pj_monthlyranking/public/images/3rd.png" alt="" class="tp">
+                </a>
+            </div>
+            {{if carouselStrList.length!=0}}
+            <div class="msg-box">
+                <ul>
+                    {{each carouselStrList as value}}
+                    <li>刚刚售出 {{value}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/if}}
+
+        </div>
+        <div class="line">
+            <span></span><i></i>商品详情<i></i><span></span>
+        </div>
+        <div class="gifts-instructions">
+           <table cellspacing="0" >
+               <tr>
+                   <th></th>
+                   <th>商品名称</th>
+                   <th>数量</th>
+               </tr>
+               <tr>
+                   <td rowspan="4">第一名</td>
+                   <td>爱德龙5W-40 全合成机油  1L装</td>
+                   <td>1箱</td>
+               </tr>
+               <tr>
+                   <td>卡蓝巴预洗液 10L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td>三佳水泥清除剂 4L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td>卡蓝巴双核镀晶套餐 </td>
+                   <td>1套</td>
+               </tr>
+               <tr>
+                   <td rowspan="4">第二名</td>
+                   <td>卡蓝巴内室清洁剂 5L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td>卡蓝巴发动机清洗剂 5L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td>卡蓝巴轮毂清洁剂 5L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td>三佳水泥清除剂 4L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td rowspan="4">第三名</td>
+                   <td>三佳真皮柔顺剂 4L装</td>
+                   <td>1桶</td>
+               </tr>
+               <tr>
+                   <td>卡蓝巴双核镀晶套餐 </td>
+                   <td>1套</td>
+               </tr>
+               <tr>
+                   <td>镜面 DD-300 1L装</td>
+                   <td>1瓶</td>
+               </tr>
+               <tr>
+                   <td>保养静电贴 200张</td>
+                   <td>1组</td>
+               </tr>
+           </table>
+        </div>
+    </div>
+    <div class="rank">
+        <div class="rank-title">
+            <span>截止至：{{today}}</span>
+            <span>上月排名：{{lastMonthRanking==0?'-':lastMonthRanking}}</span>
+        </div>
+        <div class="rank-card">
+            <div class="card-container">
+                <div class="item-trophy">
+                    <div class="rank-card-title">当前全国排名</div>
+                    <div class="rank-value">NO.{{thisMonthRanking==0?'-':thisMonthRanking}}</div>
+                </div>
+                <div class="item-money">
+                    <div class="rank-card-title">本月采购金额</div>
+                    <div class="rank-value">{{thisMonthAmountSum}}</div>
+                </div>
+            </div>
+            <div class="rank-btn">去采购</div>
+        </div>
+        <div class="line">
+            <span></span><i></i>规则说明<i></i><span></span>
+        </div>
+        <div class="rank-text">
+            <div>按全国范围内所有用户本月内在典典商城支付的采购金额进行排名；</div>
+            <div> 每月前7个工作日内公布上月排名前三名，同时由相应区域负责人通知门店负责人并进行奖品发放，实物奖品邮费自理；</div>
+            <div>采购金额不含采购金，不含退款金额；</div>
+            <div> 本活动最终解释权归活动方所有，问题反馈邮箱：bailong@xiaokakeji.com</div>
+        </div>
+    </div>
+</script>
+{%endraw%}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="https://store.ddyc.com/res/xkcdn/arttemplate/template.js"></script>
+<script src="/pj_monthlyranking/public/js/index.js"></script>
+</body>
+</html>

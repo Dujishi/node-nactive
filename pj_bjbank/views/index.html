@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>北京银行贵宾专享0元洗车</title>
+    <link rel="stylesheet" href="/pj_bjbank/public/css/index.css" type="text/css">
+
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'resize';
+
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '北京银行贵宾专享0元洗车',
+            isLogin: {{isLogin}},
+            count: {{count}},
+            washUrl: '{{washUrl}}',
+            // for share
+            jsApiList: ['hideOptionMenu'],
+            openid: '{{openid}}'
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="step-1 hide">
+                <div class="tel-wrap">
+                    <input type="tel"
+                        id="phone" name="phone"
+                        placeholder="请输入手机号码"
+                        data-validtype="phone"
+                        data-errmsg="请输入正确手机号码"
+                        >
+                </div>
+                <div class="code-wrap">
+                    <span id="send-code">发送验证码</span>
+                    <input type="tel"
+                        id="code" name="code"
+                        placeholder="请输入验证码"
+                        data-validtype="code"
+                        data-errmsg="请输入正确的验证码"
+                        >
+                </div>
+                <div class="button-wrap">
+                    <div class="button js-get-coupons">立即领取</div>
+                </div>
+            </div>
+            <div class="step-2 hide">
+                <div class="card-wrap">
+                    <div class="card-info">
+                        <strong class="card-text1">免费洗车劵</strong><br />
+                        <span class="card-text2">(限杭州精致洗车)</span> <br />
+                        <span class="card-text3">{{beginTime}}~{{endTime}}</span>
+                    </div>
+                    <div class="card-count">
+                        <strong id="residue">{{count}}</strong>张
+                    </div>
+                </div>
+                <div class="button-wrap">
+                    <div class="button js-use">立即使用</div>
+                </div>
+            </div>
+            <div class="step-3 hide">
+                <div class="empty-result">
+                    抱歉，没有洗车券了哦！
+                </div>
+                <div class="button-wrap">
+                    <div class="button disable">立即使用</div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="title">活动说明</div>
+            <div>
+                1、活动参与对象：北京银行杭州分行名士卡、私行卡客户<br />
+                2、活动内容：每位符合条件的客户可享受全年12次免费洗车服务 (过期作废)<br />
+                3、活动流程：输入手机号验证登录，可在账户内查看洗车券,点击立即使用，选择所在附近的服务门店洗车,支付时勾选0元洗车券，确认使用即完成订单<br />
+                4、服务热线:<br />
+                北京银行:0571-81998290&nbsp;&nbsp;典典养车:0571-28299797<br />
+                5、以上服务仅限杭州地区的门店使用<br />
+                6、每个用户0元洗车券一天限用1张<br />
+                7、活动最终解释权归北京银行杭州分行所有
+            </div>
+            <div class="line"></div>
+            <div>
+                注意事项：<br />
+                限5座（含）以下车型，包含5座SUV小型越野车。5座以上不超过7座（含）车型，需由持卡人自行另加付5元。
+            </div>
+        </footer>
+    </div>
+</body>
+
+{% if iswechat %}
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="/pj_bjbank/public/js/index.js"></script>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>翻菊花</title>
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_mum/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            isLogin: {{ isLogin }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            openId:'{{ openId }}',
+            // for share
+            shareUrl: '{{ shareData.shareUrl }}',
+            shareTitle: '{{ shareData.shareTitle }}',
+            shareContent: '{{ shareData.shareContent }}',
+            shareSubTitle: '{{ shareData.shareSubTitle }}',
+            shareImgUrl: '{{ shareData.shareImgUrl }}'
+        };
+
+        window.imagesRes = [ 
+            '/pj_mum/public/images/1.png',
+            '/pj_mum/public/images/2.png',
+            '/pj_mum/public/images/3.png',
+            '/pj_mum/public/images/4.png',
+            '/pj_mum/public/images/5.png',
+            '/pj_mum/public/images/6.png',
+            '/pj_mum/public/images/bg.jpg',
+            '/pj_mum/public/images/bg1.png',
+            '/pj_mum/public/images/btn.png',
+            '/pj_mum/public/images/close.png',
+            '/pj_mum/public/images/cover.png',
+            '/pj_mum/public/images/default.png',
+            '/pj_mum/public/images/desc.png',
+            '/pj_mum/public/images/friends-result.png',
+            '/pj_mum/public/images/money-bg1.png',
+            '/pj_mum/public/images/money-bg2.png',
+            '/pj_mum/public/images/records.png',
+            '/pj_mum/public/images/share.png',
+            '/pj_mum/public/images/start-bg.jpg',
+            '/pj_mum/public/images/start-btn.png',
+            '/pj_mum/public/images/top-pic.jpg',
+        ];
+
+    </script>
+</head>
+
+<body>
+
+<!-- 加载进度条 -->
+<div class="ui-preload">
+    <div class="ui-preload-main">
+        <div class="ui-preload-ring"></div>
+        <div class="ui-preload-left"></div>
+        <div class="ui-preload-cover"></div>
+        <div class="ui-preload-right"></div>
+    </div>
+    <div class="ui-preload-percent">0%</div>
+</div>
+
+<div class="container">
+    <!-- 开始页面 -->
+    <div class="page page-start hide">
+        <a class="start-btn" href="javascript:;"></a>
+    </div>
+
+    <!-- 游戏页面 -->
+    <div class="page page-game hide">
+        <div class="hd clearfix">
+            <div class="count-down">
+                倒计时<div><strong id="game-time">0:00</strong><span class="seconds">s</span></div>
+            </div>
+            <a class="btn records-btn" href="javascript:;">参与记录</a>
+            <a class="btn desc-btn" href="javascript:;">活动锦囊</a>
+        </div>
+        <div class="bd">
+            <ul id="game-container" class="list clearfix">
+            </ul>
+        </div>
+
+        <div class="dialog desc-dialog hide">
+            <div class="dialog-mask"></div>
+            <div class="dialog-main">
+                <div class="dialog-hd"><span class="dialog-close"></span></div>
+                <div class="dialog-bd">
+                    <ol>
+                        <li>① 15秒内翻出尽量多的重复菊花来消除</li>
+                        <li>② 每消除一对相同菊花会掉落不定量现金消除的菊花越多，金额越大</li>
+                        <li>③ 15秒为一局，重翻则金额清零</li>
+                        <li>④ 翻菊花获得的现金可用来购买特定商品</li>
+                        <li>⑤ 快召唤兄弟们帮你翻菊花获得更多现金</li>
+                    </ol>
+                    <div class="tips">*最多可邀请5个兄弟</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dialog records-dialog hide">
+            <div class="dialog-mask"></div>
+            <div class="dialog-main">
+                <div class="dialog-hd"><span class="dialog-close"></span></div>
+                <div class="dialog-bd">
+                    <ul class="records-list">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dialog prize-dialog hide">
+            
+        </div>
+    </div>
+
+    <!-- 结果页 -->
+    <div class="page page-result hide">
+        <div class="hd">
+            
+        </div>
+        <a class="replay-btn" href="javascript:;">我不服！再翻一次</a>
+        <div class="bd">
+            <ul class="list">
+                
+            </ul>
+            
+        </div>
+    </div>
+
+    <!-- 详情页 -->
+    <div class="page page-detail hide">
+        
+    </div>
+
+    <div class="page page-share hide">
+        
+    </div>
+
+    <div class="share-guide hide">
+
+    </div>
+
+</div>
+
+
+
+{%raw%}
+
+<script type="text/template" id="result-money-tpl">
+    <a class="close" href="javascript:;"></a>
+    {{ if score > 0 }}
+    <div class="money-box money1">
+    </div>
+    <div class="money-box money2">
+    </div>
+    <div class="tips"><span id="page-result-tips">恭喜你! 快去抵扣使用吧</span><br> <i></i></div>
+    {{ else }}
+    <div class="tips"><span id="page-result-tips">很遗憾，没有获得金币。</span><br> <i></i></div>
+    {{ /if }}
+</script>
+
+<script type="text/template" id="detail-tpl">
+    <div class="goods-detail">
+        <div data-code="{{ goodsInfo.code }}" class="banner">
+            <img src="{{ goodsInfo.image }}" alt="">
+            <div class="time">支付时间仅剩 <span class="pay-time">00:00:00</span></div>
+        </div>
+        <div class="info">
+            <div class="goods-name">{{ goodsInfo.name }}</div>
+            <div class="progress">
+                
+            </div>
+            <div>
+                <div class="original-price">原价 ¥<span>{{ goodsInfo.price }}</span></div>
+                <div class="discount-price">
+                    抵扣后：¥ <strong>{{ goodsInfo.price - discountInfo.amount }}</strong>
+                    <span>已抵扣：<em>{{ discountInfo.amount }}</em> 元</span>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            {{ if isSharePage }}
+            <a class="btn2 play-btn" href="javascript:;">我自己开局</a>
+            {{ else }}
+            <a data-code="{{ goodsInfo.code }}" data-params="{{ goodsInfo.params }}" class="btn1 buy-btn" href="javascript:;">立即购买</a>
+            <a data-code="{{ goodsInfo.code }}" data-bonusid="{{ discountInfo.bonusId }}" data-amount="{{ discountInfo.amount }}" class="btn2 share-btn" href="javascript:;">召唤兄弟抵扣更多</a>
+            {{ /if }}
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="prize-dialog-tpl">
+    <div class="dialog-mask"></div>
+    <div class="dialog-main">
+        <div class="dialog-hd"></div>
+        <div class="dialog-bd">
+            {{ if score > 0 }}
+                <div class="money-box money2">
+                    <div class="money-detail"><div><strong><span>￥</span><em class="money-detail-num">{{ cash }}</em></strong>元现金</div></div>
+                </div>
+                <div class="tips">恭喜你为兄弟赢得现金</div>
+                <div class="btns">
+                    <a class="replay-btn" href="javascript:;">再翻一次</a>
+                    <a class="confirm-btn" href="javascript:;">就帮到这了</a>
+                </div>
+            {{ else }}
+                <div class="tips">很遗憾，没有帮上忙</div>
+                <div class="btns">
+                    <a class="replay-btn" href="javascript:;">再翻一次</a>
+                </div>
+            {{ /if }}
+        </div>
+    </div>
+
+</script>
+
+<script type="text/template" id="friends-tpl">
+    <div class="friends">
+        <ul>
+            {{ each friendsInfo }}
+                {{ if $value.amount }}
+                    <li>
+                        <img src="{{ $value.avatar || 'https://store.ddyc.com/res/xkcdn/icons/default/logo.png' }}" alt="">
+                        {{ if isSharePage }}
+                        <div>帮Ta抵扣</div>
+                        {{ else }}
+                        <div>帮我抵扣</div>
+                        {{ /if }}
+                        <div><strong>{{ $value.amount }}</strong>元</div>
+                    </li>
+                {{ else }}
+                    <li>
+                        <img src="/pj_mum/public/images/default.png" alt="">
+                    </li>
+                {{ /if }}
+            {{ /each }}
+        </ul>
+        {{ if noFriends }}
+        <div class="tips">哎呀 看来你的兄弟不够热血呢</div>
+        {{ /if }}
+    </div>
+</script>
+
+<script type="text/template" id="rank-tpl">
+    <div class="rank">
+        <div class="rank-hd">全国热血菊花排行榜TOP10</div>
+        <div class="rank-bd">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="18%">排名</th>
+                        <th width="57%">手机号</th>
+                        <th width="25%">抵扣金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ each rankInfo }}
+                    <tr>
+                        <td>{{ $value.index }}</td>
+                        <td>{{ $value.phoneNum }}</td>
+                        <td>{{  $value.amount }}</td>
+                    </tr>
+                    {{ /each }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="share-tpl">
+    <div class="pic"></div>
+    <div class="text">
+        <p>您的兄弟正想购买以下商品<br>邀请您帮忙抵扣更多现金 <br> <i></i></p>
+    </div>
+    <div class="goods-detail">
+        <div data-code="{{ goodsInfo.code }}" class="banner">
+            <img src="{{ goodsInfo.image }}" alt="">
+            <div class="time">支付时间仅剩 <span class="pay-time">00:00:00</span></div>
+        </div>
+        <div class="info">
+            <div class="goods-name">{{ goodsInfo.name }}</div>
+            <div class="progress">
+                
+            </div>
+            <div>
+                <div class="original-price">原价 ¥<span>{{ goodsInfo.price }}</span></div>
+                <div class="discount-price">
+                    抵扣后：¥ <strong>?99</strong>
+                    <span>已抵扣：<em>?9</em> 元</span>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <a class="btn1 play-btn" href="javascript:;">自己去玩</a>
+            <a class="btn2 help-btn" href="javascript:;">立即帮忙</a>
+        </div>
+    </div>
+</script>
+{%endraw%}
+
+{% if iswechat %}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+{% endif %}
+<script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+<script src="https://store.ddyc.com/res/xkcdn/arttemplate/template.js"></script>
+<script src="/pj_mum/public/js/index.js"></script>
+</body>
+</html>

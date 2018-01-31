@@ -1,0 +1,190 @@
+@import "./mixins";
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  line-height: 1.6;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a img {
+  border: 0;
+}
+a {
+  text-decoration: none;
+}
+li {
+    list-style: none;
+}
+
+body, div, canvas{
+    image-rendering: optimizeSpeed;
+    -webkit-image-rendering: optimizeSpeed;
+    -webkit-interpolation-mode: nearest-neighbor;
+}
+body{padding:0; margin:0; font-size:12px; background-color:#fff;}
+body, html{height:100%;}
+
+#mask {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .7);
+}
+
+.alert {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    width: 5.76rem;
+    background: #fff;
+    border-radius: 0.10rem;
+    background-color: #f6f6f6;
+    color: #3e3c3c;
+    .hd {
+        position: relative;
+        height: 0.78rem;
+        line-height: 0.78rem;
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.36rem;
+        &:after {
+            .setBottomLine(#c9c9d4);
+        }
+    }
+    .bd {
+        padding-bottom: 0.40rem;
+    }
+    .alert-text {
+        margin: 0.40rem 0.50rem 0.60rem 0.50rem;
+        font-size: 0.24rem;
+        line-height: 0.38rem;
+        p {
+            margin-bottom: 0.12rem;
+        }
+    }
+    .alert-btn {
+        display: block;
+        width: 4.90rem;
+        height: 0.60rem;
+        line-height: 0.60rem;
+        text-align: center;
+        margin: 0 auto;
+        background-color: #0088ff;
+        border-radius: 0.12rem;
+        font-size: 0.36rem;
+        color: #fff;
+    }
+}
+
+#login {
+    width: 4.60rem;
+    .alert-text {
+        text-align: center;
+        font-size: 0.28rem;
+        margin-top: 0.38rem;
+        margin-bottom: 0.38rem;
+    }
+    .alert-btn {
+        background-color: #ed1c46;
+        width: 2.80rem;
+    }
+}
+
+.dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
+    z-index: 11;
+    width: 4.88rem;
+}
+.dialog-hd {
+    position: relative;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-size: 0.40rem;
+    text-align: center;
+    color: #fff;
+    background-color: #ed1c46;
+    border-radius: 0.15rem 0.15rem 0 0;
+}
+.dialog-bd {
+    background: #fff;
+    border-radius: 0 0 0.15rem 0.15rem;
+}
+.dialog-rank {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1.30rem;
+}
+.dialog-img {
+    margin:  0 auto;
+    width: 4.63rem;
+    height: 2.57rem;
+    background: url(/pj_avoidpolice/public/images/redpacket.jpg);
+    background-size: contain;
+}
+.dialog-score {
+    text-align: center;
+    font-size: 0.32rem;
+    color: #838181;
+}
+.dialog-score strong {
+    color: #3c3c3c;
+}
+
+.dialog-btns {
+    overflow: hidden;
+    border-top: 1px solid #caccd1;
+    margin-top: 0.55rem;
+}
+.dialog-btns a {
+    width: 50%;
+    box-sizing: border-box;
+    float: left;
+    height: 0.86rem;
+    line-height: 0.86rem;
+    text-align: center;
+    font-size: 0.30rem;
+    
+}
+.dialog-check {
+    border-right: 1px solid #caccd1;
+    color: #f6234d;
+}
+.dialog-replay {
+    color: #2d2c2d;
+}
+
+#dialog-result .dialog-img {
+    background-image: url(/pj_avoidpolice/public/images/dialog_police.jpg);
+}
+
+#dialog-result .dialog-score {
+    margin-top: 0.20rem;
+}
+
+#share {
+    position: fixed;
+    z-index: 11;
+    right: 0.67rem;
+    top: 0.48rem;
+    width: 4.81rem;
+    height: 5.62rem;
+    background: url(/pj_avoidpolice/public/images/share.png) no-repeat;
+    background-size: contain;
+}

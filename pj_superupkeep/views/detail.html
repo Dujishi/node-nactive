@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"
+  />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+  <title>挑战美嘉壳</title>
+  <!-- css section -->
+  
+  <link rel="stylesheet" href="/pj_superupkeep/public/css/detail.css">
+  <!-- css section end-->
+  <script>
+        // 设置rem字号
+        ;(function(doc,win){
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt =  'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750) + 'px';
+            }
+
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+        })(document,window);
+
+        // 检查是否支持 webp，并将结果存在 localStorage 里
+        ;(function () {
+          if (!window.localStorage || typeof localStorage !== 'object') return
+          const name = 'webpsupport'
+          if (!localStorage.getItem(name) ||
+            (localStorage.getItem(name) !== 'true' &&
+              localStorage.getItem(name) !== 'false')) {
+            var img = new Image()
+            img.src = 'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAsAAAABBxAREYiI/gcAAABWUDggGAAAADABAJ0BKgEAAQABABwlpAADcAD+/gbQAA=='
+            img.onload = function () {
+              localStorage.setItem(name, 'true')
+            }
+            img.onerror = function () {
+              localStorage.setItem(name, 'false')
+            }
+          }
+        }())
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp     : {{ isapp }},
+            iswechat  : {{ iswechat }},
+            appId     : '{{ wechat.appId }}',
+            timestamp : '{{ wechat.timestamp }}',
+            nonceStr  : '{{ wechat.nonceStr }}',
+            signature : '{{ wechat.signature }}',
+            openid    : '{{ openid }}',
+            userId    : '{{userId}}',
+            viewCounts: '{{totalViewCounts}}',
+            // for share
+            shareUrl: '{{shareUrl}}',
+            shareContent: '{{shareContent}}',
+            shareTitle: '{{shareTitle}}',
+            shareSubTitle: '{{shareSubTitle}}',
+            shareImgUrl   : 'https://store.ddyc.com/res/xkcdn/icons/share/icon_superupkeep.png'
+        }
+	</script>
+  <script type='text/javascript'>
+		//获取浏览器参数
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return unescape(r[2]); return null;
+		}
+		var _vds = _vds || [];
+			window._vds = _vds;
+		(function() {
+			_vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+			if(getQueryString('trackId')){ //判断是否需要统计页面来源
+					_vds.push(['setPageGroup', 'activvityHongbaoPage']); // 必须  比如活动页面 activityPage；养车H5页面 ddycAppH5Page 等
+					_vds.push(['setPS1', '5月保养']);
+					_vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+			}
+
+			(function() {
+				var vds = document.createElement('script');
+				vds.type = 'text/javascript';
+				vds.async = true;
+				vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(vds, s);
+			})();
+		})();
+	</script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img class="header-img" src="" data-large="/pj_superupkeep/public/images/detail/dtbg.jpg" data-webplarge="/pj_superupkeep/public/images/detail/dtbg.webp" alt="">
+      <div class="header-text">
+        <div class="header-text-con">
+          <p>典典最新推出独家保养智能适配方案</p>
+          <p>根据车厂认证发动机选油标准，适配每款<br>发动机特性：节油、舒适、强劲动力，减排</p>
+          <p>超长保养周期：1年15000公里或1年30000<br>公里（不同品质机油）</p>
+          <p>让爱车保养更省心、安心、放心</p>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <h4>工作流程</h4>
+      <div class="img-list">
+       <img src="" data-large="/pj_superupkeep/public/images/detail/flow1.png" data-webplarge="/pj_superupkeep/public/images/detail/flow1.png.webp"  alt="">
+       <img src="" data-large="/pj_superupkeep/public/images/detail/flow2.png" data-webplarge="/pj_superupkeep/public/images/detail/flow2.png.webp" alt="">
+       <img src="" data-large="/pj_superupkeep/public/images/detail/flow3.png" data-webplarge="/pj_superupkeep/public/images/detail/flow3.png.webp" alt="">
+       <img class="ml-img" src="" data-large="/pj_superupkeep/public/images/detail/flow4.png" data-webplarge="/pj_superupkeep/public/images/detail/flow4.png.webp" alt="">
+       <img class="ml-img" src="" data-large="/pj_superupkeep/public/images/detail/flow5.png" data-webplarge="/pj_superupkeep/public/images/detail/flow5.png.webp" alt="">
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="fix-wrap">
+    <div class="fix-btn">
+      <a href="" id="fixLink">查看活动</a>
+    </div>
+  </div>
+
+  {% if iswechat %}
+  <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  {% endif %}
+  <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+  <script src="/pj_superupkeep/public/js/detail.js"></script>
+</body>
+
+</html>

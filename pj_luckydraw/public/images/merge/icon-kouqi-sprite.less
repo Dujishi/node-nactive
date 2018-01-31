@@ -1,0 +1,143 @@
+/*
+LESS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: @icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+@icon-home: x y offset_x offset_y width height total_width total_height image_path name;
+
+At the bottom of this section, we provide information about the spritesheet itself
+@spritesheet: width height image @spritesheet-sprites;
+*/
+@kouqi-a-name: 'kouqi-a';
+@kouqi-a-x: 64px;
+@kouqi-a-y: 0px;
+@kouqi-a-offset-x: -64px;
+@kouqi-a-offset-y: 0px;
+@kouqi-a-width: 44px;
+@kouqi-a-height: 63px;
+@kouqi-a-total-width: 108px;
+@kouqi-a-total-height: 142px;
+@kouqi-a-image: 'icon-kouqi.png';
+@kouqi-a: 64px 0px -64px 0px 44px 63px 108px 142px 'icon-kouqi.png' 'kouqi-a';
+@kouqi-en-name: 'kouqi-en';
+@kouqi-en-x: 64px;
+@kouqi-en-y: 68px;
+@kouqi-en-offset-x: -64px;
+@kouqi-en-offset-y: -68px;
+@kouqi-en-width: 27px;
+@kouqi-en-height: 28px;
+@kouqi-en-total-width: 108px;
+@kouqi-en-total-height: 142px;
+@kouqi-en-image: 'icon-kouqi.png';
+@kouqi-en: 64px 68px -64px -68px 27px 28px 108px 142px 'icon-kouqi.png' 'kouqi-en';
+@kouqi-o-name: 'kouqi-o';
+@kouqi-o-x: 0px;
+@kouqi-o-y: 0px;
+@kouqi-o-offset-x: 0px;
+@kouqi-o-offset-y: 0px;
+@kouqi-o-width: 59px;
+@kouqi-o-height: 59px;
+@kouqi-o-total-width: 108px;
+@kouqi-o-total-height: 142px;
+@kouqi-o-image: 'icon-kouqi.png';
+@kouqi-o: 0px 0px 0px 0px 59px 59px 108px 142px 'icon-kouqi.png' 'kouqi-o';
+@kouqi-wa-name: 'kouqi-wa';
+@kouqi-wa-x: 64px;
+@kouqi-wa-y: 101px;
+@kouqi-wa-offset-x: -64px;
+@kouqi-wa-offset-y: -101px;
+@kouqi-wa-width: 25px;
+@kouqi-wa-height: 20px;
+@kouqi-wa-total-width: 108px;
+@kouqi-wa-total-height: 142px;
+@kouqi-wa-image: 'icon-kouqi.png';
+@kouqi-wa: 64px 101px -64px -101px 25px 20px 108px 142px 'icon-kouqi.png' 'kouqi-wa';
+@kouqi-ya-name: 'kouqi-ya';
+@kouqi-ya-x: 0px;
+@kouqi-ya-y: 64px;
+@kouqi-ya-offset-x: 0px;
+@kouqi-ya-offset-y: -64px;
+@kouqi-ya-width: 36px;
+@kouqi-ya-height: 78px;
+@kouqi-ya-total-width: 108px;
+@kouqi-ya-total-height: 142px;
+@kouqi-ya-image: 'icon-kouqi.png';
+@kouqi-ya: 0px 64px 0px -64px 36px 78px 108px 142px 'icon-kouqi.png' 'kouqi-ya';
+@spritesheet-width: 108px;
+@spritesheet-height: 142px;
+@spritesheet-image: 'icon-kouqi.png';
+@spritesheet-sprites: @kouqi-a @kouqi-en @kouqi-o @kouqi-wa @kouqi-ya;
+@spritesheet: 108px 142px 'icon-kouqi.png' @spritesheet-sprites;
+
+/*
+The provided classes are intended to be used with the array-like variables
+
+.icon-home {
+  .sprite-width(@icon-home);
+}
+.icon-email {
+  .sprite(@icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+/*
+The `.sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of LESS
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+.sprites(@spritesheet-sprites);
+*/
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: e(extract(@sprite, 10));
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}

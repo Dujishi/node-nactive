@@ -1,0 +1,119 @@
+@import './module/base';
+
+.icon-broadcast{
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAaVBMVEUAAADUgEvSgU37gnnSf0zSfkvSf0zbh1PUgE/WgkzSf0vSfkvRfkzSgEvSf0zSgEzTgEzUgU3TgUzVgUzXgkzhgFrSf0zSfkvTgU3TgE3TgU7Wg1PSf0vSf0zSgEvRgE3TgEzTfkvRfktalxcxAAAAInRSTlMAWE8EtfqlDDIh3cKzmomAYVM6LBMI47pFPzcY8a+OjIppsKshEgAAAKRJREFUOMvt0kkPgyAQhuEpFsR9A9eu3///kQ3R2AtU0hhPvhfm8GTCYehst6q3B2oSoDbDmJROFL44gAuRysArl2ItMLMMSWPZwsoyohTAwkbbqikGwAKszN4TXiz1Y9e/WSRlE2wyad5sk4VFnudyp7/ZE35s8GPUi66rg9uXaUXOJrEywQvthn28sKFFXLudLjjAzGk9+J1+FIk0nAdFZ4f0AXIOHDKFextbAAAAAElFTkSuQmCC');
+    background-size: cover;
+
+    width: 19px;
+    height: 19px;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.content{
+    width: 100%;
+    box-sizing:border-box;
+    padding: 0 0.25rem;
+
+    // position:fixed;
+    // top: 0;
+    // bottom: 1.2rem;
+    overflow: visible;
+
+    .content-text{
+        margin-top: 0.2rem;
+        color: #CCC;
+        height: 0.5rem;
+        line-height: 0.5rem;
+    }
+}
+.tips{
+    height: 0.62rem;
+    line-height: 0.62rem;
+    padding:0 0.25rem;
+    color: #D17E4B;
+    background: #FCEED4;
+}
+.win-box{
+    margin-top: 0.2rem;
+
+    .win-title{
+        height: 0.8rem;
+        line-height: 0.8rem;
+        padding: 0 10px;
+        background-color: @cl-fff;
+
+        .win-title-text{
+            font-size: 12px;
+        }
+    }
+    .win-title2{
+        margin-left:0.4rem;
+    }
+    .win-label{
+        box-sizing: border-box;
+        padding:0  0.2rem 0 0.4rem;
+        width: 2.55rem;
+    }
+    .win-value{
+        width: 4.44rem;
+    }
+}
+
+.win-input{
+    background:none;
+    border:none;
+    border-bottom: 1px solid transparent;
+    height: 0.80rem;
+    width:  3.7rem;
+    line-height: 0.8rem;
+    padding: 0 5px;
+    color: @cl-0;
+    font-size: 14px;
+
+    &:focus{ outline: none;}
+    &.error{
+        color: red;
+    }
+}
+
+
+footer{
+    padding-top: 0.6rem;
+    height : 1.2rem;
+    
+    .footer-content{
+        .bz-box();
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 7.5rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        background-color: @cl-112;
+        padding:0 0.25rem;
+        display: flex;
+        justify-content: center;/*水平居中*/
+        align-items: center;
+    }
+    
+    .footer-btn{
+        flex-grow:1;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        border-radius:  0.4rem;
+        background-color: #007BE5;
+        background: linear-gradient(#FF6A00, #FF5800);
+
+        &.disable{
+            background-color: #797979;
+            background: linear-gradient(#797979, #6a6a6a);
+        }
+    }
+}
+
+
+

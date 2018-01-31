@@ -1,0 +1,52 @@
+
+    {% if userType === 0 %}
+    <div class="bar-box joinvip">
+        <div class="price item">
+            <div class="vip-cost">
+                <div class="original-cost">原价：￥{{ skuActivity.skuList[0].price }}</div>
+                VIP专享价:&nbsp; <span class="vip-cost-1"> ￥</span><span class="vip-cost-2">{{ skuActivity.skuList[0].vipPrice }}</span>
+            </div>
+        </div>
+        <div class="buy item">
+            <a href="javascript:;" class="">
+                <p class="buy-title">立即加入VIP</p>
+                <p class="buy-subtitle">还送免费洗车券</p>
+            </a>
+        </div>
+    </div>
+    {% elseif userType === 1 %}
+    <div class="bar-box buy-btn">
+        <div class="price item">
+            <div class="vip-cost">
+                价格 : <span class="vip-cost-1"> ￥</span><span class="vip-cost-2">{{ skuActivity.skuList[0].price }}</span>
+            </div>
+        </div>
+        <div class="buy item">
+            <a href="javascript:;" class="buy-now">立即购买</a>
+        </div>
+    </div>
+    {% elseif userType === 2 %}
+    <div class="buy-btn bar-box">
+        <div class="price item">
+            <div class="vip-cost">
+                <div class="original-cost">原价：￥{{ skuActivity.skuList[0].price }}</div>
+                VIP专享价: <span class="vip-cost-1"> ￥</span><span class="vip-cost-2">{{ skuActivity.skuList[0].vipPrice }}</span>
+            </div>
+        </div>
+        <div class="buy item">
+            <a href="javascript:;" class="buy-now">立即购买</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="buy-btn bar-box">
+        <div class="price item">
+            <div class="vip-cost">
+                <div class="original-cost">原价：￥{{ skuActivity.skuList[0].price }}</div>
+                VIP专享价:<span class="vip-cost-1">￥</span><span class="vip-cost-2">{{ skuActivity.skuList[0].vipPrice }}</span>
+            </div>
+        </div>
+        <div class="buy item buy-btn">
+            <a href="javascript:;" class="buy-now">立即购买</a>
+        </div>
+    </div>
+    {% endif %}

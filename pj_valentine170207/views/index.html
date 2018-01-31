@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>默契100%还不在一起</title>
+    <link rel="stylesheet" href="/pj_valentine170207/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            phone: '{{ phone }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            activeName: '默契100%还不在一起',
+
+            headimgurl: '{{ headimgurl }}',
+            nickname: '{{ nickname }}',
+            topics: '{{ topics }}',
+            // for share
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '我和TA正在过情人节，邀请你围观',
+            shareContent: '听说默契度测试达到100%就能过情人节，有情人的考验默契，没情人的快趁机表白',
+            shareSubTitle: '听说默契度测试达到100%就能过情人节，有情人的考验默契，没情人的快趁机表白',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_valentine170207.png',
+            openid: '{{openid}}'
+        };
+
+        window.imagesRes = [ 
+            '/pj_valentine170207/public/images/dialog1.png',
+            '/pj_valentine170207/public/images/dialog2.png',
+            '/pj_valentine170207/public/images/dialog3.png',
+            '/pj_valentine170207/public/images/dialog4.png',
+            '/pj_valentine170207/public/images/icon-arrow.png',
+            '/pj_valentine170207/public/images/icon-close.png',
+            '/pj_valentine170207/public/images/icon-replay.png',
+            '/pj_valentine170207/public/images/icon-showoff.png',
+            '/pj_valentine170207/public/images/icon-xitie.png',
+            '/pj_valentine170207/public/images/loading.png',
+            '/pj_valentine170207/public/images/logo.png',
+            '/pj_valentine170207/public/images/lottery-result.png',
+            '/pj_valentine170207/public/images/lottery-result1.png',
+            '/pj_valentine170207/public/images/lottery1.png',
+            '/pj_valentine170207/public/images/lottery2.png',
+            '/pj_valentine170207/public/images/lottery3.png',
+            '/pj_valentine170207/public/images/moqi1.png',
+            '/pj_valentine170207/public/images/moqi2.png',
+            '/pj_valentine170207/public/images/music.png',
+            '/pj_valentine170207/public/images/progress1.png',
+            '/pj_valentine170207/public/images/progress2.png',
+            '/pj_valentine170207/public/images/progress3.png',
+            '/pj_valentine170207/public/images/qiupeidui.png',
+            '/pj_valentine170207/public/images/result1-love.png',
+            '/pj_valentine170207/public/images/result1.png',
+            '/pj_valentine170207/public/images/result2.png',
+            '/pj_valentine170207/public/images/result3-empty.png',
+            '/pj_valentine170207/public/images/result3.png',
+            '/pj_valentine170207/public/images/result4.png',
+            '/pj_valentine170207/public/images/share.png',
+            '/pj_valentine170207/public/images/showoff.png',
+            '/pj_valentine170207/public/images/topic1.png',
+            '/pj_valentine170207/public/images/topic2.png',
+            '/pj_valentine170207/public/images/topic3.png',
+            '/pj_valentine170207/public/images/topic4.png',
+            '/pj_valentine170207/public/images/topic5.png'
+        ];
+    </script>
+</head>
+<body>
+    <audio autoplay="autoplay" loop="loop" preload="auto">
+        <source src="/pj_valentine170207/public/images/music.mp3" />
+    </audio>
+
+    <div class="loading">
+        <div class="percent">0%</div>
+    </div>
+
+    <div class="music on"></div>
+
+    <div class="page-wrap">
+        <div class="page-inner">
+            <section class="bg ask-start hide">
+                <div>
+                    <div class="banner"></div>
+                    <a class="btn" href="javascript:;">我想脱单</a>
+                    <div class="logo"></div>
+                </div>
+            </section>
+            
+            <section class="bg answer-start hide">
+                <div>
+                    <div class="banner"></div>
+                    <div class="text">{{ askerInfo.nickname }}想要和你在一起， 去测测你和ta的默契度吧</div>
+                    <a class="btn" href="javascript:;">马上测试</a>
+                    <div class="replay-btn"><i class="icon-replay"></i><span></span>我要和别人在一起</div>
+                    <div class="logo"></div>
+                </div>
+            </section>
+                
+            <section class="showoff bg1 hide">
+                <div>
+                    <div class="main">
+                        <div class="love">
+                            <div class="left">
+                                <img src="{{ askerInfo.headimgurl }}" alt="">
+                                <div class="name">{{ askerInfo.nickname }}</div>
+                            </div>
+                            <div class="right">
+                                <img src="{{ answererInfo.headimgurl }}" alt="">
+                                <div class="name">{{ answererInfo.nickname }}</div>
+                            </div>
+                            <div class="desc">默契度:<strong>100%</strong></div>
+                        </div>
+                        <div class="text">2.14，我们在一起啦！</div>
+                        <a class="btn btn-s" href="javascript:;">我也要脱单</a>
+                    </div>
+                    <div class="logo"></div>
+                </div>
+            </section>
+
+            <section class="topic topic1 hide">
+                <div>
+                    <dl>
+                        <dt>情人节（2.14），何时约？</dt>
+                        <dd>太阳当空照</dd>
+                        <dd>天青色等烟雨</dd>
+                        <dd>举头望明月</dd>
+                    </dl>
+                    <div class="progress">
+                        <div class="inner"></div>
+                        <div class="girl"></div>
+                        <div class="boy"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="topic topic2 hide">
+                <div>
+                    <dl>
+                        <dt>世界辣么大，上哪过？</dt>
+                        <dd>二人世界家里蹲</dd>
+                        <dd>地图在手说走就走</dd>
+                        <dd>上天与神舟肩并肩</dd>
+                    </dl>
+                    <div class="progress">
+                        <div class="inner"></div>
+                        <div class="girl"></div>
+                        <div class="boy"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="topic topic3 hide">
+                <div>
+                    <dl>
+                        <dt>肚子饿了，吃点啥？</dt>
+                        <dd>路边撸串儿</dd>
+                        <dd>海天盛宴</dd>
+                        <dd>泡面加个蛋</dd>
+                    </dl>
+                    <div class="progress">
+                        <div class="inner"></div>
+                        <div class="girl"></div>
+                        <div class="boy"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="topic topic4 hide">
+                <div>
+                    <dl>
+                        <dt>酒足饭饱，送点啥？</dt>
+                        <dd>礼物</dd>
+                        <dd>红包</dd>
+                        <dd>我自己</dd>
+                    </dl>
+                    <div class="progress">
+                        <div class="inner"></div>
+                        <div class="girl"></div>
+                        <div class="boy"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="topic topic5 topic-last hide">
+                <div>
+                    <dl>
+                        <dt>礼物入兜，干点啥？</dt>
+                        <dd>嗑瓜子唠嗑</dd>
+                        <dd>憋说话吻我</dd>
+                        <dd>不可描述</dd>
+                    </dl>
+                    <div class="progress">
+                        <div class="inner"></div>
+                        <div class="girl"></div>
+                        <div class="boy"></div>
+                        <div class="heart"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="ask-end hide">
+                <div>
+                    <div class="banner"></div>
+                    <div class="text">出完题了啦！<br>看看TA和你是否有默契~</div>
+                    <a class="btn" href="javascript:;">求配对</a>
+                    <div class="logo"></div>
+                </div>
+            </section>
+
+            <section class="answer-result answer-result-fail hide">
+                <div>
+                    <div class="main">
+                        <div class="desc">默契度:<span>0</span>%</div>
+                        <div class="text custom-font">默契度太低，<br>看来情人节不适合你们啊~</div>
+                        <a class="btn" href="javascript:;">抽个奖 求安慰</a>
+                        <div class="assist-btn"><i class="icon-replay"></i>我要和别人在一起</div>
+                    </div>
+                    <div class="logo"></div>
+                </div>
+            </section>
+
+            {% if matchList && matchList.length > 0 && matchList[0].score == 100 %}
+            <section class="ask-result ask-result-success hide">
+                <div>
+                    <div class="main">
+                        <div class="hd">
+                            <div class="love">
+                                <div class="left">
+                                    <img src="{{ headimgurl }}" alt="">
+                                    <div class="name">{{ nickname }}</div>
+                                </div>
+                                <div class="right">
+                                    <img src="{{ firstMatchData.headimgurl }}" alt="">
+                                    <div class="name">{{ firstMatchData.nickname }}</div>
+                                </div>
+                                <div class="desc">默契度:<strong>100%</strong></div>
+                            </div>
+                            <div class="actions">
+                                <a class="btn btn-s" href="javascript:;">定制过节方案</a>
+                                <div data-openid="{{ matchList[0].openid }}" class="assist-btn"><i class="icon-xitie"></i>我要发喜帖</div>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <ul>
+                                {% for item in matchList %}
+                                    <li>
+                                        <img class="avatar" src="{{ item.headimgurl }}" alt="">
+                                        <div class="name">{{ item.nickname }}</div>
+                                        <div class="percent">{{ item.score }}%</div>
+                                        <div class="ft">
+                                            {% if item.score == 100 %}
+                                            <div data-openid="{{ item.openid }}" class="showoff-btn"></div>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="logo"></div>
+                </div>
+            </section>
+            {% endif %}
+                
+            {% if matchList && (matchList.length == 0 || matchList[0].score != 100) %}
+            <section class="ask-result ask-result-fail hide">
+                <div>
+                    <div class="main">
+                        <div class="hd">
+                            <div class="text">不给力…<br>还没有配对成功的小伙伴...</div>
+                            <div class="actions">
+                                <a class="btn btn-s" href="javascript:;">抽个奖 求安慰</a>
+                                <div class="assist-btn"><i class="icon-replay"></i>继续求配对</div>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            {% if matchList && matchList.length == 0 %}
+                                <div class="nodata">暂无配对好友</div>
+                            {% endif %}
+                            <ul>
+                                {% for item in matchList %}
+                                    <li>
+                                        <img class="avatar" src="{{ item.headimgurl }}" alt="">
+                                        <div class="name">{{ item.nickname }}</div>
+                                        <div class="percent">{{ item.score }}%</div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="logo"></div>
+                </div>
+            </section>
+            {% endif %}
+
+            <section class="answer-result answer-result-success hide">
+                <div>
+                    <div class="main">
+                        <div class="desc">默契度:100%</div>
+                        <div class="text custom-font">命中注定，三观一致，<br>今天就和TA一起过节吧~</div>
+                        <a class="btn" href="javascript:;">定制过节方案</a>
+                        <div class="assist-btn"><i class="icon-xitie"></i>我要发喜帖</div>
+                    </div>
+                    <div class="logo"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="mask hide"></div>
+
+    <div class="lottery-match dialog hide">
+        <div class="close"></div>
+        <div class="title">100%专属过节方案</div>
+        <div class="article"></div>
+        <div class="form">
+            <div class="tips">除了爱情，还有惊喜奖品等着你！</div>
+            <input class="phone" maxlength="11" type="tel" placeholder="请输入手机号">
+            <a class="btn btn-xs" href="javascript:;">立即抽奖</a>
+        </div>
+    </div>
+
+    <div class="lottery-unmatch dialog hide">
+        <div class="close"></div>
+        <div class="title">没人懂你，典典陪你 !</div>
+        <div class="form">
+            <div class="tips">抽个安慰奖，看看命运会不会再抛弃你</div>
+            <input class="phone" maxlength="11" type="tel" placeholder="请输入手机号">
+            <a class="btn btn-xs" href="javascript:;">立即抽奖</a>
+        </div>
+    </div>
+
+    <div class="lottery-success dialog hide">
+        <div class="close"></div>
+        <div class="title">恭喜获得<br>典典养车大礼包</div>
+        <ul class="list list1 hide">
+            <li>30元违章代缴红包</li>
+            <li>50元年检红包</li>
+            <li>10元油卡充值红包</li>
+            <li>10元油卡代办红包</li>
+            <li>10元精洗红包</li>
+            <li>50元商业车险红包</li>
+        </ul>
+        <ul class="list list2 hide">
+            <li>50元养护通用红包</li>
+            <li>20元美容通用红包</li>
+            <li>5元违章处理红包</li>
+            <li>50元年检代办红包</li>
+            <li>10元油卡代办红包</li>
+        </ul>
+        <div class="form">
+            <div class="tips">礼包已放入您的账号：<span></span></div>
+            <a class="btn btn-xs" href="javascript:;">立即查看</a>
+        </div>
+    </div>
+
+    <div class="lottery-fail dialog hide">
+        <div class="close"></div>
+        <div class="title">礼包与你擦肩而过</div>
+        <div class="tips">宝宝不哭，<br>典典永远与你同在！</div>
+        <div class="form">
+            <a class="btn btn-xs" href="javascript:;">知道了</a>
+        </div>
+    </div>
+
+    <div class="share hide"></div>
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_valentine170207/public/js/index.js" async></script>
+</body>
+</html>

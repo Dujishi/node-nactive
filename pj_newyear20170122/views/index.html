@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>加入VIP送新年红包</title>
+    <link rel="stylesheet" href="/pj_newyear20170122/public/css/index.css" type="text/css">
+    <script>
+        // 设置rem字号
+        ;(function() {
+            var docEl = document.documentElement;
+            var resize = 'orientationchange' in window ? 'orientationchange' : 'resize';
+            var setRem = function() {
+                var screenWidth = docEl.clientWidth || window.screen.width || 350;
+                docEl.style.fontSize = (100 * screenWidth / 750) + 'px';
+            };
+            // 屏幕大小变化后重新设置rem字号
+            window.addEventListener(resize, setRem, false);
+            setRem();
+        })();
+    </script>
+    <script>
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            activeName: '购典典VIP送精洗红包',
+            signature: '{{ wechat.signature }}',
+            shareUrl: '{{ shareUrl }}',
+            shareTitle: '加入典典VIP,送新年红包~',
+            shareContent: '典典VIP洗车5折起，加油仅需98折-更有新年红包等你来领！',
+            shareSubTitle: '典典VIP洗车5折起，加油仅需98折-更有新年红包等你来领！',
+            shareImgUrl: 'http://store.ddyc.com/res/xkcdn/icons/share/icon_newyear20170122.png'
+        }
+    </script>
+</head>
+
+<body ontouchstart>
+    <div class="banner">
+        <div class="banner-text">典典红包详情</div>
+    </div>
+    <div class="main">
+        <div class="bless">新春快乐，鸡年大吉!</div>
+        <div class="packet">送您50元新年红包!</div>
+        <a class="detail-btn" href="javascript:;">了解详情</a>
+        <a class="join-btn" href="javascript:;">加入VIP领红包</a>
+    </div>
+    <div class="footer">
+        <div class="date">活动时间：1月22日-2月3日</div>
+        <div class="desc">加入后红包自动存入账户，请在我的红包/券中查看 </div>
+        <div class="notice">注：已加入典典年卡、典典VIP的用户无法参与此活动</div>
+    </div>
+
+    <div class="dialog">
+        <div class="mask"></div>
+        <div class="dialog-main">
+            <ul>
+                <li>10元欧式精洗红包</li>
+                <li>10元去污打蜡红包</li>
+                <li>10元更换防冻液红包</li>
+                <li>20元内室清洗红包</li>
+            </ul>
+            <div class="dialog-tips">
+                <p>Ps：所有红包请在典典连锁门店使用</p>
+                <p>红包有效期: 2月6号-2月14号</p>  
+            </div>
+            <div class="dialog-close"></div>
+        </div>
+    </div>   
+    
+    <script type='text/javascript'>
+        var _vds = _vds || [];
+        window._vds = _vds;
+        window._ax = [];
+        window.onload = function() {
+            //获取浏览器参数
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r !== null) return unescape(r[2]); return null;
+            }
+
+            (function() {
+                _vds.push(['setAccountId', 'e2f213a5f5164248817464925de8c1af']);
+
+                if(getQueryString('trackId')){ //判断是否需要统计页面来源
+                      _vds.push(['setPageGroup', 'activityPage']); // 必须  比如活动页面 activityPage ；养车H5页面 ddycAppH5Page 等
+                      _vds.push(['setPS1', '购典典VIP送精洗红包']);
+                      _vds.push(['setPS2', getQueryString('trackId')]); // trackId 原来id
+                }
+
+                (function() {
+                    var vds = document.createElement('script');
+                    vds.type = 'text/javascript';
+                    vds.async = true;
+                    vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vds, s);
+                })();
+            })();
+        }
+    </script>
+
+    {% if iswechat %}
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% endif %}
+    <script src="//store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="/pj_newyear20170122/public/js/index.js" async></script>
+</body>
+
+</html>

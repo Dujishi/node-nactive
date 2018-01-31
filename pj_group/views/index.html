@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="x-dns-prefetch-control" content="on" /> 
+    <link rel="dns-prefetch" href="https://store.ddyc.com" />
+    <link rel="stylesheet" href="/pj_group/public/css/index.css">
+    <title>典典拼团</title>
+    <script>
+        // 设置rem字号
+        ;(function(doc, win) {
+            'use strict';
+            var docEl = doc.documentElement;
+            var resizeEvt = 'orientation change' in window ? 'orientation change' : 'resize';
+            function recalc() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = (100 * clientWidth / 750).toFixed(4) + 'px';
+            };
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document, window);
+
+        /**CONFIG**/
+        window.CONF = {
+            isapp: {{ isapp }},
+            iswechat: {{ iswechat }},
+            appId: '{{ wechat.appId }}',
+            timestamp: '{{ wechat.timestamp }}',
+            nonceStr: '{{ wechat.nonceStr }}',
+            signature: '{{ wechat.signature }}',
+            openId:'{{ openId }}',
+            userId:'{{ userId }}',
+            // for share
+            shareUrl: '{{ shareText.shareUrl }}',
+            shareTitle: '{{ shareText.shareTitle }}',
+            shareContent: '{{ shareText.shareContent }}',
+            shareSubTitle: '{{ shareText.shareSubTitle }}',
+            shareImgUrl: '{{ shareText.shareImgUrl }}'
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div class="contenter">
+        <div class="header">
+            <div class="header-block header-rule">
+                <a href="/nactive/group/rule">拼团规则</a> 
+            </div>
+            <div class="header-block header-history">
+                <a href="javascript:;">拼团记录</a> 
+            </div>
+        </div>
+        <div class="timeline">
+            <p>支付<br>开团</p>
+            <p>邀请<br>好友参团</p>
+            <p>人满<br>下单成功</p>
+            <p>人不满<br>退款</p>
+        </div>
+        <div class="group-wrap" id="groupWrap">
+            <div id="groupInvite" class="group-category">
+                <div class="tips"><span class="tips-title">你的好友</span>邀请你拼团</div>
+            </div>
+            <div id="groupMe" class="group-category">
+                <div class="tips">正在参加的拼团</div>
+            </div>
+            <div id="groupHot" class="group-category">
+                <div class="tips"><span class="hot-icon"></span> 热门拼团</div>
+            </div>
+        </div>
+    </div>
+    <div class="share-mask"></div>
+    
+    {%raw%}
+    <script type="text/template" id="group-item-tpl">
+        {{ each }}
+        <div class="group-item">
+            <div class="group-img" data-code="{{ $value.commodityOriginCode }}">
+                <img class="" src="{{ $value.thumbImg | imgSize }}" alt="">
+                <div class="avatar-wrap">
+                    {{ each $value.avatar as item }}
+                    <div class="avatar-item">
+                        <img src="{{ item }}" alt="">
+                    </div>
+                    {{ /each }}
+                </div>
+            </div>
+            <div class="group-text">
+                <div class="text-wrap">
+                    <p class="text-wrap-title">{{ $value.commodityName }}</p>
+                    <p class="text-wrap-exp">{{ $value.summary }}</p>
+                </div>
+                <div class="btn-wrap">
+                    {{ if $value.endtime }}
+                    <div class="btn-item-text">
+                        <p class="btn-item-text-people">2人成团</p>
+                        {{ if $value.status == 1 }}
+                        <p class="btn-item-text-time end-time-count" data-endTime="{{ $value.endtime }}"></p>
+                        {{ else }}
+                        <p class="btn-item-text-time end-time-count" data-endTime="{{ $value.endtime }}">已完成</p>
+                        {{ /if }}
+                    </div>
+                    {{ else }}
+                    <div class="btn-item-text status-init">
+                        <p class="btn-item-text-people">2人成团</p>
+                        <p class="btn-item-text-time">剩余</p>
+                    </div>
+                    {{ /if }}
+
+                    {{ if $value.status == 2 }}
+                    <div class="btn-item-buy-no" data-code="{{ $value.commodityOriginCode }}" data-commodityOriginCodePrice="{{ $value.commodityOriginCodePrice }}">￥{{ $value.commodityOriginCodePrice }} 单独购</div>
+                    {{ else }}
+                    <div class="btn-item-buy" data-code="{{ $value.commodityOriginCode }}" data-commodityOriginCodePrice="{{ $value.commodityOriginCodePrice }}">￥{{ $value.commodityOriginCodePrice }} 单独购</div>                    
+                    {{ /if }}
+
+                    {{ if $value.buyNow }}
+                        {{ if $value.status == 2 }}
+                        <div class="btn-item-group-no" data-code="{{ $value.commodityCode }}" data-id="{{ $value.id }}">￥{{ $value.appPrice }} 拼团购</div>
+                        {{ else }}
+                        <div class="btn-item-group btn-item-group-single" data-code="{{ $value.commodityCode }}" data-id="{{ $value.id }}">￥{{ $value.appPrice }} 拼团购</div>                    
+                        {{ /if }}
+                    {{ else }}
+                    <div class="btn-item-group" data-appPrice="{{ $value.appPrice }}" data-commodityOriginCodePrice="{{ $value.commodityOriginCodePrice }}" data-posPrice="{{ $value.posPrice }}" data-commodityName="{{ $value.commodityName }}" data-code="{{ $value.commodityCode }}" data-id="{{ $value.id }}">{{ $value.partners.length + 1 }}人已参团/{{ $value.limit }}<br>邀请好友</div>                    
+                    {{ /if }}
+                    
+                </div>
+        </div>
+    </div>
+        {{ /each }}
+    </script>
+    {%endraw%}
+
+    {% if iswechat %}
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    {% endif %}
+    <script src="https://store.ddyc.com/res/xkcdn/zepto/v1.2.0/zepto.min.js"></script>
+    <script src="https://store.ddyc.com/res/xkcdn/arttemplate/template.js"></script>
+    <script src="/pj_group/public/js/index.js"></script>
+</body>
+</html>
